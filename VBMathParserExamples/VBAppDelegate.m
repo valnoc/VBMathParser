@@ -14,7 +14,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [VBMathParser evaluateExpression:@"1"];
+    double result = [VBMathParser evaluateExpression:@"1"];
+    
+    VBMathParser* parser = [[VBMathParser alloc] initWithExpression:@"2 + 4"];
+    result = [parser evaluate];
+    
+    parser.expression = @"2(1+3)";
+    result = [parser evaluate];
     
 //    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 //    // Override point for customization after application launch.
