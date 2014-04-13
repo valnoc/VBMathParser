@@ -3,11 +3,11 @@ VBMathParser
 
 VBMathParser is a simple framework to perform mathematical expressions parsing.
 
-# How to use
+## How to use
 
 1. import header
 
-    #import "VBMathParser.h"
+    `#import "VBMathParser.h”`
 
 2. use one of the variants
 
