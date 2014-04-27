@@ -77,6 +77,8 @@
                             @(VBTokenOperationMultiplication)]];
     [strToParse addObject:@[@"/",
                             @(VBTokenOperationDivision)]];
+    [strToParse addObject:@[@"^",
+                            @(VBTokenOperationPower)]];
     
     for (NSArray* arr in strToParse) {
         NSString* str = arr[0];

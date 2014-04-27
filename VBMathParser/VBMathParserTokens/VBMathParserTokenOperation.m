@@ -44,7 +44,7 @@
 }
 
 + (NSString *)regexPattern {
-    return @"^[\\+\\-\\*/]$";
+    return @"^[\\+\\-\\*/^]$";
 }
 
 #pragma mark - tokens
@@ -63,7 +63,10 @@
 	}else if ([str isEqualToString:@"/"]) {
         operation = VBTokenOperationDivision;
         
-	}
+	}else if ([str isEqualToString:@"^"]) {
+        operation = VBTokenOperationPower;
+        
+    }
 	
 	return operation;
 }
@@ -74,6 +77,10 @@
 
 - (NSInteger) priority {
     switch (self.tokenOperation) {
+        case VBTokenOperationPower:
+            return 2;
+            break;
+            
         case VBTokenOperationMultiplication:
         case VBTokenOperationDivision:
             return 1;
@@ -107,6 +114,10 @@
             
         case VBTokenOperationDivision:
             result = paramLeft / paramRight;
+            break;
+            
+        case VBTokenOperationPower:
+            result = pow(paramLeft, paramRight);
             break;
             
 		default:

@@ -29,7 +29,7 @@ Expression can always be changed by setting expression property of VBMathParser 
     result = [parser evaluate];
 
 ## Supported 
-1. operations: +, - (unary/binary), *, /
+1. operations: +, - (unary/binary), *, /, ^(power)
 2. brackets: (, )
 
 ## Coming soon

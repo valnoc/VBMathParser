@@ -29,7 +29,8 @@ typedef enum{
 	VBTokenOperationAddition,
 	VBTokenOperationSubstraction,
     VBTokenOperationMultiplication,
-    VBTokenOperationDivision
+    VBTokenOperationDivision,
+    VBTokenOperationPower
 }VBTokenOperation;
 
 @interface VBMathParserTokenOperation : VBMathParserToken
