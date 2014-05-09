@@ -3,16 +3,15 @@ VBMathParser
 
 VBMathParser is a simple framework to perform mathematical expressions parsing.
 
-## How to install
-Drag VBMathParser dir into your project.
+This framework uses ARC. DO NOT FORGET to turn on ARC for framework's sources (-fobjc-arc flag), if your project is developed in non-ARC environment.
 
 ## How to use
-
-1. Import header
+1. Drag VBMathParser dir into your project.
+2. Import header
 
     `#import "VBMathParser.h”`
 
-2. Use one of the variants
+3. Use one of the variants
 
     Single line
 
