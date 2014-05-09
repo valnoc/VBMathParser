@@ -14,34 +14,34 @@ Drag VBMathParser dir into your project.
 
 2. Use one of the variants
 
-Single line
+    Single line
 
-    double result = [VBMathParser evaluateExpression:@"1"];
+        double result = [VBMathParser evaluateExpression:@"1"];
 
-Using instance method
+    Using instance method
 
-    VBMathParser* parser = [[VBMathParser alloc] initWithExpression:@"2 + 4"];
-    result = [parser evaluate];
+        VBMathParser* parser = [[VBMathParser alloc] initWithExpression:@"2 + 4"];
+        result = [parser evaluate];
 
-Expression can always be changed by setting the expression property of VBMathParser object
+    Expression can always be changed by setting the expression property of VBMathParser object
 
-    parser.expression = @"2(1+3)";
-    result = [parser evaluate];
+        parser.expression = @"2(1+3)";
+        result = [parser evaluate];
 
 ## Expected syntax
 1. If you open a bracket - do not forget to close it later.
-2. All operations are expected to be used in mathematical expressions as binary operations. 
+- All operations are expected to be used in mathematical expressions as binary operations. 
 
-Only "-" operation can be used both as binary and as unary one. Actually unary minus operation is always replaced by a binary one as the following: 
+    Only "-" operation can be used both as binary and as unary one. Actually unary minus operation is always replaced by a binary one as the following: 
 
-    "-4" -> "0-4"
-    "2 * (-4)" -> "2 * (0 - 4)"
-    "-abs(4)" -> "0 - abs(4)"
+        "-4" -> "0-4"
+        "2 * (-4)" -> "2 * (0 - 4)"
+        "-abs(4)" -> "0 - abs(4)"
 
-3. All functions are expected to be followed by an argument enclosed in brackets. 
+- All functions are expected to be followed by an argument enclosed in brackets.  
 
-    abs3 - error!
-    abs(3) - OK
+        abs3 - error!
+        abs(3) - OK
 
 ## Supported features
 1. brackets: (, )
