@@ -30,7 +30,7 @@ Drag VBMathParser dir into your project.
 
 ## Expected syntax
 1. If you open a bracket - do not forget to close it later.
-- All operations are expected to be used in mathematical expressions as binary operations. 
+2. All operations are expected to be used in mathematical expressions as binary operations. 
 
     Only "-" operation can be used both as binary and as unary one. Actually unary minus operation is always replaced by a binary one as the following: 
 
@@ -38,7 +38,7 @@ Drag VBMathParser dir into your project.
         "2 * (-4)" -> "2 * (0 - 4)"
         "-abs(4)" -> "0 - abs(4)"
 
-- All functions are expected to be followed by an argument enclosed in brackets.  
+3. All functions are expected to be followed by an argument enclosed in brackets.  
 
         abs3 - error!
         abs(3) - OK
