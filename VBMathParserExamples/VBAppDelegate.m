@@ -22,7 +22,7 @@
     parser.expression = @"2(1+3)";
     result = [parser evaluate];
     
-    parser.expression = @"abs(3)";
+    parser.expression = @"(-abs(-4)+14)";
     result = [parser evaluate];
     
 //    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
