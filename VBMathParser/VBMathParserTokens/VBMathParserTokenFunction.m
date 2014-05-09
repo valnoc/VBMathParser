@@ -44,14 +44,14 @@
 }
 
 + (NSString *)regexPattern {
-    return @"^[\\+\\-\\*/^]$";
+    return @"^\\w*$";
 }
 
 #pragma mark - tokens
 + (VBTokenFunction) tokenFunctionWithString:(NSString*)str {
 	VBTokenFunction function = VBTokenFunctionUnknown;
 	
-	if ([[str lowercaseString] isEqualToString:@"abs"]) {
+	if ([str isEqualToString:@"abs"]) {
         function = VBTokenFunctionABS;
         
 	}
