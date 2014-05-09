@@ -28,6 +28,7 @@
 
 #import "VBMathParserTokenNumber.h"
 #import "VBMathParserTokenOperation.h"
+#import "VBMathParserTokenFunction.h"
 #import "VBMathParserTokenSpecial.h"
 
 #import "VBMathParserUnknownTokenException.h"
@@ -161,8 +162,45 @@
                     [tokens addObject:[VBMathParserTokenOperation operationWithString:substr]];
                     
                 }else {
-                    //****** UNKNOWN TOKEN
-                    @throw [VBMathParserUnknownTokenException exceptionWithInfo:str];
+                    //****** TRY TO READ FUNCTION TOKEN
+                    length = 1;
+                    substr = [str substringToIndex:length];
+                    
+                    regex = [NSRegularExpression regularExpressionWithPattern:[VBMathParserTokenFunction regexPattern]
+                                                                      options:NSRegularExpressionCaseInsensitive|NSRegularExpressionAnchorsMatchLines
+                                                                        error:&error];
+                    rangeOfFirstMatch = [regex rangeOfFirstMatchInString:substr
+                                                                 options:0
+                                                                   range:NSMakeRange(0, substr.length)];
+                    BOOL isFunction = NO;
+                    substractOne = NO;
+                    while (!NSEqualRanges(rangeOfFirstMatch, NSMakeRange(NSNotFound, 0))) {
+                        isFunction = YES;
+                        if (str.length > length) {
+                            substractOne = YES;
+                            substr = [str substringToIndex:++length];
+                            rangeOfFirstMatch = [regex rangeOfFirstMatchInString:substr
+                                                                         options:0
+                                                                           range:NSMakeRange(0, substr.length)];
+                        }else{
+                            substractOne = NO;
+                            break;
+                        }
+                    }
+                    if (substractOne) {
+                        substr = [substr substringToIndex:substr.length - 1];
+                    }
+                    
+                    if (isFunction && [VBMathParserTokenFunction isFunction:substr]) {
+                        
+                        VBMathParserLog(@"LexicalAnalyzer: Token function: %@", substr);
+                        str = [str substringFromIndex:substr.length];
+                        [tokens addObject:[VBMathParserTokenFunction functionWithString:substr]];
+                        
+                    }else {
+                        //****** UNKNOWN TOKEN
+                        @throw [VBMathParserUnknownTokenException exceptionWithInfo:str];
+                    }
                 }
                 
             }

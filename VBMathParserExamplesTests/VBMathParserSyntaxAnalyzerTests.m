@@ -13,6 +13,7 @@
 
 #import "VBMathParserBracketNotClosedException.h"
 #import "VBMathParserBracketNotOpenedException.h"
+#import "VBMathParserMissingTokenException.h"
 
 @interface VBMathParserSyntaxAnalyzerTests : XCTestCase
 
@@ -44,15 +45,29 @@
     XCTAssertThrowsSpecific([syntaxAnalyzer analyseTokens:tokens], VBMathParserBracketNotClosedException, @"bracket not closed");
     
     tokens = [lexicalAnalyzer analyseString:@"1 + 1)"];
-    XCTAssertThrowsSpecific([syntaxAnalyzer analyseTokens:tokens], VBMathParserBracketNotOpenedException, @"bracket not closed");
+    XCTAssertThrowsSpecific([syntaxAnalyzer analyseTokens:tokens], VBMathParserBracketNotOpenedException, @"bracket not opened");
 }
 
-//- (void) testMissingArgs {
-//    VBMathParserLexicalAnalyzer* lexicalAnalyzer = [VBMathParserLexicalAnalyzer new];
-//    VBMathParserSyntaxAnalyzer* syntaxAnalyzer = [VBMathParserSyntaxAnalyzer new];
-//    
-//    NSArray* tokens = [lexicalAnalyzer analyseString:@"1 + "];
-//    XCTAssertNoThrow([syntaxAnalyzer analyseTokens:tokens], @"brackets");
-//}
+- (void) testMissingArgs {
+    VBMathParserLexicalAnalyzer* lexicalAnalyzer = [VBMathParserLexicalAnalyzer new];
+    VBMathParserSyntaxAnalyzer* syntaxAnalyzer = [VBMathParserSyntaxAnalyzer new];
+    
+    NSArray* tokens = [lexicalAnalyzer analyseString:@"1 + "];
+    XCTAssertThrowsSpecific([syntaxAnalyzer analyseTokens:tokens], VBMathParserMissingTokenException, @"missing arg in operation");
+}
+
+- (void) testFunctions {
+    VBMathParserLexicalAnalyzer* lexicalAnalyzer = [VBMathParserLexicalAnalyzer new];
+    VBMathParserSyntaxAnalyzer* syntaxAnalyzer = [VBMathParserSyntaxAnalyzer new];
+    
+    NSArray* tokens = [lexicalAnalyzer analyseString:@"abs"];
+    XCTAssertThrowsSpecific([syntaxAnalyzer analyseTokens:tokens], VBMathParserMissingTokenException, @"missing arg of function");
+    
+    tokens = [lexicalAnalyzer analyseString:@"abs3+5"];
+    XCTAssertThrowsSpecific([syntaxAnalyzer analyseTokens:tokens], VBMathParserMissingTokenException, @"missing brackets for args");
+    
+    tokens = [lexicalAnalyzer analyseString:@"abs(3)"];
+    XCTAssertNoThrow([syntaxAnalyzer analyseTokens:tokens], @"everything should be ok");
+}
 
 @end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B14D1F9191CBB0C008D7F17 /* VBMathParserTokenFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B14D1F8191CBB0C008D7F17 /* VBMathParserTokenFunction.m */; };
 		5B76278218D5D0A1009FF7E2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B76278118D5D0A1009FF7E2 /* Foundation.framework */; };
 		5B76278418D5D0A1009FF7E2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B76278318D5D0A1009FF7E2 /* CoreGraphics.framework */; };
 		5B76278618D5D0A1009FF7E2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B76278518D5D0A1009FF7E2 /* UIKit.framework */; };
@@ -48,6 +49,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5B14D1F7191CBB0C008D7F17 /* VBMathParserTokenFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserTokenFunction.h; sourceTree = "<group>"; };
+		5B14D1F8191CBB0C008D7F17 /* VBMathParserTokenFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserTokenFunction.m; sourceTree = "<group>"; };
 		5B76277E18D5D0A1009FF7E2 /* VBMathParserExamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VBMathParserExamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B76278118D5D0A1009FF7E2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5B76278318D5D0A1009FF7E2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -248,6 +251,8 @@
 				5B7627FF18D5D3F5009FF7E2 /* VBMathParserTokenNumber.m */,
 				5B76280018D5D3F5009FF7E2 /* VBMathParserTokenOperation.h */,
 				5B76280118D5D3F5009FF7E2 /* VBMathParserTokenOperation.m */,
+				5B14D1F7191CBB0C008D7F17 /* VBMathParserTokenFunction.h */,
+				5B14D1F8191CBB0C008D7F17 /* VBMathParserTokenFunction.m */,
 				5B76280218D5D3F5009FF7E2 /* VBMathParserTokenSpecial.h */,
 				5B76280318D5D3F5009FF7E2 /* VBMathParserTokenSpecial.m */,
 			);
@@ -358,6 +363,7 @@
 				5B76280F18D5D3F5009FF7E2 /* VBMathParserTokenNumber.m in Sources */,
 				5B76281118D5D3F5009FF7E2 /* VBMathParserTokenSpecial.m in Sources */,
 				5B76280D18D5D3F5009FF7E2 /* VBMathParserUnknownTokenException.m in Sources */,
+				5B14D1F9191CBB0C008D7F17 /* VBMathParserTokenFunction.m in Sources */,
 				5B76280418D5D3F5009FF7E2 /* VBMathParser.m in Sources */,
 				5B76280518D5D3F5009FF7E2 /* VBMathParserLexicalAnalyzer.m in Sources */,
 				5B76281018D5D3F5009FF7E2 /* VBMathParserTokenOperation.m in Sources */,

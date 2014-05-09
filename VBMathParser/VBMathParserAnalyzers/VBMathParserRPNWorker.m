@@ -28,6 +28,7 @@
 
 #import "VBMathParserTokenNumber.h"
 #import "VBMathParserTokenOperation.h"
+#import "VBMathParserTokenFunction.h"
 #import "VBMathParserTokenSpecial.h"
 
 #import "VBStack.h"
@@ -46,13 +47,13 @@
         if ([token isKindOfClass:[VBMathParserTokenNumber class]]) {
             [tokens addObject:token];
             
-        }else if ([token isKindOfClass:[VBMathParserTokenOperation class]]) {
+        }else if ([token isKindOfClass:[VBMathParserTokenOperation class]] || [token isKindOfClass:[VBMathParserTokenFunction class]]) {
             if (stack.isEmpty) {
                 [stack pushObject:token];
                 
             }else {
                 id lastObject = stack.lastObject;
-                while ([lastObject isKindOfClass:[VBMathParserTokenOperation class]]) {
+                while ([lastObject isKindOfClass:[VBMathParserTokenOperation class]] || [lastObject isKindOfClass:[VBMathParserTokenFunction class]]) {
                     VBMathParserTokenOperation* lastOperation = (VBMathParserTokenOperation*)lastObject;
                     if (lastOperation.priority >= ((VBMathParserTokenOperation*)token).priority) {
                         [tokens addObject:[stack popObject]];
@@ -128,7 +129,32 @@
             double opRes = [operation evaluateWithParamLeft:paramLeft
                                                  paramRight:paramRight];
             [resultArray removeObjectsInRange:replacementRange];
-            [resultArray insertObject:@(opRes) atIndex:replacementRange.location];
+            [resultArray insertObject:@(opRes)
+                              atIndex:replacementRange.location];
+            
+            i = replacementRange.location - 1;
+
+        }else if ([object isKindOfClass:[VBMathParserTokenFunction class]]) {
+            
+            NSRange replacementRange = NSMakeRange(i, 1);
+            double param = 0;
+            
+            if (i > 0) {
+                id objectRight = resultArray[i-1];
+                
+                if ([objectRight isKindOfClass:[VBMathParserTokenNumber class]] || [objectRight isKindOfClass:[NSNumber class]]) {
+                    param = [objectRight doubleValue];
+                }
+                
+                replacementRange.location--;
+                replacementRange.length++;
+            }
+            
+            VBMathParserTokenFunction* function = (VBMathParserTokenFunction*)object;
+            double opRes = [function evaluateWithParam:param];
+            [resultArray removeObjectsInRange:replacementRange];
+            [resultArray insertObject:@(opRes)
+                              atIndex:replacementRange.location];
             
             i = replacementRange.location - 1;
         }

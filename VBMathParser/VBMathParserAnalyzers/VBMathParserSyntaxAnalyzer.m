@@ -28,6 +28,7 @@
 
 #import "VBMathParserTokenNumber.h"
 #import "VBMathParserTokenOperation.h"
+#import "VBMathParserTokenFunction.h"
 #import "VBMathParserTokenSpecial.h"
 
 #import "VBMathParserBracketNotClosedException.h"
@@ -118,9 +119,15 @@
                            [token isKindOfClass:[VBMathParserTokenOperation class]]) {
                     // ends with operation. e.g. 2+$
                     tokenIsMissing = YES;
+
+                } else if ([token isKindOfClass:[VBMathParserTokenFunction class]] &&
+                           ([tokenNext isKindOfClass:[VBMathParserTokenSpecial class]] == NO ||
+                            ((VBMathParserTokenSpecial*)tokenNext).tokenSpecial != VBTokenSpecialBracketOpen)) {
+                    // any function should be followed by its arguments in brackets
+                    tokenIsMissing = YES;
                 }
 
-            }else if ([token isKindOfClass:[VBMathParserTokenOperation class]]) {
+            }else if ([token isKindOfClass:[VBMathParserTokenOperation class]] || [token isKindOfClass:[VBMathParserTokenFunction class]]) {
                 // last token
                 tokenIsMissing = YES;
             }
