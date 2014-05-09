@@ -44,7 +44,7 @@
 }
 
 + (NSString *)regexPattern {
-    return @"^\\w*$";
+    return @"^[A-Za-z]*$";
 }
 
 #pragma mark - tokens
