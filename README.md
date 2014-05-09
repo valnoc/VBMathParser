@@ -30,7 +30,8 @@ Expression can always be changed by setting the expression property of VBMathPar
 
 ## Expected syntax
 1. If you open a bracket - do not forget to close it later.
-2. Only "-" operation can be used as an unary one. Actually unary minus operation is always replaced by a binary one as the following: 
+2. All operations are expected to be used in mathematical expressions as binary operations. 
+Only "-" operation can be used both as binary and as unary one. Actually unary minus operation is always replaced by a binary one as the following: 
 
     "-4" -> "0-4"
     "2 * (-4)" -> "2 * (0 - 4)"
