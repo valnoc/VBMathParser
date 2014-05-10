@@ -26,7 +26,10 @@
 
 typedef enum{
 	VBTokenFunctionUnknown = 0,
-	VBTokenFunctionABS
+	VBTokenFunctionABS,
+    VBTokenFunctionSin,
+    VBTokenFunctionCos,
+    VBTokenFunctionTan
 }VBTokenFunction;
 
 @interface VBMathParserTokenFunction : VBMathParserToken

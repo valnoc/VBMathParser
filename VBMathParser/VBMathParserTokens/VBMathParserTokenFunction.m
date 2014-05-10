@@ -54,7 +54,15 @@
 	if ([str isEqualToString:@"abs"]) {
         function = VBTokenFunctionABS;
         
-	}
+	}else if ([str isEqualToString:@"sin"]) {
+        function = VBTokenFunctionSin;
+        
+	}else if ([str isEqualToString:@"cos"]) {
+        function = VBTokenFunctionCos;
+
+    }else if ([str isEqualToString:@"tan"]) {
+        function = VBTokenFunctionTan;
+    }
 	
 	return function;
 }
@@ -64,15 +72,7 @@
 }
 
 - (NSInteger) priority {
-    switch (self.tokenFunction) {
-        case VBTokenFunctionABS:
-            return 2;
-            break;
-
-        default:
-            return 0;
-            break;
-    }
+    return 2;
 }
 
 #pragma mark - evaluation
@@ -83,6 +83,18 @@
 		case VBTokenFunctionABS:
 			result = ABS(param);
 			break;
+            
+        case VBTokenFunctionSin:
+            result = sin(param);
+            break;
+            
+        case VBTokenFunctionCos:
+            result = cos(param);
+            break;
+            
+        case VBTokenFunctionTan:
+            result = tan(param);
+            break;
             
 		default:
 #warning TODO throw exception

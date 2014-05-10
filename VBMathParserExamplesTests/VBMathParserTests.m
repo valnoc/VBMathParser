@@ -72,7 +72,12 @@
                              @{@"expr": @"2/abs(-4)", @"res": @(0.5)},
                              @{@"expr": @"-abs(-4)-abs(0.5)", @"res": @(-4.5)},
                              @{@"expr": @"abs(-8)/abs(-4)", @"res": @(2)},
-                             @{@"expr": @"(-abs(-4)+14)*20+abs(-100)*abs(2)", @"res": @(400)}
+                             @{@"expr": @"(-abs(-4)+14)*20+abs(-100)*abs(2)", @"res": @(400)},
+                             
+                             @{@"expr": @"cos(0)", @"res": @(1)},
+                             @{@"expr": @"sin(0)", @"res": @(0)},
+                             @{@"expr": @"cos(3)", @"res": @(cos(3))},
+                             @{@"expr": @"tan(3)", @"res": @(tan(3))}
                              ];
 
     for (NSDictionary* entry in expressions) {
