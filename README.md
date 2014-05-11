@@ -45,7 +45,7 @@ This framework uses ARC. DO NOT FORGET to turn on ARC for framework's sources (-
 ## Supported features
 1. brackets: (, )
 2. operations: +, - (unary/binary), *, /, ^(power)
-3. functions: abs
+3. functions: abs, sin, cos, tan
 
 ## Coming soon
 1. more functions 
