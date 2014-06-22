@@ -1,7 +1,8 @@
 VBMathParser
 ============
 
-VBMathParser is a simple framework to perform mathematical expressions parsing.
+VBMathParser is a simple framework to perform mathematical expressions parsing. 
+Math parser is conceived as a one-line string->double converter.  
 
 This framework uses ARC. DO NOT FORGET to turn on ARC for framework's sources (-fobjc-arc flag), if your project is developed in non-ARC environment.
 
