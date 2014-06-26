@@ -30,12 +30,19 @@
 #import "VBMathParserTokenOperation.h"
 #import "VBMathParserTokenFunction.h"
 #import "VBMathParserTokenSpecial.h"
+#import "VBMathParserTokenVar.h"
 
 #import "VBMathParserUnknownTokenException.h"
 
 @implementation VBMathParserLexicalAnalyzer
 
 - (NSArray*) analyseString:(NSString*)str {
+    return [self analyseString:str
+                      withVars:nil];
+}
+
+- (NSArray*) analyseString:(NSString*)str
+                  withVars:(NSArray*)vars{
     
     VBMathParserLog(@"LexicalAnalyzer: analyseString: %@", str);
     
@@ -198,8 +205,53 @@
                         [tokens addObject:[VBMathParserTokenFunction functionWithString:substr]];
                         
                     }else {
-                        //****** UNKNOWN TOKEN
-                        @throw [VBMathParserUnknownTokenException exceptionWithInfo:str];
+                        //****** TRY TO READ VAR TOKEN
+                        length = 1;
+                        substr = [str substringToIndex:length];
+                        
+                        regex = [NSRegularExpression regularExpressionWithPattern:[VBMathParserTokenVar regexPattern]
+                                                                          options:NSRegularExpressionCaseInsensitive|NSRegularExpressionAnchorsMatchLines
+                                                                            error:&error];
+                        rangeOfFirstMatch = [regex rangeOfFirstMatchInString:substr
+                                                                     options:0
+                                                                       range:NSMakeRange(0, substr.length)];
+                        BOOL canBeVar = NO;
+                        substractOne = NO;
+                        while (!NSEqualRanges(rangeOfFirstMatch, NSMakeRange(NSNotFound, 0))) {
+                            canBeVar = YES;
+                            if (str.length > length) {
+                                substractOne = YES;
+                                substr = [str substringToIndex:++length];
+                                rangeOfFirstMatch = [regex rangeOfFirstMatchInString:substr
+                                                                             options:0
+                                                                               range:NSMakeRange(0, substr.length)];
+                            }else{
+                                substractOne = NO;
+                                break;
+                            }
+                        }
+                        if (substractOne) {
+                            substr = [substr substringToIndex:substr.length - 1];
+                        }
+                        
+                        BOOL isVar = NO;
+                        for (NSString* var in vars) {
+                            if ([var isEqualToString:substr]) {
+                                isVar = YES;
+                                break;
+                            }
+                        }
+                        
+                        if (canBeVar && isVar) {
+
+                            VBMathParserLog(@"LexicalAnalyzer: Token var: %@", substr);
+                            str = [str substringFromIndex:substr.length];
+                            [tokens addObject:[VBMathParserTokenVar varWithString:substr]];
+                            
+                        }else {
+                            //****** UNKNOWN TOKEN
+                            @throw [VBMathParserUnknownTokenException exceptionWithInfo:str];
+                        }
                     }
                 }
                 
@@ -212,6 +264,7 @@
 //    VBMathParserLog(@"LexicalAnalyzer: Analysis finished\n%@", tokens);
     return tokens;
 }
+
 
 
 @end
