@@ -37,6 +37,7 @@
 		5B76281118D5D3F5009FF7E2 /* VBMathParserTokenSpecial.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B76280318D5D3F5009FF7E2 /* VBMathParserTokenSpecial.m */; };
 		5B76281818D5FD9A009FF7E2 /* VBMathParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B76281718D5FD9A009FF7E2 /* VBMathParserTests.m */; };
 		5BAED092195B506A00419603 /* VBMathParserTokenVar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BAED091195B506A00419603 /* VBMathParserTokenVar.m */; };
+		5BCD6419195EF7EA000315EC /* VBMathParserMissingValueForVarException.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BCD6418195EF7EA000315EC /* VBMathParserMissingValueForVarException.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,8 @@
 		5B76281718D5FD9A009FF7E2 /* VBMathParserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserTests.m; sourceTree = "<group>"; };
 		5BAED090195B506A00419603 /* VBMathParserTokenVar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserTokenVar.h; sourceTree = "<group>"; };
 		5BAED091195B506A00419603 /* VBMathParserTokenVar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserTokenVar.m; sourceTree = "<group>"; };
+		5BCD6417195EF7EA000315EC /* VBMathParserMissingValueForVarException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserMissingValueForVarException.h; sourceTree = "<group>"; };
+		5BCD6418195EF7EA000315EC /* VBMathParserMissingValueForVarException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserMissingValueForVarException.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,6 +244,8 @@
 				5B7627F818D5D3F5009FF7E2 /* VBMathParserMissingTokenException.m */,
 				5B7627F918D5D3F5009FF7E2 /* VBMathParserUnknownTokenException.h */,
 				5B7627FA18D5D3F5009FF7E2 /* VBMathParserUnknownTokenException.m */,
+				5BCD6417195EF7EA000315EC /* VBMathParserMissingValueForVarException.h */,
+				5BCD6418195EF7EA000315EC /* VBMathParserMissingValueForVarException.m */,
 			);
 			path = VBMathParserExceptions;
 			sourceTree = "<group>";
@@ -363,6 +368,7 @@
 				5B76279218D5D0A1009FF7E2 /* VBAppDelegate.m in Sources */,
 				5B76280718D5D3F5009FF7E2 /* VBMathParserSyntaxAnalyzer.m in Sources */,
 				5B76278E18D5D0A1009FF7E2 /* main.m in Sources */,
+				5BCD6419195EF7EA000315EC /* VBMathParserMissingValueForVarException.m in Sources */,
 				5B76280618D5D3F5009FF7E2 /* VBMathParserRPNWorker.m in Sources */,
 				5B76280818D5D3F5009FF7E2 /* VBStack.m in Sources */,
 				5B76280F18D5D3F5009FF7E2 /* VBMathParserTokenNumber.m in Sources */,

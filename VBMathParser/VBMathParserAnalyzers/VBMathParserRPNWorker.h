@@ -27,6 +27,8 @@
 @interface VBMathParserRPNWorker : NSObject
 
 - (NSArray*) formatTokens:(NSArray*)tokensInput;
-- (double) evaluate:(NSArray*)tokensInput;
+
+- (double) evaluate:(NSArray*)tokensInput
+     withVarsValues:(NSDictionary*)varsValues;
 
 @end

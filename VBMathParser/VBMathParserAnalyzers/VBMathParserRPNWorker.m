@@ -30,6 +30,8 @@
 #import "VBMathParserTokenOperation.h"
 #import "VBMathParserTokenFunction.h"
 #import "VBMathParserTokenSpecial.h"
+#import "VBMathParserTokenVar.h"
+#import "VBMathParserMissingValueForVarException.h"
 
 #import "VBStack.h"
 
@@ -44,7 +46,7 @@
     for (NSInteger i = 0; i < tokensInput.count; i++) {
         VBMathParserToken* token = tokensInput[i];
         
-        if ([token isKindOfClass:[VBMathParserTokenNumber class]]) {
+        if ([token isKindOfClass:[VBMathParserTokenNumber class]] || [token isKindOfClass:[VBMathParserTokenVar class]]) {
             [tokens addObject:token];
             
         }else if ([token isKindOfClass:[VBMathParserTokenOperation class]] || [token isKindOfClass:[VBMathParserTokenFunction class]]) {
@@ -91,10 +93,30 @@
     return tokens;
 }
 
-- (double) evaluate:(NSArray*)tokensInput {
+- (double) evaluate:(NSArray*)tokensInput
+     withVarsValues:(NSDictionary*)varsValues {
+
     VBMathParserLog(@"RPNWorker: evaluate:\n%@", tokensInput);
     NSMutableArray* resultArray = [NSMutableArray arrayWithArray:tokensInput];
+    
+    //  replace var tokens with passed values
+    for (NSInteger i = 0; i < resultArray.count; i++) {
+        VBMathParserToken* token = resultArray[i];
+        if ([token isKindOfClass:[VBMathParserTokenVar class]]) {
+            VBMathParserTokenVar* tokenVar = (VBMathParserTokenVar*)token;
+            
+            NSNumber* value = varsValues[tokenVar.var];
+            if (value && [value isKindOfClass:[NSNumber class]]) {
+                VBMathParserTokenNumber* tokenNumber = [VBMathParserTokenNumber numberWithString:[NSString stringWithFormat:@"%@", value]];
+                [resultArray replaceObjectAtIndex:i
+                                       withObject:tokenNumber];
+            }else{
+                @throw [VBMathParserMissingValueForVarException exceptionWithInfo:tokenVar.var];
+            }
+        }
+    }
 
+    //  evaluate
     for (NSInteger i = 0; i < resultArray.count; i++) {
         id object = resultArray[i];
 
