@@ -43,37 +43,63 @@
 + (instancetype) mathParserWithExpression:(NSString*)expression {
     return [[self alloc] initWithExpression:expression];
 }
++ (instancetype) mathParserWithExpression:(NSString*)expression
+                                     vars:(NSArray*)vars{
+    return [[self alloc] initWithExpression:expression
+                                       vars:vars];
+}
 
 - (instancetype) initWithExpression:(NSString*)expression {
+    return [self initWithExpression:expression
+                               vars:nil];
+}
+
+- (instancetype) initWithExpression:(NSString*)expression
+                               vars:(NSArray*)vars {
     self = [super init];
     if (self) {
+        self.vars = vars;
         self.expression = expression;
     }
     return self;
 }
 
-#pragma mark - public props
+#pragma mark - public change expression
 - (void) setExpression:(NSString *)expression {
     @synchronized(self){
         _expression = expression;
-        [self parse:expression];
+        [self parse:expression
+           withVars:self.vars];
     }
+}
+
+- (void) parse:(NSString*)str
+      withVars:(NSArray*)vars {
+    NSArray* tokens = [self.lexicalAnalyzer analyseString:str
+                                                 withVars:vars];
+    tokens = [self.syntaxAnalyzer analyseTokens:tokens];
+    self.tokens = [self.rpnWorker formatTokens:tokens];
 }
 
 #pragma mark - evaluate
 + (double) evaluateExpression:(NSString*)str {
-    VBMathParser* parser = [self mathParserWithExpression:str];
-    return [parser evaluate];
+    return [self evaluateExpression:str
+                     withVarsValues:nil];
+}
++ (double) evaluateExpression:(NSString*)str
+               withVarsValues:(NSDictionary*)varsValues {
+    VBMathParser* parser = [self mathParserWithExpression:str
+                                                     vars:varsValues.allKeys];
+    return [parser evaluateWithVarsValues:varsValues];
 }
 
 - (double) evaluate {
-    return [self.rpnWorker evaluate:self.tokens];
+    return [self evaluateWithVarsValues:nil];
 }
 
-- (void) parse:(NSString*)str {
-    NSArray* tokens = [self.lexicalAnalyzer analyseString:str];
-    tokens = [self.syntaxAnalyzer analyseTokens:tokens];
-    self.tokens = [self.rpnWorker formatTokens:tokens];
+- (double) evaluateWithVarsValues:(NSDictionary*)varsValues{
+    return [self.rpnWorker evaluate:self.tokens
+                     withVarsValues:varsValues];
 }
 
 #pragma mark - private props
