@@ -26,6 +26,7 @@
 
 @interface VBMathParserLexicalAnalyzer : NSObject
 
-- (NSArray*) analyseString:(NSString*)str;
+- (NSArray*) analyseString:(NSString*)str
+                  withVars:(NSArray*)vars;
 
 @end

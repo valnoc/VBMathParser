@@ -36,13 +36,8 @@
 
 @implementation VBMathParserLexicalAnalyzer
 
-- (NSArray*) analyseString:(NSString*)str {
-    return [self analyseString:str
-                      withVars:nil];
-}
-
 - (NSArray*) analyseString:(NSString*)str
-                  withVars:(NSArray*)vars{
+                  withVars:(NSArray*)vars {
     
     VBMathParserLog(@"LexicalAnalyzer: analyseString: %@", str);
     
