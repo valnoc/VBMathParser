@@ -36,6 +36,4 @@ typedef enum{
 
 + (instancetype) specialWithString:(NSString*)str;
 
-+ (BOOL) isSpecial:(NSString*)str;
-
 @end

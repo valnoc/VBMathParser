@@ -32,4 +32,6 @@
 
 + (NSString*) regexPattern;
 
++ (BOOL) isToken:(NSString*) str;
+
 @end

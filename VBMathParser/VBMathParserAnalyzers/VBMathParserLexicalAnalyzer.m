@@ -30,12 +30,19 @@
 #import "VBMathParserTokenOperation.h"
 #import "VBMathParserTokenFunction.h"
 #import "VBMathParserTokenSpecial.h"
+#import "VBMathParserTokenVar.h"
 
 #import "VBMathParserUnknownTokenException.h"
 
 @implementation VBMathParserLexicalAnalyzer
 
 - (NSArray*) analyseString:(NSString*)str {
+    return [self analyseString:str
+                      withVars:nil];
+}
+
+- (NSArray*) analyseString:(NSString*)str
+                  withVars:(NSArray*)vars {
     
     VBMathParserLog(@"LexicalAnalyzer: analyseString: %@", str);
     
@@ -47,159 +54,52 @@
     str = [str lowercaseString];
     VBMathParserLog(@"LexicalAnalyzer: Prepared string: %@", str);
     
+    VBMathParserToken* token = nil;
     while (str.length > 0) {
+        token = nil;
         //****** TRY TO READ NUMBER TOKEN
-        // length - length of token to be removed from source string
-        NSInteger length = 1;
-        // substr - substring which forms a token
-        NSString* substr = [str substringToIndex:length];
-        
-        NSError* error = nil;
-        NSRegularExpression* regex = [NSRegularExpression regularExpressionWithPattern:[VBMathParserTokenNumber regexPattern]
-                                                                               options:NSRegularExpressionCaseInsensitive|NSRegularExpressionAnchorsMatchLines
-                                                                                 error:&error];
-        NSRange rangeOfFirstMatch = [regex rangeOfFirstMatchInString:substr
-                                                             options:0
-                                                               range:NSMakeRange(0, substr.length)];
-        // isNumber - substr is a number token
-        BOOL isNumber = NO;
-        // substractOne - go one symbol back
-        BOOL substractOne = NO;
-        while (!NSEqualRanges(rangeOfFirstMatch, NSMakeRange(NSNotFound, 0))) {
-            // if first symbol is TokenNumber (by regexPattern), then add one symbol each step up to next token
-            isNumber = YES;
-            if (str.length > length) {
-                substractOne = YES;
-                substr = [str substringToIndex:++length];
-                rangeOfFirstMatch = [regex rangeOfFirstMatchInString:substr
-                                                             options:0
-                                                               range:NSMakeRange(0, substr.length)];
-            }else{
-                // do not go one symbol back if this token is the last one
-                substractOne = NO;
-                break;
-            }
-        }
-        if (substractOne) {
-            substr = [substr substringToIndex:substr.length - 1];
-        }
-        
-        if (isNumber) {
-            VBMathParserLog(@"LexicalAnalyzer: Token number: %@", substr);
-            str = [str substringFromIndex:substr.length];
-            [tokens addObject:[VBMathParserTokenNumber numberWithString:substr]];
+        token = [self parseNextTokenFromString:str
+                                    tokenClass:[VBMathParserTokenNumber class]];
+        if (token) {
+            str = [str substringFromIndex:token.string.length];
+            [tokens addObject:token];
             
         }else {
             //****** TRY TO READ SPECIAL TOKEN
-            length = 1;
-            substr = [str substringToIndex:length];
-            
-            regex = [NSRegularExpression regularExpressionWithPattern:[VBMathParserTokenSpecial regexPattern]
-                                                              options:NSRegularExpressionCaseInsensitive|NSRegularExpressionAnchorsMatchLines
-                                                                error:&error];
-            rangeOfFirstMatch = [regex rangeOfFirstMatchInString:substr
-                                                         options:0
-                                                           range:NSMakeRange(0, substr.length)];
-            BOOL isSpecial = NO;
-            substractOne = NO;
-            while (!NSEqualRanges(rangeOfFirstMatch, NSMakeRange(NSNotFound, 0))) {
-                isSpecial = YES;
-                if (str.length > length) {
-                    substractOne = YES;
-                    substr = [str substringToIndex:++length];
-                    rangeOfFirstMatch = [regex rangeOfFirstMatchInString:substr
-                                                                 options:0
-                                                                   range:NSMakeRange(0, substr.length)];
-                }else{
-                    substractOne = NO;
-                    break;
-                }
-            }
-            if (substractOne) {
-                substr = [substr substringToIndex:substr.length - 1];
-            }
-            
-            if (isSpecial && [VBMathParserTokenSpecial isSpecial:substr]) {
-                
-                VBMathParserLog(@"LexicalAnalyzer: Token symbol: %@", substr);
-                str = [str substringFromIndex:substr.length];
-                [tokens addObject:[VBMathParserTokenSpecial specialWithString:substr]];
+            token = [self parseNextTokenFromString:str
+                                        tokenClass:[VBMathParserTokenSpecial class]];
+            if (token) {
+                str = [str substringFromIndex:token.string.length];
+                [tokens addObject:token];
                 
             }else {
                 //****** TRY TO READ OPERATION TOKEN
-                length = 1;
-                substr = [str substringToIndex:length];
-                
-                regex = [NSRegularExpression regularExpressionWithPattern:[VBMathParserTokenOperation regexPattern]
-                                                                  options:NSRegularExpressionCaseInsensitive|NSRegularExpressionAnchorsMatchLines
-                                                                    error:&error];
-                rangeOfFirstMatch = [regex rangeOfFirstMatchInString:substr
-                                                             options:0
-                                                               range:NSMakeRange(0, substr.length)];
-                BOOL isOperation = NO;
-                substractOne = NO;
-                while (!NSEqualRanges(rangeOfFirstMatch, NSMakeRange(NSNotFound, 0))) {
-                    isOperation = YES;
-                    if (str.length > length) {
-                        substractOne = YES;
-                        substr = [str substringToIndex:++length];
-                        rangeOfFirstMatch = [regex rangeOfFirstMatchInString:substr
-                                                                     options:0
-                                                                       range:NSMakeRange(0, substr.length)];
-                    }else{
-                        substractOne = NO;
-                        break;
-                    }
-                }
-                if (substractOne) {
-                    substr = [substr substringToIndex:substr.length - 1];
-                }
-                
-                if (isOperation && [VBMathParserTokenOperation isOperation:substr]) {
-                    
-                    VBMathParserLog(@"LexicalAnalyzer: Token operation: %@", substr);
-                    str = [str substringFromIndex:substr.length];
-                    [tokens addObject:[VBMathParserTokenOperation operationWithString:substr]];
+                token = [self parseNextTokenFromString:str
+                                            tokenClass:[VBMathParserTokenOperation class]];
+                if (token) {
+                    str = [str substringFromIndex:token.string.length];
+                    [tokens addObject:token];
                     
                 }else {
                     //****** TRY TO READ FUNCTION TOKEN
-                    length = 1;
-                    substr = [str substringToIndex:length];
-                    
-                    regex = [NSRegularExpression regularExpressionWithPattern:[VBMathParserTokenFunction regexPattern]
-                                                                      options:NSRegularExpressionCaseInsensitive|NSRegularExpressionAnchorsMatchLines
-                                                                        error:&error];
-                    rangeOfFirstMatch = [regex rangeOfFirstMatchInString:substr
-                                                                 options:0
-                                                                   range:NSMakeRange(0, substr.length)];
-                    BOOL isFunction = NO;
-                    substractOne = NO;
-                    while (!NSEqualRanges(rangeOfFirstMatch, NSMakeRange(NSNotFound, 0))) {
-                        isFunction = YES;
-                        if (str.length > length) {
-                            substractOne = YES;
-                            substr = [str substringToIndex:++length];
-                            rangeOfFirstMatch = [regex rangeOfFirstMatchInString:substr
-                                                                         options:0
-                                                                           range:NSMakeRange(0, substr.length)];
-                        }else{
-                            substractOne = NO;
-                            break;
-                        }
-                    }
-                    if (substractOne) {
-                        substr = [substr substringToIndex:substr.length - 1];
-                    }
-                    
-                    if (isFunction && [VBMathParserTokenFunction isFunction:substr]) {
-                        
-                        VBMathParserLog(@"LexicalAnalyzer: Token function: %@", substr);
-                        str = [str substringFromIndex:substr.length];
-                        [tokens addObject:[VBMathParserTokenFunction functionWithString:substr]];
+                    token = [self parseNextTokenFromString:str
+                                                tokenClass:[VBMathParserTokenFunction class]];
+                    if (token) {
+                        str = [str substringFromIndex:token.string.length];
+                        [tokens addObject:token];
                         
                     }else {
-                        //****** UNKNOWN TOKEN
-                        @throw [VBMathParserUnknownTokenException exceptionWithInfo:str];
+                        //****** TRY TO READ VAR TOKEN
+                        token = [self parseNextTokenFromString:str
+                                                    tokenClass:[VBMathParserTokenVar class]];
+                        if (token) {
+                            str = [str substringFromIndex:token.string.length];
+                            [tokens addObject:token];
+                            
+                        }else {
+                            //****** UNKNOWN TOKEN
+                            @throw [VBMathParserUnknownTokenException exceptionWithInfo:str];
+                        }
                     }
                 }
                 
@@ -213,5 +113,49 @@
     return tokens;
 }
 
+- (VBMathParserToken*) parseNextTokenFromString:(NSString*)str
+                                     tokenClass:(Class)tokenClass {
+    // length - length of token to be removed from source string
+    NSInteger length = 1;
+    // substr - substring which forms a token
+    NSString* substr = [str substringToIndex:length];
+    
+    NSError* error = nil;
+    NSRegularExpression* regex = [NSRegularExpression regularExpressionWithPattern:[tokenClass regexPattern]
+                                                                           options:NSRegularExpressionCaseInsensitive|NSRegularExpressionAnchorsMatchLines
+                                                                             error:&error];
+    NSRange rangeOfFirstMatch = [regex rangeOfFirstMatchInString:substr
+                                                         options:0
+                                                           range:NSMakeRange(0, substr.length)];
+    // can be token - substr can be token as to token regex
+    BOOL canBeToken = NO;
+    // substractOne - go one symbol back
+    BOOL substractOne = NO;
+    while (!NSEqualRanges(rangeOfFirstMatch, NSMakeRange(NSNotFound, 0))) {
+        // if first symbol is token (by regexPattern), then add one symbol each step up to next token
+        canBeToken = YES;
+        if (str.length > length) {
+            substractOne = YES;
+            substr = [str substringToIndex:++length];
+            rangeOfFirstMatch = [regex rangeOfFirstMatchInString:substr
+                                                         options:0
+                                                           range:NSMakeRange(0, substr.length)];
+        }else{
+            // do not go one symbol back if this token is the last one
+            substractOne = NO;
+            break;
+        }
+    }
+    if (substractOne) {
+        substr = [substr substringToIndex:substr.length - 1];
+    }
+    
+    VBMathParserToken* token = nil;
+    if (canBeToken && [tokenClass isToken:substr]) {
+        VBMathParserLog(@"LexicalAnalyzer: Token %@: %@", tokenClass, substr);
+        token = [[tokenClass alloc] initWithString:substr];
+    }
+    return token;
+}
 
 @end

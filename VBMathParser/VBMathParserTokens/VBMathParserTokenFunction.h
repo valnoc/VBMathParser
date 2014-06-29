@@ -38,7 +38,6 @@ typedef enum{
 @property (nonatomic, assign, readonly) NSInteger priority;
 
 + (instancetype) functionWithString:(NSString*)str;
-+ (BOOL) isFunction:(NSString*)str;
 
 - (double) evaluateWithParam:(double)param;
 

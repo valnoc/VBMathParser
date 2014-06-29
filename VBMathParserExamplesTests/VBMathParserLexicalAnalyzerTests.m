@@ -14,6 +14,7 @@
 #import "VBMathParserTokenOperation.h"
 #import "VBMathParserTokenFunction.h"
 #import "VBMathParserTokenSpecial.h"
+#import "VBMathParserTokenVar.h"
 
 @interface VBMathParserLexicalAnalyzerTests : XCTestCase
 
@@ -150,6 +151,31 @@
         
         XCTAssert(((VBMathParserTokenFunction*)tokens.lastObject).tokenFunction == [arr[1] integerValue],
                   @"parsed wrong special, str = %@, parsed = %@", str, @(((VBMathParserTokenFunction*)tokens.lastObject).tokenFunction));
+    }
+}
+
+- (void) testVars
+{
+    VBMathParserLexicalAnalyzer* lexicalAnalyzer = [VBMathParserLexicalAnalyzer new];
+    
+    NSMutableArray* strToParse = [NSMutableArray new];
+    [strToParse addObject:@"x"];
+    
+    for (NSString* str in strToParse) {
+        NSArray* tokens;
+        
+        XCTAssertNoThrow(tokens = [lexicalAnalyzer analyseString:str
+                                                        withVars:@[str]],
+                            @"failed to parse var, %@", str);
+        
+        XCTAssert(tokens.count == 1,
+                  @"parsed more token than it should, %@", str);
+        
+        XCTAssert([tokens.lastObject class] == [VBMathParserTokenVar class],
+                  @"parsed wrong class, %@", str);
+        
+        XCTAssert([((VBMathParserTokenVar*)tokens.lastObject).var isEqualToString:str],
+                  @"parsed wrong special, str = %@, parsed = %@", str, ((VBMathParserTokenVar*)tokens.lastObject).var);
     }
 }
 

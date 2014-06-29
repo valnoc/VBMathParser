@@ -71,7 +71,7 @@
 	return operation;
 }
 
-+ (BOOL) isOperation:(NSString*)str {
++ (BOOL) isToken:(NSString *) str {
     return [self tokenOperationWithString:str] != VBTokenOperationUnknown;
 }
 

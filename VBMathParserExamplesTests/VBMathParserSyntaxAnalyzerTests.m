@@ -70,4 +70,25 @@
     XCTAssertNoThrow([syntaxAnalyzer analyseTokens:tokens], @"everything should be ok");
 }
 
+- (void)testVars
+{
+    VBMathParserLexicalAnalyzer* lexicalAnalyzer = [VBMathParserLexicalAnalyzer new];
+    VBMathParserSyntaxAnalyzer* syntaxAnalyzer = [VBMathParserSyntaxAnalyzer new];
+    
+    NSArray* tokens = [lexicalAnalyzer analyseString:@"(x + x)"
+                                            withVars:@[@"x"]];
+    XCTAssertNoThrow([syntaxAnalyzer analyseTokens:tokens], @"brackets");
+    
+    tokens = [lexicalAnalyzer analyseString:@"(x + x"
+                                   withVars:@[@"x"]];
+    XCTAssertThrowsSpecific([syntaxAnalyzer analyseTokens:tokens], VBMathParserBracketNotClosedException, @"bracket not closed");
+    
+    tokens = [lexicalAnalyzer analyseString:@"1 + 1)"];
+    XCTAssertThrowsSpecific([syntaxAnalyzer analyseTokens:tokens], VBMathParserBracketNotOpenedException, @"bracket not opened");
+
+    tokens = [lexicalAnalyzer analyseString:@"1 + "
+                                   withVars:@[@"x"]];
+    XCTAssertThrowsSpecific([syntaxAnalyzer analyseTokens:tokens], VBMathParserMissingTokenException, @"missing arg in operation");
+}
+
 @end

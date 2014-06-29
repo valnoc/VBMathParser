@@ -27,11 +27,21 @@
 @interface VBMathParser : NSObject
 
 @property (nonatomic, strong) NSString* expression;
+@property (nonatomic, strong) NSArray* vars;
 
 + (instancetype) mathParserWithExpression:(NSString*)expression;
-- (instancetype) initWithExpression:(NSString*)expression;
++ (instancetype) mathParserWithExpression:(NSString*)expression
+                                     vars:(NSArray*)vars;
 
+- (instancetype) initWithExpression:(NSString*)expression;
+- (instancetype) initWithExpression:(NSString*)expression
+                               vars:(NSArray*)vars;
+    
 + (double) evaluateExpression:(NSString*)str;
++ (double) evaluateExpression:(NSString*)str
+               withVarsValues:(NSDictionary*)varsValues;
+
 - (double) evaluate;
+- (double) evaluateWithVarsValues:(NSDictionary*)varsValues;
 
 @end

@@ -42,4 +42,15 @@
     return @"^[0-9]+\\.?[0-9]*$";
 }
 
++ (BOOL) isToken:(NSString*) str {
+    @try {
+        double res = [str doubleValue];
+        res += 1;
+        return YES;
+    }
+    @catch (NSException *exception) {
+        return NO;
+    }
+}
+
 @end

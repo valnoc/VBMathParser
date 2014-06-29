@@ -67,7 +67,7 @@
 	return function;
 }
 
-+ (BOOL) isFunction:(NSString*)str {
++ (BOOL) isToken:(NSString *)str {
     return [self tokenFunctionWithString:str] != VBTokenFunctionUnknown;
 }
 

@@ -42,6 +42,10 @@
     return @"^$";
 }
 
++ (BOOL) isToken:(NSString*) str {
+    return NO;
+}
+
 #pragma mark - description
 - (NSString *) description {
     return [NSString stringWithFormat:@"%@: %@", NSStringFromClass(self.class), self.string];
