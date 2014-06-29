@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5B14D1F9191CBB0C008D7F17 /* VBMathParserTokenFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B14D1F8191CBB0C008D7F17 /* VBMathParserTokenFunction.m */; };
+		5B62F668196052FE00CD0FE9 /* VBMathParserTokenConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B62F667196052FE00CD0FE9 /* VBMathParserTokenConst.m */; };
 		5B76278218D5D0A1009FF7E2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B76278118D5D0A1009FF7E2 /* Foundation.framework */; };
 		5B76278418D5D0A1009FF7E2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B76278318D5D0A1009FF7E2 /* CoreGraphics.framework */; };
 		5B76278618D5D0A1009FF7E2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B76278518D5D0A1009FF7E2 /* UIKit.framework */; };
@@ -53,6 +54,8 @@
 /* Begin PBXFileReference section */
 		5B14D1F7191CBB0C008D7F17 /* VBMathParserTokenFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserTokenFunction.h; sourceTree = "<group>"; };
 		5B14D1F8191CBB0C008D7F17 /* VBMathParserTokenFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserTokenFunction.m; sourceTree = "<group>"; };
+		5B62F666196052FE00CD0FE9 /* VBMathParserTokenConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserTokenConst.h; sourceTree = "<group>"; };
+		5B62F667196052FE00CD0FE9 /* VBMathParserTokenConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserTokenConst.m; sourceTree = "<group>"; };
 		5B76277E18D5D0A1009FF7E2 /* VBMathParserExamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VBMathParserExamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B76278118D5D0A1009FF7E2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5B76278318D5D0A1009FF7E2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -265,6 +268,8 @@
 				5B76280318D5D3F5009FF7E2 /* VBMathParserTokenSpecial.m */,
 				5BAED090195B506A00419603 /* VBMathParserTokenVar.h */,
 				5BAED091195B506A00419603 /* VBMathParserTokenVar.m */,
+				5B62F666196052FE00CD0FE9 /* VBMathParserTokenConst.h */,
+				5B62F667196052FE00CD0FE9 /* VBMathParserTokenConst.m */,
 			);
 			path = VBMathParserTokens;
 			sourceTree = "<group>";
@@ -383,6 +388,7 @@
 				5B76280C18D5D3F5009FF7E2 /* VBMathParserMissingTokenException.m in Sources */,
 				5B76280918D5D3F5009FF7E2 /* VBException.m in Sources */,
 				5B76280B18D5D3F5009FF7E2 /* VBMathParserBracketNotOpenedException.m in Sources */,
+				5B62F668196052FE00CD0FE9 /* VBMathParserTokenConst.m in Sources */,
 				5B76280A18D5D3F5009FF7E2 /* VBMathParserBracketNotClosedException.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
