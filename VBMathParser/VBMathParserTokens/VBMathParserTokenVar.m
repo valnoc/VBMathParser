@@ -26,4 +26,8 @@
     return @"^[A-Za-z]*$";
 }
 
++ (BOOL) isToken:(NSString *)str {
+    return YES;
+}
+
 @end

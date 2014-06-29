@@ -63,7 +63,7 @@
 	return specialSymbol;
 }
 
-+ (BOOL) isSpecial:(NSString*)str {
++ (BOOL) isToken:(NSString*)str {
     return [self tokenSpecialWithString:str] != VBTokenSpecialUnknown;
 }
 
