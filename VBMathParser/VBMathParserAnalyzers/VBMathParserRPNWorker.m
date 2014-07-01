@@ -31,6 +31,8 @@
 #import "VBMathParserTokenFunction.h"
 #import "VBMathParserTokenSpecial.h"
 #import "VBMathParserTokenVar.h"
+#import "vbmathParserTokenConst.h"
+
 #import "VBMathParserMissingValueForVarException.h"
 
 #import "VBStack.h"
@@ -46,7 +48,7 @@
     for (NSInteger i = 0; i < tokensInput.count; i++) {
         VBMathParserToken* token = tokensInput[i];
         
-        if ([token isKindOfClass:[VBMathParserTokenNumber class]] || [token isKindOfClass:[VBMathParserTokenVar class]]) {
+        if ([token isKindOfClass:[VBMathParserTokenNumber class]] || [token isKindOfClass:[VBMathParserTokenVar class]] || [token isKindOfClass:[VBMathParserTokenConst class]]) {
             [tokens addObject:token];
             
         }else if ([token isKindOfClass:[VBMathParserTokenOperation class]] || [token isKindOfClass:[VBMathParserTokenFunction class]]) {
@@ -107,15 +109,27 @@
             
             NSNumber* value = varsValues[tokenVar.var];
             if (value && [value isKindOfClass:[NSNumber class]]) {
-                VBMathParserTokenNumber* tokenNumber = [VBMathParserTokenNumber numberWithString:[NSString stringWithFormat:@"%@", value]];
+                VBMathParserTokenNumber* tokenNumberForReplacement = [VBMathParserTokenNumber numberWithString:[NSString stringWithFormat:@"%@", value]];
                 [resultArray replaceObjectAtIndex:i
-                                       withObject:tokenNumber];
+                                       withObject:tokenNumberForReplacement];
             }else{
                 @throw [VBMathParserMissingValueForVarException exceptionWithInfo:tokenVar.var];
             }
         }
     }
 
+    //  replace const tokens
+    for (NSInteger i = 0; i < resultArray.count; i++) {
+        VBMathParserToken* token = resultArray[i];
+        if ([token isKindOfClass:[VBMathParserTokenConst class]]) {
+            VBMathParserTokenConst* tokenConst = (VBMathParserTokenConst*)token;
+            VBMathParserTokenNumber* tokenNumberForReplacement = [VBMathParserTokenNumber numberWithString:[NSString stringWithFormat:@"%@", @(tokenConst.doubleValue)]];
+            
+            [resultArray replaceObjectAtIndex:i
+                                   withObject:tokenNumberForReplacement];
+        }
+    }
+    
     //  evaluate
     for (NSInteger i = 0; i < resultArray.count; i++) {
         id object = resultArray[i];

@@ -149,4 +149,21 @@
     }
 }
 
+- (void)testEvaluationWithConsts
+{
+    VBMathParser* parser = [VBMathParser new];
+    
+    NSArray* expressions = @[@{@"expr": @"pi",   @"res": @(M_PI)},
+                             @{@"expr": @"pi + 1",   @"res": @(M_PI + 1)},
+                             //
+                             @{@"expr": @"cos(pi)", @"res": @(-1)},
+                             @{@"expr": @"sin(pi / 2)", @"res": @(1)}
+                             ];
+    for (NSDictionary* entry in expressions) {
+        parser.expression = entry[@"expr"];
+        double result = [parser evaluate];
+        XCTAssert(result == [entry[@"res"] doubleValue], @"Incorrect evaluation result \nexpression: %@\nexpected: %@\nevaluated: %@", parser.expression, entry[@"res"], @(result));
+    }
+}
+
 @end

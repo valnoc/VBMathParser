@@ -61,4 +61,18 @@
     return [self tokenConstWithString:str] != VBTokenConstUnknown;
 }
 
+- (double) doubleValue {
+    double result = 0;
+    switch (self.tokenConst) {
+        case VBTokenConstPi:
+            result = M_PI;
+            break;
+            
+        default:
+#warning TODO throw exception
+            break;
+    }
+    return result;
+}
+
 @end

@@ -31,6 +31,7 @@
 #import "VBMathParserTokenFunction.h"
 #import "VBMathParserTokenSpecial.h"
 #import "VBMathParserTokenVar.h"
+#import "VBMathParserTokenConst.h"
 
 #import "VBMathParserBracketNotClosedException.h"
 #import "VBMathParserBracketNotOpenedException.h"
@@ -160,7 +161,7 @@
                 // ()() -> ()*()
                 [tokens insertObject:[VBMathParserTokenOperation operationWithString:@"*"] atIndex:i+1];
                 
-            }else if (([tokens[i] isKindOfClass:[VBMathParserTokenNumber class]] || [tokens[i] isKindOfClass:[VBMathParserTokenVar class]]) &&
+            }else if (([tokens[i] isKindOfClass:[VBMathParserTokenNumber class]] || [tokens[i] isKindOfClass:[VBMathParserTokenVar class]] || [tokens[i] isKindOfClass:[VBMathParserTokenConst class]]) &&
                      [tokens[i+1] isKindOfClass:[VBMathParserTokenSpecial class]] && ((VBMathParserTokenSpecial*)tokens[i+1]).tokenSpecial == VBTokenSpecialBracketOpen) {
                 // 2() -> 2*()
                 [tokens insertObject:[VBMathParserTokenOperation operationWithString:@"*"] atIndex:i+1];
@@ -179,7 +180,7 @@
             
             if (i == 0 &&
                 [tokens[i] isKindOfClass:[VBMathParserTokenOperation class]] && ((VBMathParserTokenOperation*)tokens[i]).tokenOperation == VBTokenOperationSubstraction &&
-                ([tokens[i+1] isKindOfClass:[VBMathParserTokenNumber class]] || [tokens[i+1] isKindOfClass:[VBMathParserTokenVar class]])) {
+                ([tokens[i+1] isKindOfClass:[VBMathParserTokenNumber class]] || [tokens[i+1] isKindOfClass:[VBMathParserTokenVar class]] || [tokens[i+1] isKindOfClass:[VBMathParserTokenConst class]])) {
                 // -1 -> 0-1
                 [tokens insertObject:[VBMathParserTokenNumber numberWithString:@"0"] atIndex:i];
                 

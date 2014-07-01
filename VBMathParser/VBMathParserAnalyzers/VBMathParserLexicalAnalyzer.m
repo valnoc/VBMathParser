@@ -31,6 +31,7 @@
 #import "VBMathParserTokenFunction.h"
 #import "VBMathParserTokenSpecial.h"
 #import "VBMathParserTokenVar.h"
+#import "VBMathParserTokenConst.h"
 
 #import "VBMathParserUnknownTokenException.h"
 
@@ -92,13 +93,28 @@
                         //****** TRY TO READ VAR TOKEN
                         token = [self parseNextTokenFromString:str
                                                     tokenClass:[VBMathParserTokenVar class]];
-                        if (token) {
+                        BOOL knownVar = NO;
+                        for (NSString* var in vars) {
+                            if ([var isEqualToString:((VBMathParserTokenVar*)token).var]) {
+                                knownVar = YES;
+                                break;
+                            }
+                        }
+                        if (token && knownVar) {
                             str = [str substringFromIndex:token.string.length];
                             [tokens addObject:token];
                             
                         }else {
-                            //****** UNKNOWN TOKEN
-                            @throw [VBMathParserUnknownTokenException exceptionWithInfo:str];
+                            //****** TRY TO READ CONST TOKEN
+                            token = [self parseNextTokenFromString:str
+                                                        tokenClass:[VBMathParserTokenConst class]];
+                            if (token) {
+                                str = [str substringFromIndex:token.string.length];
+                                [tokens addObject:token];
+                            }else{
+                                //****** UNKNOWN TOKEN
+                                @throw [VBMathParserUnknownTokenException exceptionWithInfo:str];
+                            }
                         }
                     }
                 }

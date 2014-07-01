@@ -91,4 +91,22 @@
     XCTAssertThrowsSpecific([syntaxAnalyzer analyseTokens:tokens], VBMathParserMissingTokenException, @"missing arg in operation");
 }
 
+- (void)testConsts
+{
+    VBMathParserLexicalAnalyzer* lexicalAnalyzer = [VBMathParserLexicalAnalyzer new];
+    VBMathParserSyntaxAnalyzer* syntaxAnalyzer = [VBMathParserSyntaxAnalyzer new];
+    
+    NSArray* tokens = [lexicalAnalyzer analyseString:@"(pi + pi)"];
+    XCTAssertNoThrow([syntaxAnalyzer analyseTokens:tokens], @"brackets");
+    
+    tokens = [lexicalAnalyzer analyseString:@"(pi + pi"];
+    XCTAssertThrowsSpecific([syntaxAnalyzer analyseTokens:tokens], VBMathParserBracketNotClosedException, @"bracket not closed");
+    
+    tokens = [lexicalAnalyzer analyseString:@"pi + pi)"];
+    XCTAssertThrowsSpecific([syntaxAnalyzer analyseTokens:tokens], VBMathParserBracketNotOpenedException, @"bracket not opened");
+    
+    tokens = [lexicalAnalyzer analyseString:@"pi + "];
+    XCTAssertThrowsSpecific([syntaxAnalyzer analyseTokens:tokens], VBMathParserMissingTokenException, @"missing arg in operation");
+}
+
 @end

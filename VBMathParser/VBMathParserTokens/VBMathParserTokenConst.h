@@ -33,4 +33,6 @@ typedef enum{
 
 @property (nonatomic, assign, readonly) VBTokenConst tokenConst;
 
+@property (nonatomic, assign, readonly) double doubleValue;
+
 @end
