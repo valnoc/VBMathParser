@@ -83,10 +83,11 @@
                                    withVars:@[@"x"]];
     XCTAssertThrowsSpecific([syntaxAnalyzer analyseTokens:tokens], VBMathParserBracketNotClosedException, @"bracket not closed");
     
-    tokens = [lexicalAnalyzer analyseString:@"1 + 1)"];
+    tokens = [lexicalAnalyzer analyseString:@"x + x)"
+                                   withVars:@[@"x"]];
     XCTAssertThrowsSpecific([syntaxAnalyzer analyseTokens:tokens], VBMathParserBracketNotOpenedException, @"bracket not opened");
 
-    tokens = [lexicalAnalyzer analyseString:@"1 + "
+    tokens = [lexicalAnalyzer analyseString:@"x + "
                                    withVars:@[@"x"]];
     XCTAssertThrowsSpecific([syntaxAnalyzer analyseTokens:tokens], VBMathParserMissingTokenException, @"missing arg in operation");
 }

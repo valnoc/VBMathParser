@@ -90,28 +90,28 @@
                         [tokens addObject:token];
                         
                     }else {
-                        //****** TRY TO READ VAR TOKEN
+                        //****** TRY TO READ CONST TOKEN
                         token = [self parseNextTokenFromString:str
-                                                    tokenClass:[VBMathParserTokenVar class]];
-                        BOOL knownVar = NO;
-                        for (NSString* var in vars) {
-                            if ([var isEqualToString:((VBMathParserTokenVar*)token).var]) {
-                                knownVar = YES;
-                                break;
-                            }
-                        }
-                        if (token && knownVar) {
+                                                    tokenClass:[VBMathParserTokenConst class]];
+                        if (token) {
                             str = [str substringFromIndex:token.string.length];
                             [tokens addObject:token];
-                            
-                        }else {
-                            //****** TRY TO READ CONST TOKEN
+                        }else{
+                            //****** TRY TO READ VAR TOKEN
                             token = [self parseNextTokenFromString:str
-                                                        tokenClass:[VBMathParserTokenConst class]];
-                            if (token) {
+                                                        tokenClass:[VBMathParserTokenVar class]];
+                            BOOL knownVar = NO;
+                            for (NSString* var in vars) {
+                                if ([var isEqualToString:((VBMathParserTokenVar*)token).var]) {
+                                    knownVar = YES;
+                                    break;
+                                }
+                            }
+                            if (token && knownVar) {
                                 str = [str substringFromIndex:token.string.length];
                                 [tokens addObject:token];
-                            }else{
+                                
+                            }else {
                                 //****** UNKNOWN TOKEN
                                 @throw [VBMathParserUnknownTokenException exceptionWithInfo:str];
                             }
