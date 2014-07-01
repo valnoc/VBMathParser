@@ -28,7 +28,7 @@
 
 + (instancetype) exception {
     return [[self alloc] initWithName:@"MissingValueForVar"
-                               reason:@"Token is unknown"
+                               reason:@"Missing value for var"
                              userInfo:nil];
 }
 
