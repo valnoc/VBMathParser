@@ -34,6 +34,8 @@
 #import "VBMathParserTokenConst.h"
 
 #import "VBMathParserUnknownTokenException.h"
+#import "VBMathParserVarIsNotStringException.h"
+#import "VBMathParserVarIsNotValidException.h"
 
 @implementation VBMathParserLexicalAnalyzer
 
@@ -45,7 +47,25 @@
 - (NSArray*) analyseString:(NSString*)str
                   withVars:(NSArray*)vars {
     
-    VBMathParserLog(@"LexicalAnalyzer: analyseString: %@", str);
+    VBMathParserLog(@"LexicalAnalyzer: analyseString: %@ vars: %@", str, vars);
+    
+    //  checkVars
+    {
+        NSRegularExpression* regex = [NSRegularExpression regularExpressionWithPattern:[VBMathParserTokenVar regexPattern]
+                                                                               options:NSRegularExpressionCaseInsensitive|NSRegularExpressionAnchorsMatchLines
+                                                                                 error:nil];
+        for (id obj in vars) {
+            if ([obj isKindOfClass:[NSString class]] == NO) {
+                @throw [VBMathParserVarIsNotStringException exception];
+            }
+            NSRange rangeOfFirstMatch = [regex rangeOfFirstMatchInString:obj
+                                                                 options:0
+                                                                   range:NSMakeRange(0, ((NSString*)obj).length)];
+            if (rangeOfFirstMatch.location == NSNotFound || rangeOfFirstMatch.length != ((NSString*)obj).length) {
+                @throw [VBMathParserVarIsNotValidException exceptionWithInfo:obj];
+            }
+        }
+    }
     
     NSMutableArray* tokens = [NSMutableArray new];
     

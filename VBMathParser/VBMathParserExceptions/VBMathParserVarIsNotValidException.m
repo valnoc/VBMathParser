@@ -22,28 +22,20 @@
 //    SOFTWARE.
 //
 
-#import "VBMathParserTokenVar.h"
+#import "VBMathParserVarIsNotValidException.h"
 
-@implementation VBMathParserTokenVar
+@implementation VBMathParserVarIsNotValidException
 
-+ (instancetype) varWithString:(NSString*)str {
-    return [[self alloc] initWithString:str];
++ (instancetype) exception {
+    return [[self alloc] initWithName:@"VarIsNotValid"
+                               reason:@"Variable description is not valid. Variable name must consist of at least one letter plus letters and numbers."
+                             userInfo:nil];
 }
 
-- (instancetype) initWithString:(NSString *)str {
-    self = [super initWithString:str];
-    if (self) {
-        _var = str;
-    }
-    return self;
-}
-
-+ (NSString *)regexPattern {
-    return @"^[A-Za-z]+[A-Za-z0-9]*$";
-}
-
-+ (BOOL) isToken:(NSString *)str {
-    return YES;
++ (instancetype) exceptionWithInfo:(NSString*)info {
+    return [[self alloc] initWithName:@"VarIsNotString"
+                               reason:[NSString stringWithFormat:@"Variable description %@ is not valid. Variable name must consist of at least one letter plus letters and numbers.", info]
+                             userInfo:@{@"info": info}];
 }
 
 @end

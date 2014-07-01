@@ -22,28 +22,8 @@
 //    SOFTWARE.
 //
 
-#import "VBMathParserTokenVar.h"
+#import "VBException.h"
 
-@implementation VBMathParserTokenVar
-
-+ (instancetype) varWithString:(NSString*)str {
-    return [[self alloc] initWithString:str];
-}
-
-- (instancetype) initWithString:(NSString *)str {
-    self = [super initWithString:str];
-    if (self) {
-        _var = str;
-    }
-    return self;
-}
-
-+ (NSString *)regexPattern {
-    return @"^[A-Za-z]+[A-Za-z0-9]*$";
-}
-
-+ (BOOL) isToken:(NSString *)str {
-    return YES;
-}
+@interface VBMathParserVarIsNotStringException : VBException
 
 @end

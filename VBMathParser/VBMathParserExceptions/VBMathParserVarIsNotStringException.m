@@ -22,28 +22,20 @@
 //    SOFTWARE.
 //
 
-#import "VBMathParserTokenVar.h"
+#import "VBMathParserVarIsNotStringException.h"
 
-@implementation VBMathParserTokenVar
+@implementation VBMathParserVarIsNotStringException
 
-+ (instancetype) varWithString:(NSString*)str {
-    return [[self alloc] initWithString:str];
++ (instancetype) exception {
+    return [[self alloc] initWithName:@"VarIsNotString"
+                               reason:@"Variable must be an instance of NSString class"
+                             userInfo:nil];
 }
 
-- (instancetype) initWithString:(NSString *)str {
-    self = [super initWithString:str];
-    if (self) {
-        _var = str;
-    }
-    return self;
-}
-
-+ (NSString *)regexPattern {
-    return @"^[A-Za-z]+[A-Za-z0-9]*$";
-}
-
-+ (BOOL) isToken:(NSString *)str {
-    return YES;
++ (instancetype) exceptionWithInfo:(NSString*)info {
+    return [[self alloc] initWithName:@"VarIsNotString"
+                               reason:[NSString stringWithFormat:@"Variable must be an instance of NSString class"]
+                             userInfo:@{@"info": info}];
 }
 
 @end

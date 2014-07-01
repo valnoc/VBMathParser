@@ -17,6 +17,9 @@
 #import "VBMathParserTokenVar.h"
 #import "VBMathParserTokenConst.h"
 
+#import "VBMathParserVarIsNotStringException.h"
+#import "VBMathParserVarIsNotValidException.h"
+
 @interface VBMathParserLexicalAnalyzerTests : XCTestCase
 
 @end
@@ -159,10 +162,9 @@
 {
     VBMathParserLexicalAnalyzer* lexicalAnalyzer = [VBMathParserLexicalAnalyzer new];
     
-    NSMutableArray* strToParse = [NSMutableArray new];
-    [strToParse addObject:@"x"];
+    NSArray* exp = @[@"x", @"x2"];
     
-    for (NSString* str in strToParse) {
+    for (NSString* str in exp) {
         NSArray* tokens;
         
         XCTAssertNoThrow(tokens = [lexicalAnalyzer analyseString:str
@@ -178,6 +180,16 @@
         XCTAssert([((VBMathParserTokenVar*)tokens.lastObject).var isEqualToString:str],
                   @"parsed wrong special, str = %@, parsed = %@", str, ((VBMathParserTokenVar*)tokens.lastObject).var);
     }
+    
+    XCTAssertThrowsSpecific([lexicalAnalyzer analyseString:@"1"
+                                                  withVars:@[@(1)]],
+                            VBMathParserVarIsNotStringException,
+                            @"did not throw VBMathParserVarIsNotStringException");
+    
+    XCTAssertThrowsSpecific([lexicalAnalyzer analyseString:@"1"
+                                                  withVars:@[@"0x"]],
+                            VBMathParserVarIsNotValidException,
+                            @"did not throw VBMathParserVarIsNotValidException");
 }
 
 - (void) testConsts
