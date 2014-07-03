@@ -62,7 +62,9 @@ This framework uses ARC. DO NOT FORGET to turn on ARC for framework's sources (-
 5. constants: pi
 
 ## Coming soon
-1. more functions and constants (feel free to left a feature request)
+1. more functions and constants 
+
+Feel free to left a feature request
 
 ## License
 VBMathParser is available under the MIT license. See the LICENSE file for more info.
