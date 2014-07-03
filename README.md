@@ -28,6 +28,12 @@ This framework uses ARC. DO NOT FORGET to turn on ARC for framework's sources (-
         parser.expression = @"2(1+3)";
         result = [parser evaluate];
 
+    To use variables declare them before assigning new expression (single line variant included)
+
+        parser.vars = @[@"x"];
+        parser.expression = @"x+1";
+        result = [parser evaluateWithVarsValues:@{@"x": @(2)}];
+
 ## Expected syntax
 1. If you open a bracket - do not forget to close it later.
 2. All operations are expected to be used in mathematical expressions as binary operations. 
@@ -43,14 +49,20 @@ This framework uses ARC. DO NOT FORGET to turn on ARC for framework's sources (-
         abs3 - error!
         abs(3) - OK
 
+4. Variable name must consist of at least one letter plus letters and numbers.
+
+        valid names: x, y, x1, x01, etc
+        invalid names: 0x, x_213, etc
+
 ## Supported features
 1. brackets: (, )
 2. operations: +, - (unary/binary), *, /, ^(power)
 3. functions: abs, sin, cos, tan
+4. variables
+5. constants: pi
 
 ## Coming soon
-1. more functions 
-2. variables
+1. more functions and constants (feel free to left a feature request)
 
 ## License
 VBMathParser is available under the MIT license. See the LICENSE file for more info.
