@@ -25,6 +25,10 @@
     parser.expression = @"(-abs(-4)+14)";
     result = [parser evaluate];
     
+    parser.vars = @[@"x"];
+    parser.expression = @"x+1";
+    result = [parser evaluateWithVarsValues:@{@"x": @(2)}];
+    
 //    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 //    // Override point for customization after application launch.
 //    self.window.backgroundColor = [UIColor whiteColor];
