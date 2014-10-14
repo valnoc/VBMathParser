@@ -22,8 +22,8 @@
 //    SOFTWARE.
 //
 
-#import "VBException.h"
+#import "VBMathParserException.h"
 
-@interface VBMathParserBracketNotClosedException : VBException
+@interface VBMathParserBracketNotClosedException : VBMathParserException
 
 @end

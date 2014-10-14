@@ -22,8 +22,8 @@
 //    SOFTWARE.
 //
 
-#import "VBException.h"
+#import "VBMathParserException.h"
 
-@interface VBMathParserUnknownTokenException : VBException
+@interface VBMathParserUnknownTokenException : VBMathParserException
 
 @end

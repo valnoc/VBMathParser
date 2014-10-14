@@ -22,20 +22,11 @@
 //    SOFTWARE.
 //
 
-#import "VBException.h"
+#import <Foundation/Foundation.h>
 
-@implementation VBException
+@interface VBMathParserException : NSException
 
-+ (instancetype) exception {
-    return [[self alloc] initWithName:@""
-                               reason:@""
-                             userInfo:nil];
-}
-
-+ (instancetype) exceptionWithInfo:(NSString*)info {
-    return [[self alloc] initWithName:@""
-                               reason:@""
-                             userInfo:nil];
-}
++ (instancetype) exception;
++ (instancetype) exceptionWithInfo:(NSString*)info;
 
 @end
