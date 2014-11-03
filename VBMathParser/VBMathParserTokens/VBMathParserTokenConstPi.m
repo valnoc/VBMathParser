@@ -15,4 +15,8 @@
     return @"pi";
 }
 
+- (double) doubleValue {
+    return M_PI;
+}
+
 @end

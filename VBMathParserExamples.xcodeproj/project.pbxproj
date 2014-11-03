@@ -145,6 +145,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B49196A1A07BD89009F7C98 /* const */ = {
+			isa = PBXGroup;
+			children = (
+				5B62F666196052FE00CD0FE9 /* VBMathParserTokenConst.h */,
+				5B62F667196052FE00CD0FE9 /* VBMathParserTokenConst.m */,
+				5B9CFFA11A0781DE00AE8A26 /* VBMathParserTokenConstPi.h */,
+				5B9CFFA21A0781DE00AE8A26 /* VBMathParserTokenConstPi.m */,
+			);
+			name = const;
+			sourceTree = "<group>";
+		};
+		5B49196B1A07BD92009F7C98 /* number */ = {
+			isa = PBXGroup;
+			children = (
+				5B7627FE18D5D3F5009FF7E2 /* VBMathParserTokenNumber.h */,
+				5B7627FF18D5D3F5009FF7E2 /* VBMathParserTokenNumber.m */,
+			);
+			name = number;
+			sourceTree = "<group>";
+		};
+		5B49196C1A07BD98009F7C98 /* special */ = {
+			isa = PBXGroup;
+			children = (
+				5B76280218D5D3F5009FF7E2 /* VBMathParserTokenSpecial.h */,
+				5B76280318D5D3F5009FF7E2 /* VBMathParserTokenSpecial.m */,
+			);
+			name = special;
+			sourceTree = "<group>";
+		};
 		5B76277518D5D0A1009FF7E2 = {
 			isa = PBXGroup;
 			children = (
@@ -276,18 +305,13 @@
 			children = (
 				5B7627FC18D5D3F5009FF7E2 /* VBMathParserToken.h */,
 				5B7627FD18D5D3F5009FF7E2 /* VBMathParserToken.m */,
-				5B7627FE18D5D3F5009FF7E2 /* VBMathParserTokenNumber.h */,
-				5B7627FF18D5D3F5009FF7E2 /* VBMathParserTokenNumber.m */,
-				5B62F666196052FE00CD0FE9 /* VBMathParserTokenConst.h */,
-				5B62F667196052FE00CD0FE9 /* VBMathParserTokenConst.m */,
-				5B9CFFA11A0781DE00AE8A26 /* VBMathParserTokenConstPi.h */,
-				5B9CFFA21A0781DE00AE8A26 /* VBMathParserTokenConstPi.m */,
+				5B49196B1A07BD92009F7C98 /* number */,
+				5B49196A1A07BD89009F7C98 /* const */,
+				5B49196C1A07BD98009F7C98 /* special */,
 				5B76280018D5D3F5009FF7E2 /* VBMathParserTokenOperation.h */,
 				5B76280118D5D3F5009FF7E2 /* VBMathParserTokenOperation.m */,
 				5B14D1F7191CBB0C008D7F17 /* VBMathParserTokenFunction.h */,
 				5B14D1F8191CBB0C008D7F17 /* VBMathParserTokenFunction.m */,
-				5B76280218D5D3F5009FF7E2 /* VBMathParserTokenSpecial.h */,
-				5B76280318D5D3F5009FF7E2 /* VBMathParserTokenSpecial.m */,
 				5BAED090195B506A00419603 /* VBMathParserTokenVar.h */,
 				5BAED091195B506A00419603 /* VBMathParserTokenVar.m */,
 			);
