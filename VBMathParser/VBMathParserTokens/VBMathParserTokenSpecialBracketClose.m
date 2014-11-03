@@ -22,21 +22,13 @@
 //    SOFTWARE.
 //
 
-#import "VBMathParserTokenSpecial.h"
-
-#import "VBMathParserTokenSpecialBracketOpen.h"
 #import "VBMathParserTokenSpecialBracketClose.h"
 
-@implementation VBMathParserTokenSpecial
+@implementation VBMathParserTokenSpecialBracketClose
 
-#pragma mark - token abstract
-+ (NSString *) regexPattern {
-    return @"^[()]$";
-}
-
-+ (NSArray *) tokenFactoryList {
-    return @[[VBMathParserTokenSpecialBracketOpen class],
-             [VBMathParserTokenSpecialBracketClose class]];
+#pragma mark - token concrete
++ (NSString *) rawString {
+    return @")";
 }
 
 @end

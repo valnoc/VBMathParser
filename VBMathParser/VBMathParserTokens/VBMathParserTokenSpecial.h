@@ -32,8 +32,4 @@ typedef enum{
 
 @interface VBMathParserTokenSpecial : VBMathParserToken
 
-@property (nonatomic, assign, readonly) VBTokenSpecial tokenSpecial;
-
-+ (instancetype) specialWithString:(NSString*)str;
-
 @end
