@@ -26,13 +26,14 @@
 
 @interface VBMathParserToken : NSObject
 
-@property (nonatomic, strong, readonly) NSString* stringValue;
-
 + (VBMathParserToken*) tokenWithString:(NSString*)string;
-- (instancetype) initWithString:(NSString*)string;
-
-+ (NSString*) regexPattern;
-
 + (BOOL) isToken:(NSString*)string;
+
+#pragma mark - token abstract
++ (NSString*) regexPattern;
++ (NSArray*) tokenFactoryList;
+
+#pragma mark - token concrete
++ (NSString*) rawString;
 
 @end
