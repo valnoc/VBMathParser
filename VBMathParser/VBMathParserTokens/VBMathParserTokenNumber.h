@@ -28,6 +28,4 @@
 
 @property (nonatomic, assign, readonly) double doubleValue;
 
-+ (instancetype) numberWithString:(NSString*)str;
-
 @end

@@ -26,25 +26,21 @@
 
 @implementation VBMathParserTokenNumber
 
-+ (instancetype) numberWithString:(NSString*)str {
-	return [[self alloc] initWithString:str];
-}
-
-- (instancetype) initWithString:(NSString*)str{
-	self = [super initWithString:str];
-	if (self) {
-        _doubleValue = str.doubleValue;
-	}
-	return self;
++ (VBMathParserToken *) tokenWithString:(NSString *)string {
+    if ([self isToken:string]) {
+        return [[self alloc] initWithString:string];
+    }else{
+        return nil;
+    }
 }
 
 + (NSString *) regexPattern {
     return @"^[0-9]+\\.?[0-9]*$";
 }
 
-+ (BOOL) isToken:(NSString*) str {
++ (BOOL) isToken:(NSString*)string {
     @try {
-        double res = [str doubleValue];
+        double res = [string doubleValue];
         res += 1;
         return YES;
     }
