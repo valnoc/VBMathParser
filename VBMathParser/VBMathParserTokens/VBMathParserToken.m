@@ -30,10 +30,14 @@
 
 @implementation VBMathParserToken
 
-- (instancetype) initWithString:(NSString*)str{
++ (VBMathParserToken*) tokenWithString:(NSString*)string {
+    return nil;
+}
+
+- (instancetype) initWithString:(NSString*)string {
     self = [super init];
     if (self) {
-        _string = str;
+        _stringValue = string;
     }
     return self;
 }
@@ -42,13 +46,13 @@
     return @"^$";
 }
 
-+ (BOOL) isToken:(NSString*) str {
++ (BOOL) isToken:(NSString*)str {
     return NO;
 }
 
 #pragma mark - description
 - (NSString *) description {
-    return [NSString stringWithFormat:@"%@: %@", NSStringFromClass(self.class), self.string];
+    return [NSString stringWithFormat:@"%@: %@", NSStringFromClass(self.class), self.stringValue];
     //    return [[super description] stringByAppendingFormat:@": %@", self.string];
 }
 
