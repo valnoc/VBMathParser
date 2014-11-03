@@ -26,24 +26,31 @@
 
 @implementation VBMathParserTokenVar
 
-+ (instancetype) varWithString:(NSString*)str {
-    return [[self alloc] initWithString:str];
-}
-
-- (instancetype) initWithString:(NSString *)str {
-    self = [super initWithString:str];
-    if (self) {
-        _var = str;
++ (VBMathParserToken *) tokenWithString:(NSString *)string {
+    if ([self isToken:string]) {
+        return [[self alloc] initWithString:string];
+    }else{
+        return nil;
     }
-    return self;
 }
 
-+ (NSString *)regexPattern {
++ (BOOL) isToken:(NSString*)string {
+    NSRegularExpression* regex = [NSRegularExpression regularExpressionWithPattern:[self.class regexPattern]
+                                                                           options:NSRegularExpressionCaseInsensitive|NSRegularExpressionAnchorsMatchLines
+                                                                             error:nil];
+    NSRange range = [regex rangeOfFirstMatchInString:string
+                                             options:0
+                                               range:NSMakeRange(0, string.length)];
+    if (range.location == 0 && range.length == string.length) {
+        return YES;
+    }else{
+        return NO;
+    }
+}
+
+#pragma mark - token abstract
++ (NSString *) regexPattern {
     return @"^[A-Za-z]+[A-Za-z0-9]*$";
-}
-
-+ (BOOL) isToken:(NSString *)str {
-    return YES;
 }
 
 @end

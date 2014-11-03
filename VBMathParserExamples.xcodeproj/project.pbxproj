@@ -151,6 +151,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B1C71DB1A0834B70096DBEE /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
 		5B49196A1A07BD89009F7C98 /* const */ = {
 			isa = PBXGroup;
 			children = (
@@ -167,6 +174,8 @@
 			children = (
 				5B7627FE18D5D3F5009FF7E2 /* VBMathParserTokenNumber.h */,
 				5B7627FF18D5D3F5009FF7E2 /* VBMathParserTokenNumber.m */,
+				5BAED090195B506A00419603 /* VBMathParserTokenVar.h */,
+				5BAED091195B506A00419603 /* VBMathParserTokenVar.m */,
 			);
 			name = number;
 			sourceTree = "<group>";
@@ -318,12 +327,11 @@
 				5B49196B1A07BD92009F7C98 /* number */,
 				5B49196A1A07BD89009F7C98 /* const */,
 				5B49196C1A07BD98009F7C98 /* special */,
+				5B1C71DB1A0834B70096DBEE /* New Group */,
 				5B76280018D5D3F5009FF7E2 /* VBMathParserTokenOperation.h */,
 				5B76280118D5D3F5009FF7E2 /* VBMathParserTokenOperation.m */,
 				5B14D1F7191CBB0C008D7F17 /* VBMathParserTokenFunction.h */,
 				5B14D1F8191CBB0C008D7F17 /* VBMathParserTokenFunction.m */,
-				5BAED090195B506A00419603 /* VBMathParserTokenVar.h */,
-				5BAED091195B506A00419603 /* VBMathParserTokenVar.m */,
 			);
 			path = VBMathParserTokens;
 			sourceTree = "<group>";
