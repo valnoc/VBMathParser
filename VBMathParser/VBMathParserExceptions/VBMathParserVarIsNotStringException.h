@@ -26,4 +26,6 @@
 
 @interface VBMathParserVarIsNotStringException : VBMathParserException
 
++ (instancetype) exceptionWithVar:(id)var;
+
 @end

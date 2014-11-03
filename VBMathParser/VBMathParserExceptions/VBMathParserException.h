@@ -27,6 +27,9 @@
 @interface VBMathParserException : NSException
 
 + (instancetype) exception;
-+ (instancetype) exceptionWithInfo:(NSString*)info;
++ (instancetype) exceptionWithReason:(NSString*)reason;
++ (instancetype) exceptionWithUserInfo:(NSDictionary*)userInfo;
++ (instancetype) exceptionWithReason:(NSString*)reason
+                            userInfo:(NSDictionary*)userInfo;
 
 @end

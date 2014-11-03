@@ -27,15 +27,12 @@
 @implementation VBMathParserVarIsNotStringException
 
 + (instancetype) exception {
-    return [[self alloc] initWithName:@"VarIsNotString"
-                               reason:@"Variable must be an instance of NSString class"
-                             userInfo:nil];
+    return [self exceptionWithReason:@"Variable must be an instance of NSString class"];
 }
 
-+ (instancetype) exceptionWithInfo:(NSString*)info {
-    return [[self alloc] initWithName:@"VarIsNotString"
-                               reason:[NSString stringWithFormat:@"Variable must be an instance of NSString class"]
-                             userInfo:@{@"info": info}];
++ (instancetype) exceptionWithVar:(id)var {
+    return [self exceptionWithReason:[NSString stringWithFormat:@"Variable (%@) must be an instance of NSString class", [var class]]
+                            userInfo:@{@"var": var}];
 }
 
 @end

@@ -27,9 +27,7 @@
 @implementation VBMathParserBracketNotOpenedException
 
 + (instancetype) exception {
-    return [[self alloc] initWithName:@"BracketNotOpened"
-                               reason:@"No bracket to close."
-                             userInfo:nil];
+    return [super exceptionWithReason:@"No bracket to close."];
 }
 
 @end
