@@ -42,8 +42,8 @@
     @throw [VBMathParserUnknownTokenException exceptionWithString:string];
 }
 
-+ (BOOL) isToken:(NSString*)str {
-    @throw [VBMathParserNotImplementedException exception];
++ (BOOL) isToken:(NSString*)string {
+    return [[self rawString] isEqualToString:string];
 }
 
 #pragma mark - token abstract
