@@ -26,10 +26,14 @@
 
 #import "VBMathParserDefines.h"
 
+#import "VBMathParserTokenSpecialBracketOpen.h"
+#import "VBMathParserTokenSpecialBracketClose.h"
+
+#import "VBMathParserTokenOperationSubstraction.h"
+
 #import "VBMathParserTokenNumber.h"
-#import "VBMathParserTokenOperation.h"
+
 #import "VBMathParserTokenFunction.h"
-#import "VBMathParserTokenSpecial.h"
 #import "VBMathParserTokenVar.h"
 #import "VBMathParserTokenConst.h"
 
@@ -47,157 +51,163 @@
     
     NSMutableArray* tokens = [NSMutableArray arrayWithArray:tokensInput];
     
-    //****** BRACKETS ((()))
-    {
-        VBMathParserLog(@"SyntaxAnalyzer: brackets: checking");
-        VBStack* bracketsStack = [VBStack new];
-        NSString* bracketsCheckFailedLogMessage = @"SyntaxAnalyzer: brackets: failed";
-        
-        for (NSInteger i = 0; i < tokens.count; i++) {
-            VBMathParserToken* token = tokens[i];
-            if ([token isKindOfClass:[VBMathParserTokenSpecial class]]) {
-                VBMathParserTokenSpecial* tokenSpec = (VBMathParserTokenSpecial*)token;
-                
-                if (tokenSpec.tokenSpecial == VBTokenSpecialBracketOpen) {
-                    [bracketsStack pushObject:tokenSpec];
-                    
-                }else if (tokenSpec.tokenSpecial == VBTokenSpecialBracketClose) {
-                    if (bracketsStack.isEmpty) {
-                        // nothing to pop
-                        VBMathParserLog(@"%@", bracketsCheckFailedLogMessage);
-                        @throw [VBMathParserBracketNotOpenedException exception];
-                    }
-                    [bracketsStack popObject];
-                }
-            }
-        }
-        if (bracketsStack.isEmpty) {
-            VBMathParserLog(@"SyntaxAnalyzer: brackets: ok");
-        }else{
-            VBMathParserLog(@"%@", bracketsCheckFailedLogMessage);
-            @throw [VBMathParserBracketNotClosedException exception];
-        }
-    }
-    
-    //****** MISSING TOKENS
-    {
-        VBMathParserLog(@"SyntaxAnalyzer: missing tokens: checking");
-        NSString* missingArgumentCheckFailedLogMessage = @"SyntaxAnalyzer: missing tokens: failed";
-        
-        for (NSInteger i = 0; i < tokens.count; i++) {
-            BOOL tokenIsMissing = NO;
-            VBMathParserToken* token = tokens[i];
-            VBMathParserToken* tokenNext = nil;
-            
-            if (i < tokens.count - 1) {
-                VBMathParserToken* tokenNext = tokens[i + 1];
-                
-                if ([token isKindOfClass:[VBMathParserTokenOperation class]] &&
-                    [tokenNext isKindOfClass:[VBMathParserTokenOperation class]]) {
-                    // operations one by one. e.g. 1+*2, 1+-2
-                    tokenIsMissing = YES;
-
-                } else if ([token isKindOfClass:[VBMathParserTokenSpecial class]] && (((VBMathParserTokenSpecial*)token).tokenSpecial == VBTokenSpecialBracketOpen) &&
-                           [tokenNext isKindOfClass:[VBMathParserTokenSpecial class]] && (((VBMathParserTokenSpecial*)tokenNext).tokenSpecial == VBTokenSpecialBracketClose) ) {
-                    // ()
-                    tokenIsMissing = YES;
-                    
-                } else if ([token isKindOfClass:[VBMathParserTokenSpecial class]] && (((VBMathParserTokenSpecial*)token).tokenSpecial == VBTokenSpecialBracketOpen) &&
-                           [tokenNext isKindOfClass:[VBMathParserTokenOperation class]] && ((VBMathParserTokenOperation*)tokenNext).tokenOperation != VBTokenOperationSubstraction) {
-                    // begins with operation after bracket. e.g. (+2
-                    tokenIsMissing = YES;
-                    
-                } else if ([tokenNext isKindOfClass:[VBMathParserTokenSpecial class]] && (((VBMathParserTokenSpecial*)tokenNext).tokenSpecial == VBTokenSpecialBracketClose) &&
-                           [token isKindOfClass:[VBMathParserTokenOperation class]]) {
-                    // ends with operation before bracket. e.g. 2+)
-                    tokenIsMissing = YES;
-
-                } else if ((i == 0) &&
-                           [token isKindOfClass:[VBMathParserTokenOperation class]] && ((VBMathParserTokenOperation*)token).tokenOperation != VBTokenOperationSubstraction ) {
-                    // begins with operation. e.g. +2
-                    tokenIsMissing = YES;
-
-                } else if ((i == tokens.count-1) &&
-                           [token isKindOfClass:[VBMathParserTokenOperation class]]) {
-                    // ends with operation. e.g. 2+$
-                    tokenIsMissing = YES;
-
-                } else if ([token isKindOfClass:[VBMathParserTokenFunction class]] &&
-                           ([tokenNext isKindOfClass:[VBMathParserTokenSpecial class]] == NO ||
-                            ((VBMathParserTokenSpecial*)tokenNext).tokenSpecial != VBTokenSpecialBracketOpen)) {
-                    // any function should be followed by its arguments in brackets
-                    tokenIsMissing = YES;
-                }
-
-            }else if ([token isKindOfClass:[VBMathParserTokenOperation class]] || [token isKindOfClass:[VBMathParserTokenFunction class]]) {
-                // last token
-                tokenIsMissing = YES;
-            }
-            
-            if (tokenIsMissing) {
-                VBMathParserLog(@"%@", missingArgumentCheckFailedLogMessage);
-                NSString* str = [NSString stringWithFormat:@"%@%@", token.string, tokenNext ? tokenNext.string : @""];
-                if (i + 2 < tokens.count) {
-                    str = [NSString stringWithFormat:@"%@%@", str, ((VBMathParserToken*)tokens[i + 2]).string];
-                }
-                if (i - 1 > -1) {
-                    str = [NSString stringWithFormat:@"%@%@", ((VBMathParserToken*)tokens[i - 1]).string, str];
-                }
-                @throw [VBMathParserMissingTokenException exceptionWithInfo:str];
-            }
-        }
-        
-        VBMathParserLog(@"SyntaxAnalyzer: missing tokens: ok");
-    }
-    
-    //****** ADD SUPPRESSED MULTIPLICATION
-    {
-        VBMathParserLog(@"SyntaxAnalyzer: suppressed multiplication: fixing");
-        
-        for (NSInteger i = 0; i < tokens.count-1; i++) {
-            
-            if ([tokens[i] isKindOfClass:[VBMathParserTokenSpecial class]] && ((VBMathParserTokenSpecial*)tokens[i]).tokenSpecial == VBTokenSpecialBracketClose &&
-                [tokens[i+1] isKindOfClass:[VBMathParserTokenSpecial class]] && ((VBMathParserTokenSpecial*)tokens[i+1]).tokenSpecial == VBTokenSpecialBracketOpen) {
-                // ()() -> ()*()
-                [tokens insertObject:[VBMathParserTokenOperation operationWithString:@"*"] atIndex:i+1];
-                
-            }else if (([tokens[i] isKindOfClass:[VBMathParserTokenNumber class]] || [tokens[i] isKindOfClass:[VBMathParserTokenVar class]] || [tokens[i] isKindOfClass:[VBMathParserTokenConst class]]) &&
-                     [tokens[i+1] isKindOfClass:[VBMathParserTokenSpecial class]] && ((VBMathParserTokenSpecial*)tokens[i+1]).tokenSpecial == VBTokenSpecialBracketOpen) {
-                // 2() -> 2*()
-                [tokens insertObject:[VBMathParserTokenOperation operationWithString:@"*"] atIndex:i+1];
-                
-            }
-        }
-        
-        VBMathParserLog(@"SyntaxAnalyzer: suppressed multiplication: ok");
-    }
-    
-    //****** UNARY MINUS
-    {
-        VBMathParserLog(@"SyntaxAnalyzer: unary minus: fixing");
-        
-        for (NSInteger i = 0; i < tokens.count-1; i++) {
-            
-            if (i == 0 &&
-                [tokens[i] isKindOfClass:[VBMathParserTokenOperation class]] && ((VBMathParserTokenOperation*)tokens[i]).tokenOperation == VBTokenOperationSubstraction &&
-                ([tokens[i+1] isKindOfClass:[VBMathParserTokenNumber class]] || [tokens[i+1] isKindOfClass:[VBMathParserTokenVar class]] || [tokens[i+1] isKindOfClass:[VBMathParserTokenConst class]])) {
-                // -1 -> 0-1
-                [tokens insertObject:[VBMathParserTokenNumber numberWithString:@"0"] atIndex:i];
-                
-            }else if ([tokens[i] isKindOfClass:[VBMathParserTokenSpecial class]] && ((VBMathParserTokenSpecial*)tokens[i]).tokenSpecial == VBTokenSpecialBracketOpen &&
-                      [tokens[i+1] isKindOfClass:[VBMathParserTokenOperation class]] && ((VBMathParserTokenOperation*)tokens[i+1]).tokenOperation == VBTokenOperationSubstraction) {
-                // (-1 -> (0-1
-                [tokens insertObject:[VBMathParserTokenNumber numberWithString:@"0"] atIndex:i+1];
-                
-            }
-        }
-        
-        VBMathParserLog(@"SyntaxAnalyzer: unary minus: ok");
-    }
+    [self checkBrackets:tokens];
+    [self checkMissingTokens:tokens];
+    [self fixMissingMultiplication:tokens];
+    [self fixUnaryMinus:tokens];
     
     VBMathParserLog(@"SyntaxAnalyzer: Analysis finished");
     return tokens;
 }
 
+#pragma mark - check
+- (void) checkBrackets:(NSArray*)tokens {
+    //  ((()))
+    VBMathParserLog(@"SyntaxAnalyzer: brackets: checking");
+    VBStack* bracketsStack = [VBStack new];
+    
+    for (NSInteger i = 0; i < tokens.count; i++) {
+        VBMathParserToken* token = tokens[i];
+        
+        if ([token isKindOfClass:[VBMathParserTokenSpecial class]]) {
+            if ([token isKindOfClass:[VBMathParserTokenSpecialBracketOpen class]]) {
+                [bracketsStack pushObject:token];
+                
+            }else if ([token isKindOfClass:[VBMathParserTokenSpecialBracketClose class]]) {
+                if (bracketsStack.isEmpty) {
+                    // nothing to pop
+                    @throw [VBMathParserBracketNotOpenedException exception];
+                }
+                [bracketsStack popObject];
+            }
+        }
+    }
+    if (bracketsStack.isEmpty) {
+        VBMathParserLog(@"SyntaxAnalyzer: brackets: ok");
+    }else{
+        @throw [VBMathParserBracketNotClosedException exception];
+    }
+}
+
+- (void) checkMissingTokens:(NSArray*)tokens {
+    VBMathParserLog(@"SyntaxAnalyzer: missing tokens: checking");
+    
+    for (NSInteger i = 0; i < tokens.count; i++) {
+        BOOL tokenIsMissing = NO;
+        VBMathParserToken* token = tokens[i];
+        VBMathParserToken* tokenNext = nil;
+        
+        if (i < tokens.count - 1) {
+            VBMathParserToken* tokenNext = tokens[i + 1];
+            
+            if ([token isKindOfClass:[VBMathParserTokenOperation class]] &&
+                [tokenNext isKindOfClass:[VBMathParserTokenOperation class]]) {
+                // operations one by one. e.g. 1+*2, 1+-2
+                tokenIsMissing = YES;
+                
+            } else if ([token isKindOfClass:[VBMathParserTokenSpecialBracketOpen class]] &&
+                       [tokenNext isKindOfClass:[VBMathParserTokenSpecialBracketClose class]]) {
+                // ()
+                tokenIsMissing = YES;
+                
+            } else if ([token isKindOfClass:[VBMathParserTokenSpecialBracketOpen class]] &&
+                       [tokenNext isKindOfClass:[VBMathParserTokenOperation class]] &&
+                       [tokenNext isKindOfClass:[VBMathParserTokenOperationSubstraction class]] == NO) {
+                // begins with operation after bracket. e.g. (+2
+                tokenIsMissing = YES;
+                
+            } else if ([token isKindOfClass:[VBMathParserTokenOperation class]] &&
+                       [tokenNext isKindOfClass:[VBMathParserTokenSpecialBracketClose class]]) {
+                // ends with operation before bracket. e.g. 2+)
+                tokenIsMissing = YES;
+                
+            } else if ((i == 0) &&
+                       [token isKindOfClass:[VBMathParserTokenOperation class]] &&
+                       [token isKindOfClass:[VBMathParserTokenOperationSubstraction class]] == NO ) {
+                // begins with operation. e.g. +2
+                tokenIsMissing = YES;
+                
+            } else if ((i == tokens.count-1) &&
+                       [token isKindOfClass:[VBMathParserTokenOperation class]]) {
+                // ends with operation. e.g. 2+$
+                tokenIsMissing = YES;
+                
+            } else if ([token isKindOfClass:[VBMathParserTokenFunction class]] &&
+                       [tokenNext isKindOfClass:[VBMathParserTokenSpecialBracketOpen class]] == NO) {
+               // any function should be followed by its arguments in brackets
+               tokenIsMissing = YES;
+            }
+            
+        }else if ([token isKindOfClass:[VBMathParserTokenOperation class]] ||
+                  [token isKindOfClass:[VBMathParserTokenFunction class]]) {
+            // last token
+            tokenIsMissing = YES;
+        }
+        
+        if (tokenIsMissing) {
+            NSString* str = [NSString stringWithFormat:@"%@%@", token.stringValue, tokenNext ? tokenNext.stringValue : @""];
+            if (i + 2 < tokens.count) {
+                str = [NSString stringWithFormat:@"%@%@", str, ((VBMathParserToken*)tokens[i + 2]).stringValue];
+            }
+            if (i - 1 > -1) {
+                str = [NSString stringWithFormat:@"%@%@", ((VBMathParserToken*)tokens[i - 1]).stringValue, str];
+            }
+            @throw [VBMathParserMissingTokenException exceptionWithExpression:str];
+        }
+    }
+    
+    VBMathParserLog(@"SyntaxAnalyzer: missing tokens: ok");
+}
+
+#pragma mark - fix
+- (void) fixMissingMultiplication:(NSMutableArray*)tokens {
+    VBMathParserLog(@"SyntaxAnalyzer: missing multiplication: fixing");
+    
+    for (NSInteger i = 0; i < tokens.count-1; i++) {
+        
+        if ([tokens[i] isKindOfClass:[VBMathParserTokenSpecialBracketClose class]] &&
+            [tokens[i + 1] isKindOfClass:[VBMathParserTokenSpecialBracketOpen class]]) {
+            // ()() -> ()*()
+            [tokens insertObject:[VBMathParserTokenOperation tokenWithString:@"*"]
+                         atIndex:i + 1];
+            
+        }else if (([tokens[i] isKindOfClass:[VBMathParserTokenNumber class]] ||
+                   [tokens[i] isKindOfClass:[VBMathParserTokenVar class]] ||
+                   [tokens[i] isKindOfClass:[VBMathParserTokenConst class]]) &&
+                  [tokens[i+1] isKindOfClass:[VBMathParserTokenSpecialBracketOpen class]]) {
+            // 2() -> 2*()
+            [tokens insertObject:[VBMathParserTokenOperation tokenWithString:@"*"]
+                         atIndex:i + 1];
+        }
+    }
+    
+    VBMathParserLog(@"SyntaxAnalyzer: missing multiplication: ok");
+}
+
+- (void) fixUnaryMinus:(NSMutableArray*)tokens {
+    VBMathParserLog(@"SyntaxAnalyzer: unary minus: fixing");
+    
+    for (NSInteger i = 0; i < tokens.count-1; i++) {
+        
+        if (i == 0 &&
+            [tokens[i] isKindOfClass:[VBMathParserTokenOperationSubstraction class]] &&
+            ([tokens[i + 1] isKindOfClass:[VBMathParserTokenNumber class]] ||
+             [tokens[i + 1] isKindOfClass:[VBMathParserTokenVar class]] ||
+             [tokens[i + 1] isKindOfClass:[VBMathParserTokenConst class]])) {
+            // -1 -> 0-1
+            [tokens insertObject:[VBMathParserTokenNumber tokenWithString:@"0"]
+                         atIndex:i];
+            
+        }else if ([tokens[i] isKindOfClass:[VBMathParserTokenSpecialBracketOpen class]] &&
+                  [tokens[i + 1] isKindOfClass:[VBMathParserTokenOperationSubstraction class]]) {
+            // (-1 -> (0-1
+            [tokens insertObject:[VBMathParserTokenNumber tokenWithString:@"0"]
+                         atIndex:i + 1];
+            
+        }
+    }
+    
+    VBMathParserLog(@"SyntaxAnalyzer: unary minus: ok");
+}
 
 @end
