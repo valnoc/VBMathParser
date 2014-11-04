@@ -49,98 +49,38 @@
     
     VBMathParserLog(@"LexicalAnalyzer: analyseString: %@ vars: %@", str, vars);
     
-    //  checkVars
-    {
-        NSRegularExpression* regex = [NSRegularExpression regularExpressionWithPattern:[VBMathParserTokenVar regexPattern]
-                                                                               options:NSRegularExpressionCaseInsensitive|NSRegularExpressionAnchorsMatchLines
-                                                                                 error:nil];
-        for (id obj in vars) {
-            if ([obj isKindOfClass:[NSString class]] == NO) {
-                @throw [VBMathParserVarIsNotStringException exception];
-            }
-            NSRange rangeOfFirstMatch = [regex rangeOfFirstMatchInString:obj
-                                                                 options:0
-                                                                   range:NSMakeRange(0, ((NSString*)obj).length)];
-            if (rangeOfFirstMatch.location == NSNotFound || rangeOfFirstMatch.length != ((NSString*)obj).length) {
-                @throw [VBMathParserVarIsNotValidException exceptionWithInfo:obj];
-            }
-        }
-    }
-    
-    NSMutableArray* tokens = [NSMutableArray new];
-    
-    //****** PREPARE STRING FOR PARSING
-    str = [str stringByReplacingOccurrencesOfString:@" " withString:@""];
-    str = [str stringByReplacingOccurrencesOfString:@"," withString:@"."];
-    str = [str lowercaseString];
+    [self validateVarNames:vars];
+
+    str = [self prepareStringForParsing:str];
     VBMathParserLog(@"LexicalAnalyzer: Prepared string: %@", str);
     
-    VBMathParserToken* token = nil;
+    NSMutableArray* tokens = [NSMutableArray new];
     while (str.length > 0) {
-        token = nil;
-        //****** TRY TO READ NUMBER TOKEN
-        token = [self parseNextTokenFromString:str
-                                    tokenClass:[VBMathParserTokenNumber class]];
-        if (token) {
-            str = [str substringFromIndex:token.string.length];
-            [tokens addObject:token];
-            
-        }else {
-            //****** TRY TO READ SPECIAL TOKEN
+        VBMathParserToken* token = nil;
+        for (Class tokenClass in @[[VBMathParserTokenNumber class],
+                                   [VBMathParserTokenSpecial class],
+                                   [VBMathParserTokenOperation class],
+                                   [VBMathParserTokenFunction class],
+                                   [VBMathParserTokenConst class],
+                                   [VBMathParserTokenVar class]]) {
             token = [self parseNextTokenFromString:str
-                                        tokenClass:[VBMathParserTokenSpecial class]];
-            if (token) {
-                str = [str substringFromIndex:token.string.length];
-                [tokens addObject:token];
-                
-            }else {
-                //****** TRY TO READ OPERATION TOKEN
-                token = [self parseNextTokenFromString:str
-                                            tokenClass:[VBMathParserTokenOperation class]];
-                if (token) {
-                    str = [str substringFromIndex:token.string.length];
-                    [tokens addObject:token];
-                    
-                }else {
-                    //****** TRY TO READ FUNCTION TOKEN
-                    token = [self parseNextTokenFromString:str
-                                                tokenClass:[VBMathParserTokenFunction class]];
-                    if (token) {
-                        str = [str substringFromIndex:token.string.length];
-                        [tokens addObject:token];
-                        
-                    }else {
-                        //****** TRY TO READ CONST TOKEN
-                        token = [self parseNextTokenFromString:str
-                                                    tokenClass:[VBMathParserTokenConst class]];
-                        if (token) {
-                            str = [str substringFromIndex:token.string.length];
-                            [tokens addObject:token];
-                        }else{
-                            //****** TRY TO READ VAR TOKEN
-                            token = [self parseNextTokenFromString:str
-                                                        tokenClass:[VBMathParserTokenVar class]];
-                            BOOL knownVar = NO;
-                            for (NSString* var in vars) {
-                                if ([var isEqualToString:((VBMathParserTokenVar*)token).var]) {
-                                    knownVar = YES;
-                                    break;
-                                }
-                            }
-                            if (token && knownVar) {
-                                str = [str substringFromIndex:token.string.length];
-                                [tokens addObject:token];
-                                
-                            }else {
-                                //****** UNKNOWN TOKEN
-                                @throw [VBMathParserUnknownTokenException exceptionWithInfo:str];
-                            }
-                        }
-                    }
+                                        tokenClass:tokenClass];
+            if (tokenClass == [VBMathParserTokenVar class]) {
+                BOOL knownVar = [vars indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+                    return [obj isEqualToString:[(VBMathParserTokenVar*)token stringValue]];
+                }] != NSNotFound;
+                if (knownVar == NO) {
+                    token = nil;
                 }
-                
             }
-            
+            if (token) {
+                str = [str substringFromIndex:token.stringValue.length];
+                [tokens addObject:token];
+                break;
+            }
+        }
+        if (token == nil) {
+            @throw [VBMathParserUnknownTokenException exceptionWithToken:str];
         }
     }
     
@@ -187,11 +127,41 @@
     }
     
     VBMathParserToken* token = nil;
-    if (canBeToken && [tokenClass isToken:substr]) {
-        VBMathParserLog(@"LexicalAnalyzer: Token %@: %@", tokenClass, substr);
-        token = [[tokenClass alloc] initWithString:substr];
+    if (canBeToken) {
+        @try {
+            token = [tokenClass tokenWithString:substr];
+            VBMathParserLog(@"LexicalAnalyzer: Token %@: %@", tokenClass, substr);
+        }
+        @catch (VBMathParserUnknownTokenException *exception) {
+            token = nil;
+        }
     }
     return token;
+}
+
+- (void) validateVarNames:(NSArray*)vars {
+    NSRegularExpression* regex = [NSRegularExpression regularExpressionWithPattern:[VBMathParserTokenVar regexPattern]
+                                                                           options:NSRegularExpressionCaseInsensitive|NSRegularExpressionAnchorsMatchLines
+                                                                             error:nil];
+    for (id obj in vars) {
+        if ([obj isKindOfClass:[NSString class]] == NO) {
+            @throw [VBMathParserVarIsNotStringException exception];
+        }
+        NSRange rangeOfFirstMatch = [regex rangeOfFirstMatchInString:obj
+                                                             options:0
+                                                               range:NSMakeRange(0, ((NSString*)obj).length)];
+        if (rangeOfFirstMatch.location == NSNotFound || rangeOfFirstMatch.length != ((NSString*)obj).length) {
+            @throw [VBMathParserVarIsNotValidException exceptionWithVar:obj];
+        }
+    }
+}
+
+- (NSString*) prepareStringForParsing:(NSString*)string {
+    NSString* strPrep = [NSString stringWithFormat:@"%@", string];
+    strPrep = [strPrep stringByReplacingOccurrencesOfString:@" " withString:@""];
+    strPrep = [strPrep stringByReplacingOccurrencesOfString:@"," withString:@"."];
+    strPrep = [strPrep lowercaseString];
+    return strPrep;
 }
 
 @end
