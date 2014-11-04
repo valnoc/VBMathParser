@@ -24,15 +24,6 @@
 
 #import "VBMathParserTokenAction.h"
 
-typedef enum{
-	VBTokenOperationUnknown = 0,
-	VBTokenOperationAddition,
-	VBTokenOperationSubstraction,
-    VBTokenOperationMultiplication,
-    VBTokenOperationDivision,
-    VBTokenOperationPower
-}VBTokenOperation;
-
 @interface VBMathParserTokenOperation : VBMathParserTokenAction
 
 #pragma mark - token concrete

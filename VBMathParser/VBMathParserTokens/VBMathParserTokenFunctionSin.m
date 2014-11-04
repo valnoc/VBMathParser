@@ -22,19 +22,17 @@
 //    SOFTWARE.
 //
 
-#import "VBMathParserTokenAction.h"
+#import "VBMathParserTokenFunctionSin.h"
 
-typedef enum{
-	VBTokenFunctionUnknown = 0,
-	VBTokenFunctionABS,
-    VBTokenFunctionSin,
-    VBTokenFunctionCos,
-    VBTokenFunctionTan
-}VBTokenFunction;
-
-@interface VBMathParserTokenFunction : VBMathParserTokenAction
+@implementation VBMathParserTokenFunctionSin
 
 #pragma mark - token concrete
-- (double) evaluateWithParam:(double)param;
++ (NSString *) rawString {
+    return @"sin";
+}
+
+- (double) evaluateWithParam:(double)param {
+    return sin(param);
+}
 
 @end

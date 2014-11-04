@@ -22,19 +22,9 @@
 //    SOFTWARE.
 //
 
-#import "VBMathParserTokenAction.h"
 
-typedef enum{
-	VBTokenFunctionUnknown = 0,
-	VBTokenFunctionABS,
-    VBTokenFunctionSin,
-    VBTokenFunctionCos,
-    VBTokenFunctionTan
-}VBTokenFunction;
+#import "VBMathParserTokenFunction.h"
 
-@interface VBMathParserTokenFunction : VBMathParserTokenAction
-
-#pragma mark - token concrete
-- (double) evaluateWithParam:(double)param;
+@interface VBMathParserTokenFunctionAbs : VBMathParserTokenFunction
 
 @end

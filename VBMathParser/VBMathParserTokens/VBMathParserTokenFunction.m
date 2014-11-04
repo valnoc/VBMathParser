@@ -24,83 +24,34 @@
 
 #import "VBMathParserTokenFunction.h"
 
-#import "VBMathParserUnknownTokenException.h"
+#import "VBMathParserNotImplementedException.h"
+
+#import "VBMathParserTokenFunctionAbs.h"
+#import "VBMathParserTokenFunctionSin.h"
+#import "VBMathParserTokenFunctionCos.h"
+#import "VBMathParserTokenFunctionTan.h"
 
 @implementation VBMathParserTokenFunction
 
-+ (instancetype) functionWithString:(NSString*)str{
-	return [[self alloc] initWithString:str];
-}
-
-- (instancetype) initWithString:(NSString*)str{
-	self = [super initWithString:str];
-	if (self) {
-		_tokenFunction = [self.class tokenFunctionWithString:str];
-		if (self.tokenFunction == VBTokenFunctionUnknown) {
-            @throw [VBMathParserUnknownTokenException exceptionWithInfo:str];
-		}
-	}
-	return self;
-}
-
-+ (NSString *)regexPattern {
+#pragma mark - token abstract
++ (NSString *) regexPattern {
     return @"^[A-Za-z]+$";
 }
 
-#pragma mark - tokens
-+ (VBTokenFunction) tokenFunctionWithString:(NSString*)str {
-	VBTokenFunction function = VBTokenFunctionUnknown;
-	
-	if ([str isEqualToString:@"abs"]) {
-        function = VBTokenFunctionABS;
-        
-	}else if ([str isEqualToString:@"sin"]) {
-        function = VBTokenFunctionSin;
-        
-	}else if ([str isEqualToString:@"cos"]) {
-        function = VBTokenFunctionCos;
-
-    }else if ([str isEqualToString:@"tan"]) {
-        function = VBTokenFunctionTan;
-    }
-	
-	return function;
++ (NSArray *) tokenFactoryList {
+    return @[[VBMathParserTokenFunctionAbs class],
+             [VBMathParserTokenFunctionCos class],
+             [VBMathParserTokenFunctionSin class],
+             [VBMathParserTokenFunctionTan class]];
 }
 
-+ (BOOL) isToken:(NSString *)str {
-    return [self tokenFunctionWithString:str] != VBTokenFunctionUnknown;
+#pragma mark - token concrete
+- (VBMathParserTokenActionPriority) priority {
+    return VBMathParserTokenActionPriorityHigh;
 }
 
-- (NSInteger) priority {
-    return 2;
-}
-
-#pragma mark - evaluation
 - (double) evaluateWithParam:(double)param {
-    double result = 0;
-	switch (self.tokenFunction) {
-            
-		case VBTokenFunctionABS:
-			result = ABS(param);
-			break;
-            
-        case VBTokenFunctionSin:
-            result = sin(param);
-            break;
-            
-        case VBTokenFunctionCos:
-            result = cos(param);
-            break;
-            
-        case VBTokenFunctionTan:
-            result = tan(param);
-            break;
-            
-		default:
-#warning TODO throw exception
-			break;
-	}
-    return result;
+    @throw [VBMathParserNotImplementedException exception];
 }
 
 @end
