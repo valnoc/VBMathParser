@@ -24,6 +24,8 @@
 
 #import "VBMathParserTokenConst.h"
 
+#import "VBMathParserNotImplementedException.h"
+
 #import "VBMathParserTokenConstPi.h"
 
 @implementation VBMathParserTokenConst
@@ -35,6 +37,11 @@
 
 + (NSArray *) tokenFactoryList {
     return @[[VBMathParserTokenConstPi class]];
+}
+
+#pragma mark - token concrete
+- (double) doubleValue {
+    @throw [VBMathParserNotImplementedException exception];
 }
 
 @end
