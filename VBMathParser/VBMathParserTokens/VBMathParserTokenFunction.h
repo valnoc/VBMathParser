@@ -24,14 +24,6 @@
 
 #import "VBMathParserTokenAction.h"
 
-typedef enum{
-	VBTokenFunctionUnknown = 0,
-	VBTokenFunctionABS,
-    VBTokenFunctionSin,
-    VBTokenFunctionCos,
-    VBTokenFunctionTan
-}VBTokenFunction;
-
 @interface VBMathParserTokenFunction : VBMathParserTokenAction
 
 #pragma mark - token concrete
