@@ -22,21 +22,22 @@
 //    SOFTWARE.
 //
 
-#import "VBMathParserTokenAction.h"
+#import "VBMathParserTokenOperationSubstraction.h"
 
-typedef enum{
-	VBTokenOperationUnknown = 0,
-	VBTokenOperationAddition,
-	VBTokenOperationSubstraction,
-    VBTokenOperationMultiplication,
-    VBTokenOperationDivision,
-    VBTokenOperationPower
-}VBTokenOperation;
-
-@interface VBMathParserTokenOperation : VBMathParserTokenAction
+@implementation VBMathParserTokenOperationSubstraction
 
 #pragma mark - token concrete
++ (NSString *) rawString {
+    return @"-";
+}
+
+- (VBMathParserTokenActionPriority) priority {
+    return VBMathParserTokenActionPriorityLow;
+}
+
 - (double) evaluateWithParamLeft:(double)paramLeft
-                      paramRight:(double)paramRight;
+                      paramRight:(double)paramRight {
+    return paramLeft - paramRight;
+}
 
 @end

@@ -24,19 +24,13 @@
 
 #import "VBMathParserTokenAction.h"
 
-typedef enum{
-	VBTokenOperationUnknown = 0,
-	VBTokenOperationAddition,
-	VBTokenOperationSubstraction,
-    VBTokenOperationMultiplication,
-    VBTokenOperationDivision,
-    VBTokenOperationPower
-}VBTokenOperation;
+#import "VBMathParserNotImplementedException.h"
 
-@interface VBMathParserTokenOperation : VBMathParserTokenAction
+@implementation VBMathParserTokenAction
 
 #pragma mark - token concrete
-- (double) evaluateWithParamLeft:(double)paramLeft
-                      paramRight:(double)paramRight;
+- (VBMathParserTokenActionPriority) priority {
+    @throw [VBMathParserNotImplementedException exception];
+}
 
 @end
