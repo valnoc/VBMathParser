@@ -30,9 +30,9 @@
     return [self exceptionWithReason:@"Token is unknown"];
 }
 
-+ (instancetype) exceptionWithString:(NSString*)string {
-    return [self exceptionWithReason:[NSString stringWithFormat:@"Token %@ is unknown", string]
-                            userInfo:@{@"string": string}];
++ (instancetype) exceptionWithToken:(NSString*)token {
+    return [self exceptionWithReason:[NSString stringWithFormat:@"Token %@ is unknown", token]
+                            userInfo:@{@"token": token}];
 }
 
 @end

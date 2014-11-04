@@ -39,7 +39,7 @@
             return [[tokenClass alloc] init];
         }
     }
-    @throw [VBMathParserUnknownTokenException exceptionWithString:string];
+    @throw [VBMathParserUnknownTokenException exceptionWithToken:string];
 }
 
 + (BOOL) isToken:(NSString*)string {
@@ -58,6 +58,9 @@
 #pragma mark - token concrete
 + (NSString *) rawString {
     @throw [VBMathParserNotImplementedException exception];
+}
+- (NSString *) stringValue {
+    return [self.class rawString];
 }
 
 #pragma mark - description

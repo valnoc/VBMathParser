@@ -35,5 +35,6 @@
 
 #pragma mark - token concrete
 + (NSString*) rawString;
+- (NSString*) stringValue;
 
 @end

@@ -26,7 +26,4 @@
 
 @interface VBMathParserTokenString : VBMathParserToken
 
-#pragma mark - token concrete
-- (NSString *) stringValue;
-
 @end

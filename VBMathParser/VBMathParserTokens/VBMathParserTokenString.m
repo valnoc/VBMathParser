@@ -38,7 +38,7 @@
     if ([self isToken:string]) {
         return [[self alloc] initWithString:string];
     }
-    @throw [VBMathParserUnknownTokenException exceptionWithString:string];
+    @throw [VBMathParserUnknownTokenException exceptionWithToken:string];
 }
 
 - (instancetype) initWithString:(NSString*) string {
@@ -70,7 +70,7 @@
 
 #pragma mark - token concrete
 - (NSString *) stringValue {
-    return [NSString stringWithFormat:@"%@", self.string];
+    return self.string;
 }
 
 @end
