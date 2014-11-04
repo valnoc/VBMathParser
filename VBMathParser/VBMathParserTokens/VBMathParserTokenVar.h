@@ -26,6 +26,7 @@
 
 @interface VBMathParserTokenVar : VBMathParserToken
 
-@property (nonatomic, strong, readonly) NSString* stringValue;
+#pragma mark - token concrete
+- (NSString*) stringValue;
 
 @end

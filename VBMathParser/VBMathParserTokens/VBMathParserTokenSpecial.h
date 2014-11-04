@@ -24,12 +24,6 @@
 
 #import "VBMathParserToken.h"
 
-typedef enum{
-	VBTokenSpecialUnknown = 0,
-	VBTokenSpecialBracketOpen,
-	VBTokenSpecialBracketClose
-}VBTokenSpecial;
-
 @interface VBMathParserTokenSpecial : VBMathParserToken
 
 @end

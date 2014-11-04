@@ -24,6 +24,12 @@
 
 #import "VBMathParserTokenNumber.h"
 
+@interface VBMathParserTokenNumber ()
+
+@property (nonatomic, strong) NSString* string;
+
+@end
+
 @implementation VBMathParserTokenNumber
 
 + (VBMathParserToken *) tokenWithString:(NSString *)string {
@@ -32,6 +38,14 @@
     }else{
         return nil;
     }
+}
+
+- (instancetype) initWithString:(NSString*) string {
+    self = [super init];
+    if (self) {
+        self.string = string;
+    }
+    return self;
 }
 
 + (BOOL) isToken:(NSString*)string {
@@ -58,6 +72,11 @@
 #pragma mark - token abstract
 + (NSString *) regexPattern {
     return @"^[0-9]+\\.?[0-9]*$";
+}
+
+#pragma mark - token concrete
+- (double) doubleValue { 
+    return [self.string doubleValue];
 }
 
 @end

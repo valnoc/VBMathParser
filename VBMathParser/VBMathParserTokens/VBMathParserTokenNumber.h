@@ -26,6 +26,7 @@
 
 @interface VBMathParserTokenNumber : VBMathParserToken
 
-@property (nonatomic, assign, readonly) double doubleValue;
+#pragma mark - token concrete
+- (double) doubleValue;
 
 @end
