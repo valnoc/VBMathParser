@@ -22,20 +22,42 @@
 //    SOFTWARE.
 //
 
-#import "VBMathParserTokenNumber.h"
+#import "VBMathParserTokenString.h"
 
-@implementation VBMathParserTokenNumber
+#import "VBMathParserUnknownTokenException.h"
 
-#pragma mark - token abstract
-+ (NSString *) regexPattern {
-    return @"^[0-9]+\\.?[0-9]*$";
+@interface VBMathParserTokenString ()
+
+@property (nonatomic, strong) NSString* string;
+
+@end
+
+@implementation VBMathParserTokenString
+
++ (VBMathParserToken *) tokenWithString:(NSString *)string {
+    if ([self isToken:string]) {
+        return [[self alloc] initWithString:string];
+    }
+    @throw [VBMathParserUnknownTokenException exceptionWithString:string];
+}
+
+- (instancetype) initWithString:(NSString*) string {
+    self = [super init];
+    if (self) {
+        self.string = string;
+    }
+    return self;
 }
 
 + (BOOL) isToken:(NSString*)string {
     @try {
-        if ([super isToken:string]) {
-            double res = [string doubleValue];
-            res += 1;
+        NSRegularExpression* regex = [NSRegularExpression regularExpressionWithPattern:[self.class regexPattern]
+                                                                               options:NSRegularExpressionCaseInsensitive|NSRegularExpressionAnchorsMatchLines
+                                                                                 error:nil];
+        NSRange range = [regex rangeOfFirstMatchInString:string
+                                                 options:0
+                                                   range:NSMakeRange(0, string.length)];
+        if (range.location == 0 && range.length == string.length) {
             return YES;
         }else{
             return NO;
@@ -47,8 +69,8 @@
 }
 
 #pragma mark - token concrete
-- (double) doubleValue { 
-    return [[self stringValue] doubleValue];
+- (NSString *) stringValue {
+    return [NSString stringWithFormat:@"%@", self.string];
 }
 
 @end

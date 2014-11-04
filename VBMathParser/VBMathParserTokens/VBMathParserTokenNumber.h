@@ -22,9 +22,9 @@
 //    SOFTWARE.
 //
 
-#import "VBMathParserToken.h"
+#import "VBMathParserTokenString.h"
 
-@interface VBMathParserTokenNumber : VBMathParserToken
+@interface VBMathParserTokenNumber : VBMathParserTokenString
 
 #pragma mark - token concrete
 - (double) doubleValue;

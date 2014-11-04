@@ -22,11 +22,8 @@
 //    SOFTWARE.
 //
 
-#import "VBMathParserToken.h"
+#import "VBMathParserTokenString.h"
 
-@interface VBMathParserTokenVar : VBMathParserToken
-
-#pragma mark - token concrete
-- (NSString*) stringValue;
+@interface VBMathParserTokenVar : VBMathParserTokenString
 
 @end

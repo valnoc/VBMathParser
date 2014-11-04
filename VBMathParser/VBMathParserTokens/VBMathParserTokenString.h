@@ -22,33 +22,11 @@
 //    SOFTWARE.
 //
 
-#import "VBMathParserTokenNumber.h"
+#import "VBMathParserToken.h"
 
-@implementation VBMathParserTokenNumber
-
-#pragma mark - token abstract
-+ (NSString *) regexPattern {
-    return @"^[0-9]+\\.?[0-9]*$";
-}
-
-+ (BOOL) isToken:(NSString*)string {
-    @try {
-        if ([super isToken:string]) {
-            double res = [string doubleValue];
-            res += 1;
-            return YES;
-        }else{
-            return NO;
-        }
-    }
-    @catch (NSException *exception) {
-        return NO;
-    }
-}
+@interface VBMathParserTokenString : VBMathParserToken
 
 #pragma mark - token concrete
-- (double) doubleValue { 
-    return [[self stringValue] doubleValue];
-}
+- (NSString *) stringValue;
 
 @end
