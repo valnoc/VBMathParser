@@ -11,11 +11,23 @@
 #import "VBMathParserLexicalAnalyzer.h"
 
 #import "VBMathParserTokenNumber.h"
-#import "VBMathParserTokenOperation.h"
-#import "VBMathParserTokenFunction.h"
-#import "VBMathParserTokenSpecial.h"
 #import "VBMathParserTokenVar.h"
-#import "VBMathParserTokenConst.h"
+
+#import "VBMathParserTokenOperationAddition.h"
+#import "VBMathParserTokenOperationSubstraction.h"
+#import "VBMathParserTokenOperationMultiplication.h"
+#import "VBMathParserTokenOperationDivision.h"
+#import "VBMathParserTokenOperationPower.h"
+
+#import "VBMathParserTokenFunctionAbs.h"
+#import "VBMathParserTokenFunctionSin.h"
+#import "VBMathParserTokenFunctionCos.h"
+#import "VBMathParserTokenFunctionTan.h"
+
+#import "VBMathParserTokenSpecialBracketOpen.h"
+#import "VBMathParserTokenSpecialBracketClose.h"
+
+#import "VBMathParserTokenConstPi.h"
 
 #import "VBMathParserVarIsNotStringException.h"
 #import "VBMathParserVarIsNotValidException.h"
@@ -44,7 +56,7 @@
 #warning check long long
     NSMutableArray* strToParse = [NSMutableArray new];
     for (NSInteger i = 0; i < 10; i++) {
-        [strToParse addObject:[NSString stringWithFormat:@"%ld", i]];
+        [strToParse addObject:[NSString stringWithFormat:@"%d", i]];
     }
     [strToParse addObject:@"100500"];
     [strToParse addObject:@"8001212"];
@@ -62,7 +74,7 @@
         XCTAssert(tokens.count == 1,
                   @"parsed more token than it should, %@", str);
         
-        XCTAssert([tokens.lastObject class] == [VBMathParserTokenNumber class],
+        XCTAssert([tokens.lastObject isKindOfClass:[VBMathParserTokenNumber class]],
                   @"parsed wrong class, %@", str);
         
         XCTAssert(((VBMathParserTokenNumber*)tokens.lastObject).doubleValue == str.doubleValue,
@@ -74,33 +86,25 @@
 {
     VBMathParserLexicalAnalyzer* lexicalAnalyzer = [VBMathParserLexicalAnalyzer new];
 
-    NSMutableArray* strToParse = [NSMutableArray new];
-    [strToParse addObject:@[@"+",
-                            @(VBTokenOperationAddition)]];
-    [strToParse addObject:@[@"-",
-                            @(VBTokenOperationSubstraction)]];
-    [strToParse addObject:@[@"*",
-                            @(VBTokenOperationMultiplication)]];
-    [strToParse addObject:@[@"/",
-                            @(VBTokenOperationDivision)]];
-    [strToParse addObject:@[@"^",
-                            @(VBTokenOperationPower)]];
+    NSDictionary* parseDict = @{@"+":  [VBMathParserTokenOperationAddition class],
+                                @"-":  [VBMathParserTokenOperationSubstraction class],
+                                @"/":  [VBMathParserTokenOperationDivision class],
+                                @"^":  [VBMathParserTokenOperationPower class]};
     
-    for (NSArray* arr in strToParse) {
-        NSString* str = arr[0];
+    for (NSString* key in parseDict.allKeys) {
         NSArray* tokens;
         
-        XCTAssertNoThrow(tokens = [lexicalAnalyzer analyseString:str],
-                         @"failed to parse operation, %@", str);
+        XCTAssertNoThrow(tokens = [lexicalAnalyzer analyseString:key],
+                         @"failed to parse operation, %@", key);
         
         XCTAssert(tokens.count == 1,
-                  @"parsed more token than it should, %@", str);
+                  @"parsed more tokens than it should, %@", key);
         
-        XCTAssert([tokens.lastObject class] == [VBMathParserTokenOperation class],
-                  @"parsed wrong class, %@", str);
+        XCTAssert([tokens.lastObject isKindOfClass:[VBMathParserTokenOperation class]],
+                  @"parsed wrong class, %@", key);
         
-        XCTAssert(((VBMathParserTokenOperation*)tokens.lastObject).tokenOperation == [arr[1] integerValue],
-                  @"parsed wrong operation, str = %@, parsed = %@", str, @(((VBMathParserTokenOperation*)tokens.lastObject).tokenOperation));
+        XCTAssert([tokens.lastObject class] == parseDict[key],
+                  @"parsed wrong operation, str = %@, parsed = %@", key, NSStringFromClass([tokens.lastObject class]));
     }
 }
 
@@ -108,27 +112,23 @@
 {
     VBMathParserLexicalAnalyzer* lexicalAnalyzer = [VBMathParserLexicalAnalyzer new];
     
-    NSMutableArray* strToParse = [NSMutableArray new];
-    [strToParse addObject:@[@"(",
-                            @(VBTokenSpecialBracketOpen)]];
-    [strToParse addObject:@[@")",
-                            @(VBTokenSpecialBracketClose)]];
+    NSDictionary* parseDict = @{@"(":  [VBMathParserTokenSpecialBracketOpen class],
+                                @")":  [VBMathParserTokenSpecialBracketClose class]};
     
-    for (NSArray* arr in strToParse) {
-        NSString* str = arr[0];
+    for (NSString* key in parseDict.allKeys) {
         NSArray* tokens;
         
-        XCTAssertNoThrow(tokens = [lexicalAnalyzer analyseString:str],
-                         @"failed to parse special, %@", str);
+        XCTAssertNoThrow(tokens = [lexicalAnalyzer analyseString:key],
+                         @"failed to parse special, %@", key);
         
         XCTAssert(tokens.count == 1,
-                  @"parsed more token than it should, %@", str);
+                  @"parsed more token than it should, %@", key);
         
-        XCTAssert([tokens.lastObject class] == [VBMathParserTokenSpecial class],
-                  @"parsed wrong class, %@", str);
+        XCTAssert([tokens.lastObject isKindOfClass:[VBMathParserTokenSpecial class]],
+                  @"parsed wrong class, %@", key);
         
-        XCTAssert(((VBMathParserTokenSpecial*)tokens.lastObject).tokenSpecial == [arr[1] integerValue],
-                  @"parsed wrong special, str = %@, parsed = %@", str, @(((VBMathParserTokenSpecial*)tokens.lastObject).tokenSpecial));
+        XCTAssert([tokens.lastObject class] == parseDict[key],
+                  @"parsed wrong special, str = %@, parsed = %@", key, NSStringFromClass([tokens.lastObject class]));
     }
 }
 
@@ -136,25 +136,48 @@
 {
     VBMathParserLexicalAnalyzer* lexicalAnalyzer = [VBMathParserLexicalAnalyzer new];
     
-    NSMutableArray* strToParse = [NSMutableArray new];
-    [strToParse addObject:@[@"abs",
-                            @(VBTokenFunctionABS)]];
+    NSDictionary* parseDict = @{@"abs":  [VBMathParserTokenFunctionAbs class],
+                                @"sin":  [VBMathParserTokenFunctionSin class],
+                                @"cos":  [VBMathParserTokenFunctionCos class],
+                                @"tan":  [VBMathParserTokenFunctionTan class]};
     
-    for (NSArray* arr in strToParse) {
-        NSString* str = arr[0];
+    for (NSString* key in parseDict.allKeys) {
         NSArray* tokens;
         
-        XCTAssertNoThrow(tokens = [lexicalAnalyzer analyseString:str],
-                         @"failed to parse function, %@", str);
+        XCTAssertNoThrow(tokens = [lexicalAnalyzer analyseString:key],
+                         @"failed to parse function, %@", key);
         
         XCTAssert(tokens.count == 1,
-                  @"parsed more token than it should, %@", str);
+                  @"parsed more token than it should, %@", key);
         
-        XCTAssert([tokens.lastObject class] == [VBMathParserTokenFunction class],
-                  @"parsed wrong class, %@", str);
+        XCTAssert([tokens.lastObject isKindOfClass:[VBMathParserTokenFunction class]],
+                  @"parsed wrong class, %@", key);
         
-        XCTAssert(((VBMathParserTokenFunction*)tokens.lastObject).tokenFunction == [arr[1] integerValue],
-                  @"parsed wrong special, str = %@, parsed = %@", str, @(((VBMathParserTokenFunction*)tokens.lastObject).tokenFunction));
+        XCTAssert([tokens.lastObject class] == parseDict[key],
+                  @"parsed wrong function, str = %@, parsed = %@", key, NSStringFromClass([tokens.lastObject class]));
+    }
+}
+
+- (void) testConsts
+{
+    VBMathParserLexicalAnalyzer* lexicalAnalyzer = [VBMathParserLexicalAnalyzer new];
+    
+    NSDictionary* parseDict = @{@"pi":  [VBMathParserTokenConstPi class]};
+    
+    for (NSString* key in parseDict.allKeys) {
+        NSArray* tokens;
+        
+        XCTAssertNoThrow(tokens = [lexicalAnalyzer analyseString:key],
+                         @"failed to parse const, %@", key);
+        
+        XCTAssert(tokens.count == 1,
+                  @"parsed more token than it should, %@", key);
+        
+        XCTAssert([tokens.lastObject isKindOfClass:[VBMathParserTokenConst class]],
+                  @"parsed wrong class, %@", key);
+        
+        XCTAssert([tokens.lastObject class] == parseDict[key],
+                  @"parsed wrong const, str = %@, parsed = %@", key, NSStringFromClass([tokens.lastObject class]));
     }
 }
 
@@ -174,11 +197,11 @@
         XCTAssert(tokens.count == 1,
                   @"parsed more token than it should, %@", str);
         
-        XCTAssert([tokens.lastObject class] == [VBMathParserTokenVar class],
+        XCTAssert([tokens.lastObject isKindOfClass:[VBMathParserTokenVar class]],
                   @"parsed wrong class, %@", str);
         
-        XCTAssert([((VBMathParserTokenVar*)tokens.lastObject).var isEqualToString:str],
-                  @"parsed wrong special, str = %@, parsed = %@", str, ((VBMathParserTokenVar*)tokens.lastObject).var);
+        XCTAssert([[tokens.lastObject stringValue] isEqualToString:str],
+                  @"parsed wrong special, str = %@, parsed = %@", str, [tokens.lastObject stringValue]);
     }
     
     XCTAssertThrowsSpecific([lexicalAnalyzer analyseString:@"1"
@@ -190,32 +213,6 @@
                                                   withVars:@[@"0x"]],
                             VBMathParserVarIsNotValidException,
                             @"did not throw VBMathParserVarIsNotValidException");
-}
-
-- (void) testConsts
-{
-    VBMathParserLexicalAnalyzer* lexicalAnalyzer = [VBMathParserLexicalAnalyzer new];
-    
-    NSMutableArray* strToParse = [NSMutableArray new];
-    [strToParse addObject:@[@"pi",
-                            @(VBTokenConstPi)]];
-    
-    for (NSArray* arr in strToParse) {
-        NSString* str = arr[0];
-        NSArray* tokens;
-        
-        XCTAssertNoThrow(tokens = [lexicalAnalyzer analyseString:str],
-                         @"failed to parse function, %@", str);
-        
-        XCTAssert(tokens.count == 1,
-                  @"parsed more token than it should, %@", str);
-        
-        XCTAssert([tokens.lastObject class] == [VBMathParserTokenConst class],
-                  @"parsed wrong class, %@", str);
-        
-        XCTAssert(((VBMathParserTokenConst*)tokens.lastObject).tokenConst == [arr[1] integerValue],
-                  @"parsed wrong special, str = %@, parsed = %@", str, @(((VBMathParserTokenConst*)tokens.lastObject).tokenConst));
-    }
 }
 
 @end
