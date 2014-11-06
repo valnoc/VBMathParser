@@ -20,7 +20,7 @@ This framework uses ARC. DO NOT FORGET to turn on ARC for framework's sources (-
 
     Using instance method
 
-        VBMathParser* parser = [[VBMathParser alloc] initWithExpression:@"2 + 4"];
+        VBMathParser* parser = [VBMathParser mathParserWithExpression:@"2 + 4"];
         result = [parser evaluate];
 
     Expression can always be changed by setting the expression property of VBMathParser object
