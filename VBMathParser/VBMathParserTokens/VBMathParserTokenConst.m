@@ -24,55 +24,24 @@
 
 #import "VBMathParserTokenConst.h"
 
-#import "VBMathParserUnknownTokenException.h"
+#import "VBMathParserNotImplementedException.h"
+
+#import "VBMathParserTokenConstPi.h"
 
 @implementation VBMathParserTokenConst
 
-- (instancetype) initWithString:(NSString*)str{
-	self = [super initWithString:str];
-	if (self) {
-        
-        _tokenConst = [self.class tokenConstWithString:str];
-        if (self.tokenConst == VBTokenConstUnknown) {
-            @throw [VBMathParserUnknownTokenException exceptionWithInfo:str];
-        }
-        
-	}
-	return self;
-}
-
+#pragma mark - token abstract
 + (NSString *) regexPattern {
     return @"^[A-Za-z]+$";
 }
 
-#pragma mark - tokens
-+ (VBTokenConst) tokenConstWithString:(NSString*)str {
-	VBTokenConst tknConst = VBTokenConstUnknown;
-	
-    if ([str isEqualToString:@"pi"]) {
-        tknConst = VBTokenConstPi;
-        
-    }
-	
-	return tknConst;
++ (NSArray *) tokenFactoryList {
+    return @[[VBMathParserTokenConstPi class]];
 }
 
-+ (BOOL) isToken:(NSString*)str {
-    return [self tokenConstWithString:str] != VBTokenConstUnknown;
-}
-
+#pragma mark - token concrete
 - (double) doubleValue {
-    double result = 0;
-    switch (self.tokenConst) {
-        case VBTokenConstPi:
-            result = M_PI;
-            break;
-            
-        default:
-#warning TODO throw exception
-            break;
-    }
-    return result;
+    @throw [VBMathParserNotImplementedException exception];
 }
 
 @end

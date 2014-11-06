@@ -27,15 +27,12 @@
 @implementation VBMathParserUnknownTokenException
 
 + (instancetype) exception {
-    return [[self alloc] initWithName:@"UnknownToken"
-                               reason:@"Token is unknown"
-                             userInfo:nil];
+    return [self exceptionWithReason:@"Token is unknown"];
 }
 
-+ (instancetype) exceptionWithInfo:(NSString*)info {
-    return [[self alloc] initWithName:@"UnknownToken"
-                               reason:[NSString stringWithFormat:@"Token %@ is unknown", info]
-                             userInfo:@{@"info": info}];
++ (instancetype) exceptionWithToken:(NSString*)token {
+    return [self exceptionWithReason:[NSString stringWithFormat:@"Token %@ is unknown", token]
+                            userInfo:@{@"token": token}];
 }
 
 @end

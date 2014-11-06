@@ -22,12 +22,11 @@
 //    SOFTWARE.
 //
 
-#import "VBMathParserToken.h"
+#import "VBMathParserTokenString.h"
 
-@interface VBMathParserTokenNumber : VBMathParserToken
+@interface VBMathParserTokenNumber : VBMathParserTokenString
 
-@property (nonatomic, assign, readonly) double doubleValue;
-
-+ (instancetype) numberWithString:(NSString*)str;
+#pragma mark - token concrete
+- (double) doubleValue;
 
 @end

@@ -27,15 +27,26 @@
 @implementation VBMathParserException
 
 + (instancetype) exception {
-    return [[self alloc] initWithName:@""
-                               reason:@""
-                             userInfo:nil];
+    return [self exceptionWithReason:@""
+                            userInfo:nil];
 }
 
-+ (instancetype) exceptionWithInfo:(NSString*)info {
-    return [[self alloc] initWithName:@""
-                               reason:@""
-                             userInfo:nil];
++ (instancetype) exceptionWithReason:(NSString*)reason {
+    return [self exceptionWithReason:reason
+                            userInfo:nil];
+}
+
++ (instancetype) exceptionWithUserInfo:(NSDictionary*)userInfo {
+    return [self exceptionWithReason:@""
+                            userInfo:userInfo];
+}
+
++ (instancetype) exceptionWithReason:(NSString*)reason
+                            userInfo:(NSDictionary*)userInfo {
+    
+    return [[self alloc] initWithName:NSStringFromClass([self class])
+                               reason:reason
+                             userInfo:userInfo];
 }
 
 @end

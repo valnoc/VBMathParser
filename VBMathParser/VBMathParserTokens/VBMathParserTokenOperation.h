@@ -22,24 +22,11 @@
 //    SOFTWARE.
 //
 
-#import "VBMathParserToken.h"
+#import "VBMathParserTokenAction.h"
 
-typedef enum{
-	VBTokenOperationUnknown = 0,
-	VBTokenOperationAddition,
-	VBTokenOperationSubstraction,
-    VBTokenOperationMultiplication,
-    VBTokenOperationDivision,
-    VBTokenOperationPower
-}VBTokenOperation;
+@interface VBMathParserTokenOperation : VBMathParserTokenAction
 
-@interface VBMathParserTokenOperation : VBMathParserToken
-
-@property (nonatomic, assign, readonly) VBTokenOperation tokenOperation;
-@property (nonatomic, assign, readonly) NSInteger priority;
-
-+ (instancetype) operationWithString:(NSString*)str;
-
+#pragma mark - token concrete
 - (double) evaluateWithParamLeft:(double)paramLeft
                       paramRight:(double)paramRight;
 

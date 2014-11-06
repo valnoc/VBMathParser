@@ -27,15 +27,12 @@
 @implementation VBMathParserMissingTokenException
 
 + (instancetype) exception {
-    return [[self alloc] initWithName:@"MissingToken"
-                               reason:@"Token is missing"
-                             userInfo:nil];
+    return [self exceptionWithReason:@"Token is missing"];
 }
 
-+ (instancetype) exceptionWithInfo:(NSString*)info {
-    return [[self alloc] initWithName:@"MissingToken"
-                               reason:[NSString stringWithFormat:@"Token is missing in expression %@", info]
-                             userInfo:@{@"info": info}];
++ (instancetype) exceptionWithExpression:(NSString*)expression {
+    return [self exceptionWithReason:[NSString stringWithFormat:@"Token is missing in expression %@", expression]
+                            userInfo:@{@"expression": expression}];
 }
 
 @end

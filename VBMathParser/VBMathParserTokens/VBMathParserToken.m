@@ -24,31 +24,48 @@
 
 #import "VBMathParserToken.h"
 
+#import "VBMathParserNotImplementedException.h"
+#import "VBMathParserUnknownTokenException.h"
+
 @interface VBMathParserToken ()
 
 @end
 
 @implementation VBMathParserToken
 
-- (instancetype) initWithString:(NSString*)str{
-    self = [super init];
-    if (self) {
-        _string = str;
++ (VBMathParserToken*) tokenWithString:(NSString*)string {
+    for (Class tokenClass in [self tokenFactoryList]) {
+        if ([tokenClass isToken:string]) {
+            return [[tokenClass alloc] init];
+        }
     }
-    return self;
+    @throw [VBMathParserUnknownTokenException exceptionWithToken:string];
 }
 
++ (BOOL) isToken:(NSString*)string {
+    return [[self rawString] isEqualToString:string];
+}
+
+#pragma mark - token abstract
 + (NSString*) regexPattern {
-    return @"^$";
+    @throw [VBMathParserNotImplementedException exception];
 }
 
-+ (BOOL) isToken:(NSString*) str {
-    return NO;
++ (NSArray*) tokenFactoryList {
+    @throw [VBMathParserNotImplementedException exception];
+}
+
+#pragma mark - token concrete
++ (NSString *) rawString {
+    @throw [VBMathParserNotImplementedException exception];
+}
+- (NSString *) stringValue {
+    return [self.class rawString];
 }
 
 #pragma mark - description
 - (NSString *) description {
-    return [NSString stringWithFormat:@"%@: %@", NSStringFromClass(self.class), self.string];
+    return [NSString stringWithFormat:@"%@: %@", NSStringFromClass(self.class), self.class.rawString];
     //    return [[super description] stringByAppendingFormat:@": %@", self.string];
 }
 

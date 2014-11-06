@@ -27,15 +27,12 @@
 @implementation VBMathParserMissingValueForVarException
 
 + (instancetype) exception {
-    return [[self alloc] initWithName:@"MissingValueForVar"
-                               reason:@"Missing value for var"
-                             userInfo:nil];
+    return [self exceptionWithReason:@"Missing value for var"];
 }
 
-+ (instancetype) exceptionWithInfo:(NSString*)info {
-    return [[self alloc] initWithName:@"MissingValueForVar"
-                               reason:[NSString stringWithFormat:@"Variable %@ value is missing", info]
-                             userInfo:@{@"info": info}];
++ (instancetype) exceptionWithVar:(NSString*)var {
+    return [self exceptionWithReason:[NSString stringWithFormat:@"Variable %@ value is missing", var]
+                            userInfo:@{@"var": var}];
 }
 
 @end

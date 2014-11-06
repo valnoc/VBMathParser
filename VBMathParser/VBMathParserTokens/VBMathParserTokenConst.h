@@ -24,15 +24,9 @@
 
 #import "VBMathParserToken.h"
 
-typedef enum{
-	VBTokenConstUnknown = 0,
-    VBTokenConstPi
-}VBTokenConst;
-
 @interface VBMathParserTokenConst : VBMathParserToken
 
-@property (nonatomic, assign, readonly) VBTokenConst tokenConst;
-
-@property (nonatomic, assign, readonly) double doubleValue;
+#pragma mark - token concrete
+- (double) doubleValue;
 
 @end

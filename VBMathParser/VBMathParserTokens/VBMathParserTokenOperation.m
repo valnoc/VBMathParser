@@ -24,107 +24,33 @@
 
 #import "VBMathParserTokenOperation.h"
 
-#import "VBMathParserUnknownTokenException.h"
+#import "VBMathParserNotImplementedException.h"
+
+#import "VBMathParserTokenOperationAddition.h"
+#import "VBMathParserTokenOperationSubstraction.h"
+#import "VBMathParserTokenOperationMultiplication.h"
+#import "VBMathParserTokenOperationDivision.h"
+#import "VBMathParserTokenOperationPower.h"
 
 @implementation VBMathParserTokenOperation
 
-+ (instancetype) operationWithString:(NSString*)str{
-	return [[self alloc] initWithString:str];
-}
-
-- (instancetype) initWithString:(NSString*)str{
-	self = [super initWithString:str];
-	if (self) {
-		_tokenOperation = [self.class tokenOperationWithString:str];
-		if (self.tokenOperation == VBTokenOperationUnknown) {
-            @throw [VBMathParserUnknownTokenException exceptionWithInfo:str];
-		}
-	}
-	return self;
-}
-
-+ (NSString *)regexPattern {
+#pragma mark - token abstract
++ (NSString *) regexPattern {
     return @"^[\\+\\-\\*/^]$";
 }
 
-#pragma mark - tokens
-+ (VBTokenOperation) tokenOperationWithString:(NSString*)str {
-	VBTokenOperation operation = VBTokenOperationUnknown;
-	
-	if ([str isEqualToString:@"+"]) {
-        operation = VBTokenOperationAddition;
-        
-	}else if ([str isEqualToString:@"-"]) {
-        operation = VBTokenOperationSubstraction;
-        
-	}else if ([str isEqualToString:@"*"]) {
-        operation = VBTokenOperationMultiplication;
-        
-	}else if ([str isEqualToString:@"/"]) {
-        operation = VBTokenOperationDivision;
-        
-	}else if ([str isEqualToString:@"^"]) {
-        operation = VBTokenOperationPower;
-        
-    }
-	
-	return operation;
++ (NSArray *) tokenFactoryList {
+    return @[[VBMathParserTokenOperationAddition class],
+             [VBMathParserTokenOperationSubstraction class],
+             [VBMathParserTokenOperationMultiplication class],
+             [VBMathParserTokenOperationDivision class],
+             [VBMathParserTokenOperationPower class]];
 }
 
-+ (BOOL) isToken:(NSString *) str {
-    return [self tokenOperationWithString:str] != VBTokenOperationUnknown;
-}
-
-- (NSInteger) priority {
-    switch (self.tokenOperation) {
-        case VBTokenOperationPower:
-            return 2;
-            break;
-            
-        case VBTokenOperationMultiplication:
-        case VBTokenOperationDivision:
-            return 1;
-            break;
-            
-        case VBTokenOperationAddition:
-        case VBTokenOperationSubstraction:
-        default:
-            return 0;
-            break;
-    }
-}
-
-#pragma mark - evaluation
+#pragma mark - token concrete
 - (double) evaluateWithParamLeft:(double)paramLeft
                       paramRight:(double)paramRight {
-    double result = 0;
-	switch (self.tokenOperation) {
-            
-		case VBTokenOperationAddition:
-			result = paramLeft + paramRight;
-			break;
-            
-		case VBTokenOperationSubstraction:
-			result = paramLeft - paramRight;
-			break;
-            
-        case VBTokenOperationMultiplication:
-            result = paramLeft * paramRight;
-            break;
-            
-        case VBTokenOperationDivision:
-            result = paramLeft / paramRight;
-            break;
-            
-        case VBTokenOperationPower:
-            result = pow(paramLeft, paramRight);
-            break;
-            
-		default:
-#warning TODO throw exception
-			break;
-	}
-    return result;
+    @throw [VBMathParserNotImplementedException exception];
 }
 
 @end

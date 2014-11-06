@@ -24,47 +24,19 @@
 
 #import "VBMathParserTokenSpecial.h"
 
-#import "VBMathParserUnknownTokenException.h"
+#import "VBMathParserTokenSpecialBracketOpen.h"
+#import "VBMathParserTokenSpecialBracketClose.h"
 
 @implementation VBMathParserTokenSpecial
 
-+ (instancetype) specialWithString:(NSString*)str {
-	return [[self alloc] initWithString:str];
-}
-
-- (instancetype) initWithString:(NSString*)str{
-	self = [super initWithString:str];
-	if (self) {
-        
-        _tokenSpecial = [self.class tokenSpecialWithString:str];
-        if (self.tokenSpecial == VBTokenSpecialUnknown) {
-            @throw [VBMathParserUnknownTokenException exceptionWithInfo:str];
-        }
-        
-	}
-	return self;
-}
-
+#pragma mark - token abstract
 + (NSString *) regexPattern {
     return @"^[()]$";
 }
 
-#pragma mark - tokens
-+ (VBTokenSpecial) tokenSpecialWithString:(NSString*)str {
-	VBTokenSpecial specialSymbol = VBTokenSpecialUnknown;
-	
-    if ([str isEqualToString:@"("]) {
-        specialSymbol = VBTokenSpecialBracketOpen;
-        
-    }else if ([str isEqualToString:@")"]) {
-        specialSymbol = VBTokenSpecialBracketClose;
-    }
-	
-	return specialSymbol;
-}
-
-+ (BOOL) isToken:(NSString*)str {
-    return [self tokenSpecialWithString:str] != VBTokenSpecialUnknown;
++ (NSArray *) tokenFactoryList {
+    return @[[VBMathParserTokenSpecialBracketOpen class],
+             [VBMathParserTokenSpecialBracketClose class]];
 }
 
 @end

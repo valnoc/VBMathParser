@@ -26,4 +26,6 @@
 
 @interface VBMathParserVarIsNotValidException : VBMathParserException
 
++ (instancetype) exceptionWithVar:(NSString*)var;
+
 @end

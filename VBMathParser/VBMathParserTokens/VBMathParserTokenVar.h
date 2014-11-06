@@ -22,12 +22,8 @@
 //    SOFTWARE.
 //
 
-#import "VBMathParserToken.h"
+#import "VBMathParserTokenString.h"
 
-@interface VBMathParserTokenVar : VBMathParserToken
-
-@property (nonatomic, strong, readonly) NSString* var;
-
-+ (instancetype) varWithString:(NSString*)str;
+@interface VBMathParserTokenVar : VBMathParserTokenString
 
 @end

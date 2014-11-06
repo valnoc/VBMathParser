@@ -22,23 +22,11 @@
 //    SOFTWARE.
 //
 
-#import "VBMathParserToken.h"
+#import "VBMathParserTokenAction.h"
 
-typedef enum{
-	VBTokenFunctionUnknown = 0,
-	VBTokenFunctionABS,
-    VBTokenFunctionSin,
-    VBTokenFunctionCos,
-    VBTokenFunctionTan
-}VBTokenFunction;
+@interface VBMathParserTokenFunction : VBMathParserTokenAction
 
-@interface VBMathParserTokenFunction : VBMathParserToken
-
-@property (nonatomic, assign, readonly) VBTokenFunction tokenFunction;
-@property (nonatomic, assign, readonly) NSInteger priority;
-
-+ (instancetype) functionWithString:(NSString*)str;
-
+#pragma mark - token concrete
 - (double) evaluateWithParam:(double)param;
 
 @end

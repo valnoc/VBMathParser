@@ -26,10 +26,12 @@
 
 #import "VBMathParserDefines.h"
 
+#import "VBMathParserTokenSpecialBracketOpen.h"
+#import "VBMathParserTokenSpecialBracketClose.h"
+
 #import "VBMathParserTokenNumber.h"
 #import "VBMathParserTokenOperation.h"
 #import "VBMathParserTokenFunction.h"
-#import "VBMathParserTokenSpecial.h"
 #import "VBMathParserTokenVar.h"
 #import "vbmathParserTokenConst.h"
 
@@ -48,18 +50,21 @@
     for (NSInteger i = 0; i < tokensInput.count; i++) {
         VBMathParserToken* token = tokensInput[i];
         
-        if ([token isKindOfClass:[VBMathParserTokenNumber class]] || [token isKindOfClass:[VBMathParserTokenVar class]] || [token isKindOfClass:[VBMathParserTokenConst class]]) {
+        if ([token isKindOfClass:[VBMathParserTokenNumber class]] ||
+            [token isKindOfClass:[VBMathParserTokenVar class]] ||
+            [token isKindOfClass:[VBMathParserTokenConst class]]) {
+            
             [tokens addObject:token];
             
-        }else if ([token isKindOfClass:[VBMathParserTokenOperation class]] || [token isKindOfClass:[VBMathParserTokenFunction class]]) {
+        }else if ([token isKindOfClass:[VBMathParserTokenAction class]]) {
             if (stack.isEmpty) {
                 [stack pushObject:token];
                 
             }else {
                 id lastObject = stack.lastObject;
-                while ([lastObject isKindOfClass:[VBMathParserTokenOperation class]] || [lastObject isKindOfClass:[VBMathParserTokenFunction class]]) {
-                    VBMathParserTokenOperation* lastOperation = (VBMathParserTokenOperation*)lastObject;
-                    if (lastOperation.priority >= ((VBMathParserTokenOperation*)token).priority) {
+                while ([lastObject isKindOfClass:[VBMathParserTokenAction class]]) {
+                    
+                    if ([(VBMathParserTokenAction*)lastObject priority] >= [(VBMathParserTokenAction*)token priority]) {
                         [tokens addObject:[stack popObject]];
                         lastObject = stack.lastObject;
                     }else{
@@ -68,19 +73,18 @@
                 }
                 [stack pushObject:token];
             }
-        }else if ([token isKindOfClass:[VBMathParserTokenSpecial class]]) {
             
-            VBMathParserTokenSpecial* tokenSpecial = (VBMathParserTokenSpecial*)token;
-            if (tokenSpecial.tokenSpecial == VBTokenSpecialBracketOpen) {
-                [stack pushObject:tokenSpecial];
+        }else if ([token isKindOfClass:[VBMathParserTokenSpecial class]]) {
+
+            if ([token isKindOfClass:[VBMathParserTokenSpecialBracketOpen class]]) {
+                [stack pushObject:token];
                 
-            }else if (tokenSpecial.tokenSpecial == VBTokenSpecialBracketClose) {
+            }else if ([token isKindOfClass:[VBMathParserTokenSpecialBracketClose class]]) {
                 id lastObject = stack.lastObject;
-                while ( ([lastObject isKindOfClass:[VBMathParserTokenSpecial class]] &&
-                         ( ((VBMathParserTokenSpecial*)lastObject).tokenSpecial == VBTokenSpecialBracketOpen ||
-                           ((VBMathParserTokenSpecial*)lastObject).tokenSpecial == VBTokenSpecialBracketClose) ) == NO) {
-                             [tokens addObject:[stack popObject]];
-                             lastObject = stack.lastObject;
+                while ( ([lastObject isKindOfClass:[VBMathParserTokenSpecialBracketOpen class]] ||
+                         [lastObject isKindOfClass:[VBMathParserTokenSpecialBracketClose class]]) == NO) {
+                    [tokens addObject:[stack popObject]];
+                    lastObject = stack.lastObject;
                 }
                 [stack popObject];
             }
@@ -101,105 +105,89 @@
     VBMathParserLog(@"RPNWorker: evaluate:\n%@", tokensInput);
     NSMutableArray* resultArray = [NSMutableArray arrayWithArray:tokensInput];
     
-    //  replace var tokens with passed values
-    for (NSInteger i = 0; i < resultArray.count; i++) {
-        VBMathParserToken* token = resultArray[i];
-        if ([token isKindOfClass:[VBMathParserTokenVar class]]) {
-            VBMathParserTokenVar* tokenVar = (VBMathParserTokenVar*)token;
-            
-            NSNumber* value = varsValues[tokenVar.var];
-            if (value && [value isKindOfClass:[NSNumber class]]) {
-                VBMathParserTokenNumber* tokenNumberForReplacement = [VBMathParserTokenNumber numberWithString:[NSString stringWithFormat:@"%@", value]];
-                [resultArray replaceObjectAtIndex:i
-                                       withObject:tokenNumberForReplacement];
-            }else{
-                @throw [VBMathParserMissingValueForVarException exceptionWithInfo:tokenVar.var];
-            }
-        }
-    }
-
-    //  replace const tokens
-    for (NSInteger i = 0; i < resultArray.count; i++) {
-        VBMathParserToken* token = resultArray[i];
-        if ([token isKindOfClass:[VBMathParserTokenConst class]]) {
-            VBMathParserTokenConst* tokenConst = (VBMathParserTokenConst*)token;
-            VBMathParserTokenNumber* tokenNumberForReplacement = [VBMathParserTokenNumber numberWithString:[NSString stringWithFormat:@"%@", @(tokenConst.doubleValue)]];
-            
-            [resultArray replaceObjectAtIndex:i
-                                   withObject:tokenNumberForReplacement];
-        }
-    }
+    [self replaceVarTokens:resultArray
+                withValues:varsValues];
+    [self replaceConstTokens:resultArray];
     
     //  evaluate
     for (NSInteger i = 0; i < resultArray.count; i++) {
-        id object = resultArray[i];
+        VBMathParserToken* token = resultArray[i];
 
-        if ([object isKindOfClass:[VBMathParserTokenOperation class]]) {
+        if ([token isKindOfClass:[VBMathParserTokenAction class]]) {
             
             NSRange replacementRange = NSMakeRange(i, 1);
             double paramRight = 0;
             double paramLeft = 0;
 
             if (i > 0) {
-                id objectRight = resultArray[i-1];
+                VBMathParserToken* tokenRight = resultArray[i - 1];
                
-                if ([objectRight isKindOfClass:[VBMathParserTokenNumber class]] || [objectRight isKindOfClass:[NSNumber class]]) {
-                    paramRight = [objectRight doubleValue];
+                if ([tokenRight isKindOfClass:[VBMathParserTokenNumber class]] || [tokenRight isKindOfClass:[NSNumber class]]) {
+                    paramRight = [(VBMathParserTokenNumber*)tokenRight doubleValue];
                 }
                 
                 replacementRange.location--;
                 replacementRange.length++;
             }
             
-            if (i > 1) {
-                id objectLeft = resultArray[i-2];
+            if ([token isKindOfClass:[VBMathParserTokenOperation class]] && i > 1) {
+                VBMathParserToken* tokenLeft = resultArray[i - 2];
                 
-                if ([objectLeft isKindOfClass:[VBMathParserTokenNumber class]] || [objectLeft isKindOfClass:[NSNumber class]]) {
-                    paramLeft = [objectLeft doubleValue];
+                if ([tokenLeft isKindOfClass:[VBMathParserTokenNumber class]] || [tokenLeft isKindOfClass:[NSNumber class]]) {
+                    paramLeft = [(VBMathParserTokenNumber*)tokenLeft doubleValue];
                 }
                 replacementRange.location--;
                 replacementRange.length++;
             }
             
-            VBMathParserTokenOperation* operation = (VBMathParserTokenOperation*)object;
-            double opRes = [operation evaluateWithParamLeft:paramLeft
-                                                 paramRight:paramRight];
+            double actRes = 0;
+            if ([token isKindOfClass:[VBMathParserTokenOperation class]]) {
+                actRes = [(VBMathParserTokenOperation*)token evaluateWithParamLeft:paramLeft
+                                                                        paramRight:paramRight];
+            }else if ([token isKindOfClass:[VBMathParserTokenFunction class]]) {
+                actRes = [(VBMathParserTokenFunction*)token evaluateWithParam:paramRight];
+            }
+            
             [resultArray removeObjectsInRange:replacementRange];
-            [resultArray insertObject:@(opRes)
+            [resultArray insertObject:@(actRes)
                               atIndex:replacementRange.location];
             
             i = replacementRange.location - 1;
 
-        }else if ([object isKindOfClass:[VBMathParserTokenFunction class]]) {
-            
-            NSRange replacementRange = NSMakeRange(i, 1);
-            double param = 0;
-            
-            if (i > 0) {
-                id objectRight = resultArray[i-1];
-                
-                if ([objectRight isKindOfClass:[VBMathParserTokenNumber class]] || [objectRight isKindOfClass:[NSNumber class]]) {
-                    param = [objectRight doubleValue];
-                }
-                
-                replacementRange.location--;
-                replacementRange.length++;
-            }
-            
-            VBMathParserTokenFunction* function = (VBMathParserTokenFunction*)object;
-            double opRes = [function evaluateWithParam:param];
-            [resultArray removeObjectsInRange:replacementRange];
-            [resultArray insertObject:@(opRes)
-                              atIndex:replacementRange.location];
-            
-            i = replacementRange.location - 1;
         }
     }
     
-    double result = [resultArray.lastObject isKindOfClass:[NSNumber class]] || [resultArray.lastObject isKindOfClass:[VBMathParserTokenNumber class]] ? [resultArray.lastObject doubleValue] : 0;
+    double result = [resultArray.lastObject doubleValue];
 #warning TODO exception maybe?
     VBMathParserLog(@"RPNWorker: evaluationResult:%@", @(result));
     return result;
+}
+
+- (void) replaceVarTokens:(NSMutableArray*)tokens
+               withValues:(NSDictionary*)varsValues {
+    for (NSInteger i = 0; i < tokens.count; i++) {
+        VBMathParserToken* token = tokens[i];
+        if ([token isKindOfClass:[VBMathParserTokenVar class]]) {
+            
+            NSNumber* value = varsValues[token.stringValue];
+            if (value && [value isKindOfClass:[NSNumber class]]) {
+                [tokens replaceObjectAtIndex:i
+                                  withObject:[VBMathParserTokenNumber tokenWithString:[NSString stringWithFormat:@"%@", value]]];
+            }else{
+                @throw [VBMathParserMissingValueForVarException exceptionWithVar:token.stringValue];
+            }
+        }
+    }
+}
+
+- (void) replaceConstTokens:(NSMutableArray*)tokens {
+    for (NSInteger i = 0; i < tokens.count; i++) {
+        VBMathParserToken* token = tokens[i];
+        if ([token isKindOfClass:[VBMathParserTokenConst class]]) {
+            [tokens replaceObjectAtIndex:i
+                              withObject:[VBMathParserTokenNumber tokenWithString:[NSString stringWithFormat:@"%@", @(((VBMathParserTokenConst*)token).doubleValue)]]];
+        }
+    }
 }
 
 @end
