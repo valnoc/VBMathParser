@@ -104,10 +104,6 @@
 + (instancetype) mathParserWithExpression:(NSString*)expression
                                      vars:(NSArray*)vars;
 
-- (instancetype) initWithExpression:(NSString*)expression;
-- (instancetype) initWithExpression:(NSString*)expression
-                               vars:(NSArray*)vars;
-    
 + (double) evaluateExpression:(NSString*)expression;
 + (double) evaluateExpression:(NSString*)expression
                withVarsValues:(NSDictionary*)varsValues;

@@ -41,17 +41,13 @@
 @implementation VBMathParser
 
 + (instancetype) mathParserWithExpression:(NSString*)expression {
-    return [[self alloc] initWithExpression:expression];
+    return [[self alloc] initWithExpression:expression
+                                       vars:nil];
 }
 + (instancetype) mathParserWithExpression:(NSString*)expression
                                      vars:(NSArray*)vars{
     return [[self alloc] initWithExpression:expression
                                        vars:vars];
-}
-
-- (instancetype) initWithExpression:(NSString*)expression {
-    return [self initWithExpression:expression
-                               vars:nil];
 }
 
 - (instancetype) initWithExpression:(NSString*)expression
