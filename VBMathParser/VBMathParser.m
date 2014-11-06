@@ -73,22 +73,22 @@
     }
 }
 
-- (void) parse:(NSString*)str
+- (void) parse:(NSString*)expression
       withVars:(NSArray*)vars {
-    NSArray* tokens = [self.lexicalAnalyzer analyseString:str
+    NSArray* tokens = [self.lexicalAnalyzer analyseString:expression
                                                  withVars:vars];
     tokens = [self.syntaxAnalyzer analyseTokens:tokens];
     self.tokens = [self.rpnWorker formatTokens:tokens];
 }
 
 #pragma mark - evaluate
-+ (double) evaluateExpression:(NSString*)str {
-    return [self evaluateExpression:str
++ (double) evaluateExpression:(NSString*)expression {
+    return [self evaluateExpression:expression
                      withVarsValues:nil];
 }
-+ (double) evaluateExpression:(NSString*)str
++ (double) evaluateExpression:(NSString*)expression
                withVarsValues:(NSDictionary*)varsValues {
-    VBMathParser* parser = [self mathParserWithExpression:str
+    VBMathParser* parser = [self mathParserWithExpression:expression
                                                      vars:varsValues.allKeys];
     return [parser evaluateWithVarsValues:varsValues];
 }
