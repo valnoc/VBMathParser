@@ -122,7 +122,7 @@
             if (i > 0) {
                 VBMathParserToken* tokenRight = resultArray[i - 1];
                
-                if ([tokenRight isKindOfClass:[VBMathParserTokenNumber class]]) {
+                if ([tokenRight isKindOfClass:[VBMathParserTokenNumber class]] || [tokenRight isKindOfClass:[NSNumber class]]) {
                     paramRight = [(VBMathParserTokenNumber*)tokenRight doubleValue];
                 }
                 
@@ -133,7 +133,7 @@
             if ([token isKindOfClass:[VBMathParserTokenOperation class]] && i > 1) {
                 VBMathParserToken* tokenLeft = resultArray[i - 2];
                 
-                if ([tokenLeft isKindOfClass:[VBMathParserTokenNumber class]]) {
+                if ([tokenLeft isKindOfClass:[VBMathParserTokenNumber class]] || [tokenLeft isKindOfClass:[NSNumber class]]) {
                     paramLeft = [(VBMathParserTokenNumber*)tokenLeft doubleValue];
                 }
                 replacementRange.location--;
@@ -149,7 +149,7 @@
             }
             
             [resultArray removeObjectsInRange:replacementRange];
-            [resultArray insertObject:[VBMathParserTokenNumber tokenWithString:[NSString stringWithFormat:@"%@", @(actRes)]]
+            [resultArray insertObject:@(actRes)
                               atIndex:replacementRange.location];
             
             i = replacementRange.location - 1;
