@@ -22,9 +22,9 @@
 //    SOFTWARE.
 //
 
-#import "VBMathParserException.h"
+#import "VBException.h"
 
-@interface VBMathParserVarIsNotStringException : VBMathParserException
+@interface VBMathParserVarIsNotStringException : VBException
 
 + (instancetype) exceptionWithVar:(id)var;
 

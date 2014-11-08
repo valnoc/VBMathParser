@@ -22,9 +22,9 @@
 //    SOFTWARE.
 //
 
-#import "VBMathParserException.h"
+#import "VBException.h"
 
-@interface VBMathParserUnknownTokenException : VBMathParserException
+@interface VBMathParserUnknownTokenException : VBException
 
 + (instancetype) exceptionWithToken:(NSString*)token;
 
