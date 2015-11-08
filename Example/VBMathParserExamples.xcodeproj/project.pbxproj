@@ -56,6 +56,7 @@
 		5BDE6F561A0D85820078A4EB /* VBMathParserTokenSpecial.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE6F401A0D85820078A4EB /* VBMathParserTokenSpecial.m */; };
 		5BDE6F571A0D85820078A4EB /* VBMathParserTokenSpecialBracketClose.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE6F421A0D85820078A4EB /* VBMathParserTokenSpecialBracketClose.m */; };
 		5BDE6F581A0D85820078A4EB /* VBMathParserTokenSpecialBracketOpen.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE6F441A0D85820078A4EB /* VBMathParserTokenSpecialBracketOpen.m */; };
+		BF659B6B75585E9EA4920959 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 32C7FC6B662772B2E27CB56B /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		01E2E82861AB0B220C3116B8 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		2C2750AE3F7D8B5EFEFABADD /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		32C7FC6B662772B2E27CB56B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B1DD871196345F700F22207 /* VBMathParserVarIsNotStringException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserVarIsNotStringException.h; sourceTree = "<group>"; };
 		5B1DD872196345F700F22207 /* VBMathParserVarIsNotStringException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserVarIsNotStringException.m; sourceTree = "<group>"; };
 		5B1DD87419634A2600F22207 /* VBMathParserVarIsNotValidException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserVarIsNotValidException.h; sourceTree = "<group>"; };
@@ -168,6 +172,7 @@
 				5B76278418D5D0A1009FF7E2 /* CoreGraphics.framework in Frameworks */,
 				5B76278618D5D0A1009FF7E2 /* UIKit.framework in Frameworks */,
 				5B76278218D5D0A1009FF7E2 /* Foundation.framework in Frameworks */,
+				BF659B6B75585E9EA4920959 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,6 +197,7 @@
 				5B7627A018D5D0A2009FF7E2 /* VBMathParserExamplesTests */,
 				5B76278018D5D0A1009FF7E2 /* Frameworks */,
 				5B76277F18D5D0A1009FF7E2 /* Products */,
+				D0007318571826A86779D6FC /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -211,6 +217,7 @@
 				5B76278318D5D0A1009FF7E2 /* CoreGraphics.framework */,
 				5B76278518D5D0A1009FF7E2 /* UIKit.framework */,
 				5B76279A18D5D0A2009FF7E2 /* XCTest.framework */,
+				32C7FC6B662772B2E27CB56B /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -415,6 +422,15 @@
 			path = special;
 			sourceTree = "<group>";
 		};
+		D0007318571826A86779D6FC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				01E2E82861AB0B220C3116B8 /* Pods.debug.xcconfig */,
+				2C2750AE3F7D8B5EFEFABADD /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -422,9 +438,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5B7627AA18D5D0A2009FF7E2 /* Build configuration list for PBXNativeTarget "VBMathParserExamples" */;
 			buildPhases = (
+				FB3A733F18F1BECFD662FF77 /* Check Pods Manifest.lock */,
 				5B76277A18D5D0A1009FF7E2 /* Sources */,
 				5B76277B18D5D0A1009FF7E2 /* Frameworks */,
 				5B76277C18D5D0A1009FF7E2 /* Resources */,
+				69F129BB4A296F2461075CAD /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -505,6 +523,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		69F129BB4A296F2461075CAD /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FB3A733F18F1BECFD662FF77 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5B76277A18D5D0A1009FF7E2 /* Sources */ = {
@@ -667,6 +718,7 @@
 		};
 		5B7627AB18D5D0A2009FF7E2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 01E2E82861AB0B220C3116B8 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -680,6 +732,7 @@
 		};
 		5B7627AC18D5D0A2009FF7E2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C2750AE3F7D8B5EFEFABADD /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

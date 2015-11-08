@@ -1,0 +1,10 @@
+PODS:
+  - VBException (1.0.1)
+
+DEPENDENCIES:
+  - VBException (~> 1.0)
+
+SPEC CHECKSUMS:
+  VBException: 07642134bb7804ab2602fde2f4c332ba5c39a89b
+
+COCOAPODS: 0.38.2
