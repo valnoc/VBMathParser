@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5B1DD873196345F700F22207 /* VBMathParserVarIsNotStringException.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1DD872196345F700F22207 /* VBMathParserVarIsNotStringException.m */; };
-		5B1DD87619634A2600F22207 /* VBMathParserVarIsNotValidException.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1DD87519634A2600F22207 /* VBMathParserVarIsNotValidException.m */; };
 		5B76278218D5D0A1009FF7E2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B76278118D5D0A1009FF7E2 /* Foundation.framework */; };
 		5B76278418D5D0A1009FF7E2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B76278318D5D0A1009FF7E2 /* CoreGraphics.framework */; };
 		5B76278618D5D0A1009FF7E2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B76278518D5D0A1009FF7E2 /* UIKit.framework */; };
@@ -22,40 +20,41 @@
 		5B7627A518D5D0A2009FF7E2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B7627A318D5D0A2009FF7E2 /* InfoPlist.strings */; };
 		5B7627B218D5D120009FF7E2 /* VBMathParserLexicalAnalyzerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B7627B018D5D120009FF7E2 /* VBMathParserLexicalAnalyzerTests.m */; };
 		5B7627B318D5D120009FF7E2 /* VBMathParserSyntaxAnalyzerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B7627B118D5D120009FF7E2 /* VBMathParserSyntaxAnalyzerTests.m */; };
-		5B76280418D5D3F5009FF7E2 /* VBMathParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B7627E518D5D3F5009FF7E2 /* VBMathParser.m */; };
-		5B76280518D5D3F5009FF7E2 /* VBMathParserLexicalAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B7627E818D5D3F5009FF7E2 /* VBMathParserLexicalAnalyzer.m */; };
-		5B76280618D5D3F5009FF7E2 /* VBMathParserRPNWorker.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B7627EA18D5D3F5009FF7E2 /* VBMathParserRPNWorker.m */; };
-		5B76280718D5D3F5009FF7E2 /* VBMathParserSyntaxAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B7627EC18D5D3F5009FF7E2 /* VBMathParserSyntaxAnalyzer.m */; };
-		5B76280818D5D3F5009FF7E2 /* VBStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B7627EE18D5D3F5009FF7E2 /* VBStack.m */; };
-		5B76280A18D5D3F5009FF7E2 /* VBMathParserBracketNotClosedException.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B7627F418D5D3F5009FF7E2 /* VBMathParserBracketNotClosedException.m */; };
-		5B76280B18D5D3F5009FF7E2 /* VBMathParserBracketNotOpenedException.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B7627F618D5D3F5009FF7E2 /* VBMathParserBracketNotOpenedException.m */; };
-		5B76280C18D5D3F5009FF7E2 /* VBMathParserMissingTokenException.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B7627F818D5D3F5009FF7E2 /* VBMathParserMissingTokenException.m */; };
-		5B76280D18D5D3F5009FF7E2 /* VBMathParserUnknownTokenException.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B7627FA18D5D3F5009FF7E2 /* VBMathParserUnknownTokenException.m */; };
-		5B76280E18D5D3F5009FF7E2 /* VBMathParserToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B7627FD18D5D3F5009FF7E2 /* VBMathParserToken.m */; };
 		5B76281818D5FD9A009FF7E2 /* VBMathParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B76281718D5FD9A009FF7E2 /* VBMathParserTests.m */; };
-		5B8D22041A0EB38300C7DF30 /* VBException.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8D22031A0EB38300C7DF30 /* VBException.m */; };
-		5B9CFFA91A07B3F900AE8A26 /* VBMathParserNotImplementedException.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9CFFA81A07B3F900AE8A26 /* VBMathParserNotImplementedException.m */; };
-		5BCD6419195EF7EA000315EC /* VBMathParserMissingValueForVarException.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BCD6418195EF7EA000315EC /* VBMathParserMissingValueForVarException.m */; };
-		5BDE6F451A0D85820078A4EB /* VBMathParserTokenFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE6F1A1A0D85820078A4EB /* VBMathParserTokenFunction.m */; };
-		5BDE6F461A0D85820078A4EB /* VBMathParserTokenFunctionAbs.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE6F1C1A0D85820078A4EB /* VBMathParserTokenFunctionAbs.m */; };
-		5BDE6F471A0D85820078A4EB /* VBMathParserTokenFunctionCos.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE6F1E1A0D85820078A4EB /* VBMathParserTokenFunctionCos.m */; };
-		5BDE6F481A0D85820078A4EB /* VBMathParserTokenFunctionSin.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE6F201A0D85820078A4EB /* VBMathParserTokenFunctionSin.m */; };
-		5BDE6F491A0D85820078A4EB /* VBMathParserTokenFunctionTan.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE6F221A0D85820078A4EB /* VBMathParserTokenFunctionTan.m */; };
-		5BDE6F4A1A0D85820078A4EB /* VBMathParserTokenOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE6F251A0D85820078A4EB /* VBMathParserTokenOperation.m */; };
-		5BDE6F4B1A0D85820078A4EB /* VBMathParserTokenOperationAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE6F271A0D85820078A4EB /* VBMathParserTokenOperationAddition.m */; };
-		5BDE6F4C1A0D85820078A4EB /* VBMathParserTokenOperationDivision.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE6F291A0D85820078A4EB /* VBMathParserTokenOperationDivision.m */; };
-		5BDE6F4D1A0D85820078A4EB /* VBMathParserTokenOperationMultiplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE6F2B1A0D85820078A4EB /* VBMathParserTokenOperationMultiplication.m */; };
-		5BDE6F4E1A0D85820078A4EB /* VBMathParserTokenOperationPower.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE6F2D1A0D85820078A4EB /* VBMathParserTokenOperationPower.m */; };
-		5BDE6F4F1A0D85820078A4EB /* VBMathParserTokenOperationSubstraction.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE6F2F1A0D85820078A4EB /* VBMathParserTokenOperationSubstraction.m */; };
-		5BDE6F501A0D85820078A4EB /* VBMathParserTokenAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE6F311A0D85820078A4EB /* VBMathParserTokenAction.m */; };
-		5BDE6F511A0D85820078A4EB /* VBMathParserTokenConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE6F341A0D85820078A4EB /* VBMathParserTokenConst.m */; };
-		5BDE6F521A0D85820078A4EB /* VBMathParserTokenConstPi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE6F361A0D85820078A4EB /* VBMathParserTokenConstPi.m */; };
-		5BDE6F531A0D85820078A4EB /* VBMathParserTokenNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE6F391A0D85820078A4EB /* VBMathParserTokenNumber.m */; };
-		5BDE6F541A0D85820078A4EB /* VBMathParserTokenString.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE6F3B1A0D85820078A4EB /* VBMathParserTokenString.m */; };
-		5BDE6F551A0D85820078A4EB /* VBMathParserTokenVar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE6F3D1A0D85820078A4EB /* VBMathParserTokenVar.m */; };
-		5BDE6F561A0D85820078A4EB /* VBMathParserTokenSpecial.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE6F401A0D85820078A4EB /* VBMathParserTokenSpecial.m */; };
-		5BDE6F571A0D85820078A4EB /* VBMathParserTokenSpecialBracketClose.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE6F421A0D85820078A4EB /* VBMathParserTokenSpecialBracketClose.m */; };
-		5BDE6F581A0D85820078A4EB /* VBMathParserTokenSpecialBracketOpen.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE6F441A0D85820078A4EB /* VBMathParserTokenSpecialBracketOpen.m */; };
+		5B8207AC1BEF8B43002C8C98 /* VBMathParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B82075E1BEF8B43002C8C98 /* VBMathParser.m */; };
+		5B8207AD1BEF8B43002C8C98 /* VBMathParserLexicalAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8207611BEF8B43002C8C98 /* VBMathParserLexicalAnalyzer.m */; };
+		5B8207AE1BEF8B43002C8C98 /* VBMathParserRPNWorker.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8207631BEF8B43002C8C98 /* VBMathParserRPNWorker.m */; };
+		5B8207AF1BEF8B43002C8C98 /* VBMathParserSyntaxAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8207651BEF8B43002C8C98 /* VBMathParserSyntaxAnalyzer.m */; };
+		5B8207B01BEF8B43002C8C98 /* VBStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8207671BEF8B43002C8C98 /* VBStack.m */; };
+		5B8207B11BEF8B43002C8C98 /* VBMathParserBracketNotClosedException.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B82076B1BEF8B43002C8C98 /* VBMathParserBracketNotClosedException.m */; };
+		5B8207B21BEF8B43002C8C98 /* VBMathParserBracketNotOpenedException.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B82076D1BEF8B43002C8C98 /* VBMathParserBracketNotOpenedException.m */; };
+		5B8207B31BEF8B43002C8C98 /* VBMathParserMissingTokenException.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B82076F1BEF8B43002C8C98 /* VBMathParserMissingTokenException.m */; };
+		5B8207B41BEF8B43002C8C98 /* VBMathParserMissingValueForVarException.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8207711BEF8B43002C8C98 /* VBMathParserMissingValueForVarException.m */; };
+		5B8207B51BEF8B43002C8C98 /* VBMathParserNotImplementedException.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8207731BEF8B43002C8C98 /* VBMathParserNotImplementedException.m */; };
+		5B8207B61BEF8B43002C8C98 /* VBMathParserUnknownTokenException.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8207751BEF8B43002C8C98 /* VBMathParserUnknownTokenException.m */; };
+		5B8207B71BEF8B43002C8C98 /* VBMathParserVarIsNotStringException.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8207771BEF8B43002C8C98 /* VBMathParserVarIsNotStringException.m */; };
+		5B8207B81BEF8B43002C8C98 /* VBMathParserVarIsNotValidException.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8207791BEF8B43002C8C98 /* VBMathParserVarIsNotValidException.m */; };
+		5B8207B91BEF8B43002C8C98 /* VBMathParserTokenFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B82077E1BEF8B43002C8C98 /* VBMathParserTokenFunction.m */; };
+		5B8207BA1BEF8B43002C8C98 /* VBMathParserTokenFunctionAbs.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8207801BEF8B43002C8C98 /* VBMathParserTokenFunctionAbs.m */; };
+		5B8207BB1BEF8B43002C8C98 /* VBMathParserTokenFunctionCos.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8207821BEF8B43002C8C98 /* VBMathParserTokenFunctionCos.m */; };
+		5B8207BC1BEF8B43002C8C98 /* VBMathParserTokenFunctionSin.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8207841BEF8B43002C8C98 /* VBMathParserTokenFunctionSin.m */; };
+		5B8207BD1BEF8B43002C8C98 /* VBMathParserTokenFunctionTan.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8207861BEF8B43002C8C98 /* VBMathParserTokenFunctionTan.m */; };
+		5B8207BE1BEF8B43002C8C98 /* VBMathParserTokenOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8207891BEF8B43002C8C98 /* VBMathParserTokenOperation.m */; };
+		5B8207BF1BEF8B43002C8C98 /* VBMathParserTokenOperationAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B82078B1BEF8B43002C8C98 /* VBMathParserTokenOperationAddition.m */; };
+		5B8207C01BEF8B43002C8C98 /* VBMathParserTokenOperationDivision.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B82078D1BEF8B43002C8C98 /* VBMathParserTokenOperationDivision.m */; };
+		5B8207C11BEF8B43002C8C98 /* VBMathParserTokenOperationMultiplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B82078F1BEF8B43002C8C98 /* VBMathParserTokenOperationMultiplication.m */; };
+		5B8207C21BEF8B43002C8C98 /* VBMathParserTokenOperationPower.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8207911BEF8B43002C8C98 /* VBMathParserTokenOperationPower.m */; };
+		5B8207C31BEF8B43002C8C98 /* VBMathParserTokenOperationSubstraction.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8207931BEF8B43002C8C98 /* VBMathParserTokenOperationSubstraction.m */; };
+		5B8207C41BEF8B43002C8C98 /* VBMathParserTokenAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8207951BEF8B43002C8C98 /* VBMathParserTokenAction.m */; };
+		5B8207C51BEF8B43002C8C98 /* VBMathParserTokenConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8207981BEF8B43002C8C98 /* VBMathParserTokenConst.m */; };
+		5B8207C61BEF8B43002C8C98 /* VBMathParserTokenConstPi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B82079A1BEF8B43002C8C98 /* VBMathParserTokenConstPi.m */; };
+		5B8207C71BEF8B43002C8C98 /* VBMathParserTokenNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B82079D1BEF8B43002C8C98 /* VBMathParserTokenNumber.m */; };
+		5B8207C81BEF8B43002C8C98 /* VBMathParserTokenString.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B82079F1BEF8B43002C8C98 /* VBMathParserTokenString.m */; };
+		5B8207C91BEF8B43002C8C98 /* VBMathParserTokenVar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8207A11BEF8B43002C8C98 /* VBMathParserTokenVar.m */; };
+		5B8207CA1BEF8B43002C8C98 /* VBMathParserTokenSpecial.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8207A41BEF8B43002C8C98 /* VBMathParserTokenSpecial.m */; };
+		5B8207CB1BEF8B43002C8C98 /* VBMathParserTokenSpecialBracketClose.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8207A61BEF8B43002C8C98 /* VBMathParserTokenSpecialBracketClose.m */; };
+		5B8207CC1BEF8B43002C8C98 /* VBMathParserTokenSpecialBracketOpen.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8207A81BEF8B43002C8C98 /* VBMathParserTokenSpecialBracketOpen.m */; };
+		5B8207CD1BEF8B43002C8C98 /* VBMathParserToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8207AA1BEF8B43002C8C98 /* VBMathParserToken.m */; };
 		BF659B6B75585E9EA4920959 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 32C7FC6B662772B2E27CB56B /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -73,10 +72,6 @@
 		01E2E82861AB0B220C3116B8 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		2C2750AE3F7D8B5EFEFABADD /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		32C7FC6B662772B2E27CB56B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		5B1DD871196345F700F22207 /* VBMathParserVarIsNotStringException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserVarIsNotStringException.h; sourceTree = "<group>"; };
-		5B1DD872196345F700F22207 /* VBMathParserVarIsNotStringException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserVarIsNotStringException.m; sourceTree = "<group>"; };
-		5B1DD87419634A2600F22207 /* VBMathParserVarIsNotValidException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserVarIsNotValidException.h; sourceTree = "<group>"; };
-		5B1DD87519634A2600F22207 /* VBMathParserVarIsNotValidException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserVarIsNotValidException.m; sourceTree = "<group>"; };
 		5B76277E18D5D0A1009FF7E2 /* VBMathParserExamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VBMathParserExamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B76278118D5D0A1009FF7E2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5B76278318D5D0A1009FF7E2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -94,74 +89,76 @@
 		5B7627A418D5D0A2009FF7E2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5B7627B018D5D120009FF7E2 /* VBMathParserLexicalAnalyzerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserLexicalAnalyzerTests.m; sourceTree = "<group>"; };
 		5B7627B118D5D120009FF7E2 /* VBMathParserSyntaxAnalyzerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserSyntaxAnalyzerTests.m; sourceTree = "<group>"; };
-		5B7627E418D5D3F5009FF7E2 /* VBMathParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParser.h; sourceTree = "<group>"; };
-		5B7627E518D5D3F5009FF7E2 /* VBMathParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParser.m; sourceTree = "<group>"; };
-		5B7627E718D5D3F5009FF7E2 /* VBMathParserLexicalAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserLexicalAnalyzer.h; sourceTree = "<group>"; };
-		5B7627E818D5D3F5009FF7E2 /* VBMathParserLexicalAnalyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserLexicalAnalyzer.m; sourceTree = "<group>"; };
-		5B7627E918D5D3F5009FF7E2 /* VBMathParserRPNWorker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserRPNWorker.h; sourceTree = "<group>"; };
-		5B7627EA18D5D3F5009FF7E2 /* VBMathParserRPNWorker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserRPNWorker.m; sourceTree = "<group>"; };
-		5B7627EB18D5D3F5009FF7E2 /* VBMathParserSyntaxAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserSyntaxAnalyzer.h; sourceTree = "<group>"; };
-		5B7627EC18D5D3F5009FF7E2 /* VBMathParserSyntaxAnalyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserSyntaxAnalyzer.m; sourceTree = "<group>"; };
-		5B7627ED18D5D3F5009FF7E2 /* VBStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBStack.h; sourceTree = "<group>"; };
-		5B7627EE18D5D3F5009FF7E2 /* VBStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBStack.m; sourceTree = "<group>"; };
-		5B7627EF18D5D3F5009FF7E2 /* VBMathParserDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserDefines.h; sourceTree = "<group>"; };
-		5B7627F318D5D3F5009FF7E2 /* VBMathParserBracketNotClosedException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserBracketNotClosedException.h; sourceTree = "<group>"; };
-		5B7627F418D5D3F5009FF7E2 /* VBMathParserBracketNotClosedException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserBracketNotClosedException.m; sourceTree = "<group>"; };
-		5B7627F518D5D3F5009FF7E2 /* VBMathParserBracketNotOpenedException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserBracketNotOpenedException.h; sourceTree = "<group>"; };
-		5B7627F618D5D3F5009FF7E2 /* VBMathParserBracketNotOpenedException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserBracketNotOpenedException.m; sourceTree = "<group>"; };
-		5B7627F718D5D3F5009FF7E2 /* VBMathParserMissingTokenException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserMissingTokenException.h; sourceTree = "<group>"; };
-		5B7627F818D5D3F5009FF7E2 /* VBMathParserMissingTokenException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserMissingTokenException.m; sourceTree = "<group>"; };
-		5B7627F918D5D3F5009FF7E2 /* VBMathParserUnknownTokenException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserUnknownTokenException.h; sourceTree = "<group>"; };
-		5B7627FA18D5D3F5009FF7E2 /* VBMathParserUnknownTokenException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserUnknownTokenException.m; sourceTree = "<group>"; };
-		5B7627FC18D5D3F5009FF7E2 /* VBMathParserToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserToken.h; sourceTree = "<group>"; };
-		5B7627FD18D5D3F5009FF7E2 /* VBMathParserToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserToken.m; sourceTree = "<group>"; };
 		5B76281718D5FD9A009FF7E2 /* VBMathParserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserTests.m; sourceTree = "<group>"; };
-		5B8D22021A0EB38300C7DF30 /* VBException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBException.h; sourceTree = "<group>"; };
-		5B8D22031A0EB38300C7DF30 /* VBException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBException.m; sourceTree = "<group>"; };
-		5B9CFFA71A07B3F900AE8A26 /* VBMathParserNotImplementedException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserNotImplementedException.h; sourceTree = "<group>"; };
-		5B9CFFA81A07B3F900AE8A26 /* VBMathParserNotImplementedException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserNotImplementedException.m; sourceTree = "<group>"; };
-		5BCD6417195EF7EA000315EC /* VBMathParserMissingValueForVarException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserMissingValueForVarException.h; sourceTree = "<group>"; };
-		5BCD6418195EF7EA000315EC /* VBMathParserMissingValueForVarException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserMissingValueForVarException.m; sourceTree = "<group>"; };
-		5BDE6F191A0D85820078A4EB /* VBMathParserTokenFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserTokenFunction.h; sourceTree = "<group>"; };
-		5BDE6F1A1A0D85820078A4EB /* VBMathParserTokenFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserTokenFunction.m; sourceTree = "<group>"; };
-		5BDE6F1B1A0D85820078A4EB /* VBMathParserTokenFunctionAbs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserTokenFunctionAbs.h; sourceTree = "<group>"; };
-		5BDE6F1C1A0D85820078A4EB /* VBMathParserTokenFunctionAbs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserTokenFunctionAbs.m; sourceTree = "<group>"; };
-		5BDE6F1D1A0D85820078A4EB /* VBMathParserTokenFunctionCos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserTokenFunctionCos.h; sourceTree = "<group>"; };
-		5BDE6F1E1A0D85820078A4EB /* VBMathParserTokenFunctionCos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserTokenFunctionCos.m; sourceTree = "<group>"; };
-		5BDE6F1F1A0D85820078A4EB /* VBMathParserTokenFunctionSin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserTokenFunctionSin.h; sourceTree = "<group>"; };
-		5BDE6F201A0D85820078A4EB /* VBMathParserTokenFunctionSin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserTokenFunctionSin.m; sourceTree = "<group>"; };
-		5BDE6F211A0D85820078A4EB /* VBMathParserTokenFunctionTan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserTokenFunctionTan.h; sourceTree = "<group>"; };
-		5BDE6F221A0D85820078A4EB /* VBMathParserTokenFunctionTan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserTokenFunctionTan.m; sourceTree = "<group>"; };
-		5BDE6F241A0D85820078A4EB /* VBMathParserTokenOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserTokenOperation.h; sourceTree = "<group>"; };
-		5BDE6F251A0D85820078A4EB /* VBMathParserTokenOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserTokenOperation.m; sourceTree = "<group>"; };
-		5BDE6F261A0D85820078A4EB /* VBMathParserTokenOperationAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserTokenOperationAddition.h; sourceTree = "<group>"; };
-		5BDE6F271A0D85820078A4EB /* VBMathParserTokenOperationAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserTokenOperationAddition.m; sourceTree = "<group>"; };
-		5BDE6F281A0D85820078A4EB /* VBMathParserTokenOperationDivision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserTokenOperationDivision.h; sourceTree = "<group>"; };
-		5BDE6F291A0D85820078A4EB /* VBMathParserTokenOperationDivision.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserTokenOperationDivision.m; sourceTree = "<group>"; };
-		5BDE6F2A1A0D85820078A4EB /* VBMathParserTokenOperationMultiplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserTokenOperationMultiplication.h; sourceTree = "<group>"; };
-		5BDE6F2B1A0D85820078A4EB /* VBMathParserTokenOperationMultiplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserTokenOperationMultiplication.m; sourceTree = "<group>"; };
-		5BDE6F2C1A0D85820078A4EB /* VBMathParserTokenOperationPower.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserTokenOperationPower.h; sourceTree = "<group>"; };
-		5BDE6F2D1A0D85820078A4EB /* VBMathParserTokenOperationPower.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserTokenOperationPower.m; sourceTree = "<group>"; };
-		5BDE6F2E1A0D85820078A4EB /* VBMathParserTokenOperationSubstraction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserTokenOperationSubstraction.h; sourceTree = "<group>"; };
-		5BDE6F2F1A0D85820078A4EB /* VBMathParserTokenOperationSubstraction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserTokenOperationSubstraction.m; sourceTree = "<group>"; };
-		5BDE6F301A0D85820078A4EB /* VBMathParserTokenAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserTokenAction.h; sourceTree = "<group>"; };
-		5BDE6F311A0D85820078A4EB /* VBMathParserTokenAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserTokenAction.m; sourceTree = "<group>"; };
-		5BDE6F331A0D85820078A4EB /* VBMathParserTokenConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserTokenConst.h; sourceTree = "<group>"; };
-		5BDE6F341A0D85820078A4EB /* VBMathParserTokenConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserTokenConst.m; sourceTree = "<group>"; };
-		5BDE6F351A0D85820078A4EB /* VBMathParserTokenConstPi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserTokenConstPi.h; sourceTree = "<group>"; };
-		5BDE6F361A0D85820078A4EB /* VBMathParserTokenConstPi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserTokenConstPi.m; sourceTree = "<group>"; };
-		5BDE6F381A0D85820078A4EB /* VBMathParserTokenNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserTokenNumber.h; sourceTree = "<group>"; };
-		5BDE6F391A0D85820078A4EB /* VBMathParserTokenNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserTokenNumber.m; sourceTree = "<group>"; };
-		5BDE6F3A1A0D85820078A4EB /* VBMathParserTokenString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserTokenString.h; sourceTree = "<group>"; };
-		5BDE6F3B1A0D85820078A4EB /* VBMathParserTokenString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserTokenString.m; sourceTree = "<group>"; };
-		5BDE6F3C1A0D85820078A4EB /* VBMathParserTokenVar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserTokenVar.h; sourceTree = "<group>"; };
-		5BDE6F3D1A0D85820078A4EB /* VBMathParserTokenVar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserTokenVar.m; sourceTree = "<group>"; };
-		5BDE6F3F1A0D85820078A4EB /* VBMathParserTokenSpecial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserTokenSpecial.h; sourceTree = "<group>"; };
-		5BDE6F401A0D85820078A4EB /* VBMathParserTokenSpecial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserTokenSpecial.m; sourceTree = "<group>"; };
-		5BDE6F411A0D85820078A4EB /* VBMathParserTokenSpecialBracketClose.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserTokenSpecialBracketClose.h; sourceTree = "<group>"; };
-		5BDE6F421A0D85820078A4EB /* VBMathParserTokenSpecialBracketClose.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserTokenSpecialBracketClose.m; sourceTree = "<group>"; };
-		5BDE6F431A0D85820078A4EB /* VBMathParserTokenSpecialBracketOpen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserTokenSpecialBracketOpen.h; sourceTree = "<group>"; };
-		5BDE6F441A0D85820078A4EB /* VBMathParserTokenSpecialBracketOpen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserTokenSpecialBracketOpen.m; sourceTree = "<group>"; };
+		5B82075D1BEF8B43002C8C98 /* VBMathParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParser.h; sourceTree = "<group>"; };
+		5B82075E1BEF8B43002C8C98 /* VBMathParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParser.m; sourceTree = "<group>"; };
+		5B8207601BEF8B43002C8C98 /* VBMathParserLexicalAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserLexicalAnalyzer.h; sourceTree = "<group>"; };
+		5B8207611BEF8B43002C8C98 /* VBMathParserLexicalAnalyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserLexicalAnalyzer.m; sourceTree = "<group>"; };
+		5B8207621BEF8B43002C8C98 /* VBMathParserRPNWorker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserRPNWorker.h; sourceTree = "<group>"; };
+		5B8207631BEF8B43002C8C98 /* VBMathParserRPNWorker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserRPNWorker.m; sourceTree = "<group>"; };
+		5B8207641BEF8B43002C8C98 /* VBMathParserSyntaxAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserSyntaxAnalyzer.h; sourceTree = "<group>"; };
+		5B8207651BEF8B43002C8C98 /* VBMathParserSyntaxAnalyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserSyntaxAnalyzer.m; sourceTree = "<group>"; };
+		5B8207661BEF8B43002C8C98 /* VBStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBStack.h; sourceTree = "<group>"; };
+		5B8207671BEF8B43002C8C98 /* VBStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBStack.m; sourceTree = "<group>"; };
+		5B8207681BEF8B43002C8C98 /* VBMathParserDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserDefines.h; sourceTree = "<group>"; };
+		5B82076A1BEF8B43002C8C98 /* VBMathParserBracketNotClosedException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserBracketNotClosedException.h; sourceTree = "<group>"; };
+		5B82076B1BEF8B43002C8C98 /* VBMathParserBracketNotClosedException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserBracketNotClosedException.m; sourceTree = "<group>"; };
+		5B82076C1BEF8B43002C8C98 /* VBMathParserBracketNotOpenedException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserBracketNotOpenedException.h; sourceTree = "<group>"; };
+		5B82076D1BEF8B43002C8C98 /* VBMathParserBracketNotOpenedException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserBracketNotOpenedException.m; sourceTree = "<group>"; };
+		5B82076E1BEF8B43002C8C98 /* VBMathParserMissingTokenException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserMissingTokenException.h; sourceTree = "<group>"; };
+		5B82076F1BEF8B43002C8C98 /* VBMathParserMissingTokenException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserMissingTokenException.m; sourceTree = "<group>"; };
+		5B8207701BEF8B43002C8C98 /* VBMathParserMissingValueForVarException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserMissingValueForVarException.h; sourceTree = "<group>"; };
+		5B8207711BEF8B43002C8C98 /* VBMathParserMissingValueForVarException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserMissingValueForVarException.m; sourceTree = "<group>"; };
+		5B8207721BEF8B43002C8C98 /* VBMathParserNotImplementedException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserNotImplementedException.h; sourceTree = "<group>"; };
+		5B8207731BEF8B43002C8C98 /* VBMathParserNotImplementedException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserNotImplementedException.m; sourceTree = "<group>"; };
+		5B8207741BEF8B43002C8C98 /* VBMathParserUnknownTokenException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserUnknownTokenException.h; sourceTree = "<group>"; };
+		5B8207751BEF8B43002C8C98 /* VBMathParserUnknownTokenException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserUnknownTokenException.m; sourceTree = "<group>"; };
+		5B8207761BEF8B43002C8C98 /* VBMathParserVarIsNotStringException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserVarIsNotStringException.h; sourceTree = "<group>"; };
+		5B8207771BEF8B43002C8C98 /* VBMathParserVarIsNotStringException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserVarIsNotStringException.m; sourceTree = "<group>"; };
+		5B8207781BEF8B43002C8C98 /* VBMathParserVarIsNotValidException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserVarIsNotValidException.h; sourceTree = "<group>"; };
+		5B8207791BEF8B43002C8C98 /* VBMathParserVarIsNotValidException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserVarIsNotValidException.m; sourceTree = "<group>"; };
+		5B82077D1BEF8B43002C8C98 /* VBMathParserTokenFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserTokenFunction.h; sourceTree = "<group>"; };
+		5B82077E1BEF8B43002C8C98 /* VBMathParserTokenFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserTokenFunction.m; sourceTree = "<group>"; };
+		5B82077F1BEF8B43002C8C98 /* VBMathParserTokenFunctionAbs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserTokenFunctionAbs.h; sourceTree = "<group>"; };
+		5B8207801BEF8B43002C8C98 /* VBMathParserTokenFunctionAbs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserTokenFunctionAbs.m; sourceTree = "<group>"; };
+		5B8207811BEF8B43002C8C98 /* VBMathParserTokenFunctionCos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserTokenFunctionCos.h; sourceTree = "<group>"; };
+		5B8207821BEF8B43002C8C98 /* VBMathParserTokenFunctionCos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserTokenFunctionCos.m; sourceTree = "<group>"; };
+		5B8207831BEF8B43002C8C98 /* VBMathParserTokenFunctionSin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserTokenFunctionSin.h; sourceTree = "<group>"; };
+		5B8207841BEF8B43002C8C98 /* VBMathParserTokenFunctionSin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserTokenFunctionSin.m; sourceTree = "<group>"; };
+		5B8207851BEF8B43002C8C98 /* VBMathParserTokenFunctionTan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserTokenFunctionTan.h; sourceTree = "<group>"; };
+		5B8207861BEF8B43002C8C98 /* VBMathParserTokenFunctionTan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserTokenFunctionTan.m; sourceTree = "<group>"; };
+		5B8207881BEF8B43002C8C98 /* VBMathParserTokenOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserTokenOperation.h; sourceTree = "<group>"; };
+		5B8207891BEF8B43002C8C98 /* VBMathParserTokenOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserTokenOperation.m; sourceTree = "<group>"; };
+		5B82078A1BEF8B43002C8C98 /* VBMathParserTokenOperationAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserTokenOperationAddition.h; sourceTree = "<group>"; };
+		5B82078B1BEF8B43002C8C98 /* VBMathParserTokenOperationAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserTokenOperationAddition.m; sourceTree = "<group>"; };
+		5B82078C1BEF8B43002C8C98 /* VBMathParserTokenOperationDivision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserTokenOperationDivision.h; sourceTree = "<group>"; };
+		5B82078D1BEF8B43002C8C98 /* VBMathParserTokenOperationDivision.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserTokenOperationDivision.m; sourceTree = "<group>"; };
+		5B82078E1BEF8B43002C8C98 /* VBMathParserTokenOperationMultiplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserTokenOperationMultiplication.h; sourceTree = "<group>"; };
+		5B82078F1BEF8B43002C8C98 /* VBMathParserTokenOperationMultiplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserTokenOperationMultiplication.m; sourceTree = "<group>"; };
+		5B8207901BEF8B43002C8C98 /* VBMathParserTokenOperationPower.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserTokenOperationPower.h; sourceTree = "<group>"; };
+		5B8207911BEF8B43002C8C98 /* VBMathParserTokenOperationPower.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserTokenOperationPower.m; sourceTree = "<group>"; };
+		5B8207921BEF8B43002C8C98 /* VBMathParserTokenOperationSubstraction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserTokenOperationSubstraction.h; sourceTree = "<group>"; };
+		5B8207931BEF8B43002C8C98 /* VBMathParserTokenOperationSubstraction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserTokenOperationSubstraction.m; sourceTree = "<group>"; };
+		5B8207941BEF8B43002C8C98 /* VBMathParserTokenAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserTokenAction.h; sourceTree = "<group>"; };
+		5B8207951BEF8B43002C8C98 /* VBMathParserTokenAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserTokenAction.m; sourceTree = "<group>"; };
+		5B8207971BEF8B43002C8C98 /* VBMathParserTokenConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserTokenConst.h; sourceTree = "<group>"; };
+		5B8207981BEF8B43002C8C98 /* VBMathParserTokenConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserTokenConst.m; sourceTree = "<group>"; };
+		5B8207991BEF8B43002C8C98 /* VBMathParserTokenConstPi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserTokenConstPi.h; sourceTree = "<group>"; };
+		5B82079A1BEF8B43002C8C98 /* VBMathParserTokenConstPi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserTokenConstPi.m; sourceTree = "<group>"; };
+		5B82079C1BEF8B43002C8C98 /* VBMathParserTokenNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserTokenNumber.h; sourceTree = "<group>"; };
+		5B82079D1BEF8B43002C8C98 /* VBMathParserTokenNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserTokenNumber.m; sourceTree = "<group>"; };
+		5B82079E1BEF8B43002C8C98 /* VBMathParserTokenString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserTokenString.h; sourceTree = "<group>"; };
+		5B82079F1BEF8B43002C8C98 /* VBMathParserTokenString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserTokenString.m; sourceTree = "<group>"; };
+		5B8207A01BEF8B43002C8C98 /* VBMathParserTokenVar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserTokenVar.h; sourceTree = "<group>"; };
+		5B8207A11BEF8B43002C8C98 /* VBMathParserTokenVar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserTokenVar.m; sourceTree = "<group>"; };
+		5B8207A31BEF8B43002C8C98 /* VBMathParserTokenSpecial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserTokenSpecial.h; sourceTree = "<group>"; };
+		5B8207A41BEF8B43002C8C98 /* VBMathParserTokenSpecial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserTokenSpecial.m; sourceTree = "<group>"; };
+		5B8207A51BEF8B43002C8C98 /* VBMathParserTokenSpecialBracketClose.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserTokenSpecialBracketClose.h; sourceTree = "<group>"; };
+		5B8207A61BEF8B43002C8C98 /* VBMathParserTokenSpecialBracketClose.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserTokenSpecialBracketClose.m; sourceTree = "<group>"; };
+		5B8207A71BEF8B43002C8C98 /* VBMathParserTokenSpecialBracketOpen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserTokenSpecialBracketOpen.h; sourceTree = "<group>"; };
+		5B8207A81BEF8B43002C8C98 /* VBMathParserTokenSpecialBracketOpen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserTokenSpecialBracketOpen.m; sourceTree = "<group>"; };
+		5B8207A91BEF8B43002C8C98 /* VBMathParserToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserToken.h; sourceTree = "<group>"; };
+		5B8207AA1BEF8B43002C8C98 /* VBMathParserToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserToken.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,7 +189,7 @@
 		5B76277518D5D0A1009FF7E2 = {
 			isa = PBXGroup;
 			children = (
-				5B7627E318D5D3F5009FF7E2 /* VBMathParser */,
+				5B8207591BEF8B43002C8C98 /* VBMathParser */,
 				5B76278718D5D0A1009FF7E2 /* VBMathParserExamples */,
 				5B7627A018D5D0A2009FF7E2 /* VBMathParserExamplesTests */,
 				5B76278018D5D0A1009FF7E2 /* Frameworks */,
@@ -264,160 +261,151 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		5B7627E318D5D3F5009FF7E2 /* VBMathParser */ = {
+		5B8207591BEF8B43002C8C98 /* VBMathParser */ = {
 			isa = PBXGroup;
 			children = (
-				5B8D22011A0EB38300C7DF30 /* VBException */,
-				5B7627EF18D5D3F5009FF7E2 /* VBMathParserDefines.h */,
-				5B7627E418D5D3F5009FF7E2 /* VBMathParser.h */,
-				5B7627E518D5D3F5009FF7E2 /* VBMathParser.m */,
-				5B7627E618D5D3F5009FF7E2 /* VBMathParserAnalyzers */,
-				5B7627F018D5D3F5009FF7E2 /* VBMathParserExceptions */,
-				5B7627FB18D5D3F5009FF7E2 /* VBMathParserTokens */,
+				5B82075D1BEF8B43002C8C98 /* VBMathParser.h */,
+				5B82075E1BEF8B43002C8C98 /* VBMathParser.m */,
+				5B82075F1BEF8B43002C8C98 /* VBMathParserAnalyzers */,
+				5B8207681BEF8B43002C8C98 /* VBMathParserDefines.h */,
+				5B8207691BEF8B43002C8C98 /* VBMathParserExceptions */,
+				5B82077A1BEF8B43002C8C98 /* VBMathParserTokens */,
 			);
-			path = VBMathParser;
+			name = VBMathParser;
+			path = ../VBMathParser;
 			sourceTree = "<group>";
 		};
-		5B7627E618D5D3F5009FF7E2 /* VBMathParserAnalyzers */ = {
+		5B82075F1BEF8B43002C8C98 /* VBMathParserAnalyzers */ = {
 			isa = PBXGroup;
 			children = (
-				5B7627E718D5D3F5009FF7E2 /* VBMathParserLexicalAnalyzer.h */,
-				5B7627E818D5D3F5009FF7E2 /* VBMathParserLexicalAnalyzer.m */,
-				5B7627EB18D5D3F5009FF7E2 /* VBMathParserSyntaxAnalyzer.h */,
-				5B7627EC18D5D3F5009FF7E2 /* VBMathParserSyntaxAnalyzer.m */,
-				5B7627E918D5D3F5009FF7E2 /* VBMathParserRPNWorker.h */,
-				5B7627EA18D5D3F5009FF7E2 /* VBMathParserRPNWorker.m */,
-				5B7627ED18D5D3F5009FF7E2 /* VBStack.h */,
-				5B7627EE18D5D3F5009FF7E2 /* VBStack.m */,
+				5B8207601BEF8B43002C8C98 /* VBMathParserLexicalAnalyzer.h */,
+				5B8207611BEF8B43002C8C98 /* VBMathParserLexicalAnalyzer.m */,
+				5B8207621BEF8B43002C8C98 /* VBMathParserRPNWorker.h */,
+				5B8207631BEF8B43002C8C98 /* VBMathParserRPNWorker.m */,
+				5B8207641BEF8B43002C8C98 /* VBMathParserSyntaxAnalyzer.h */,
+				5B8207651BEF8B43002C8C98 /* VBMathParserSyntaxAnalyzer.m */,
+				5B8207661BEF8B43002C8C98 /* VBStack.h */,
+				5B8207671BEF8B43002C8C98 /* VBStack.m */,
 			);
 			path = VBMathParserAnalyzers;
 			sourceTree = "<group>";
 		};
-		5B7627F018D5D3F5009FF7E2 /* VBMathParserExceptions */ = {
+		5B8207691BEF8B43002C8C98 /* VBMathParserExceptions */ = {
 			isa = PBXGroup;
 			children = (
-				5B7627F318D5D3F5009FF7E2 /* VBMathParserBracketNotClosedException.h */,
-				5B7627F418D5D3F5009FF7E2 /* VBMathParserBracketNotClosedException.m */,
-				5B7627F518D5D3F5009FF7E2 /* VBMathParserBracketNotOpenedException.h */,
-				5B7627F618D5D3F5009FF7E2 /* VBMathParserBracketNotOpenedException.m */,
-				5B7627F718D5D3F5009FF7E2 /* VBMathParserMissingTokenException.h */,
-				5B7627F818D5D3F5009FF7E2 /* VBMathParserMissingTokenException.m */,
-				5B7627F918D5D3F5009FF7E2 /* VBMathParserUnknownTokenException.h */,
-				5B7627FA18D5D3F5009FF7E2 /* VBMathParserUnknownTokenException.m */,
-				5BCD6417195EF7EA000315EC /* VBMathParserMissingValueForVarException.h */,
-				5BCD6418195EF7EA000315EC /* VBMathParserMissingValueForVarException.m */,
-				5B1DD871196345F700F22207 /* VBMathParserVarIsNotStringException.h */,
-				5B1DD872196345F700F22207 /* VBMathParserVarIsNotStringException.m */,
-				5B1DD87419634A2600F22207 /* VBMathParserVarIsNotValidException.h */,
-				5B1DD87519634A2600F22207 /* VBMathParserVarIsNotValidException.m */,
-				5B9CFFA71A07B3F900AE8A26 /* VBMathParserNotImplementedException.h */,
-				5B9CFFA81A07B3F900AE8A26 /* VBMathParserNotImplementedException.m */,
+				5B82076A1BEF8B43002C8C98 /* VBMathParserBracketNotClosedException.h */,
+				5B82076B1BEF8B43002C8C98 /* VBMathParserBracketNotClosedException.m */,
+				5B82076C1BEF8B43002C8C98 /* VBMathParserBracketNotOpenedException.h */,
+				5B82076D1BEF8B43002C8C98 /* VBMathParserBracketNotOpenedException.m */,
+				5B82076E1BEF8B43002C8C98 /* VBMathParserMissingTokenException.h */,
+				5B82076F1BEF8B43002C8C98 /* VBMathParserMissingTokenException.m */,
+				5B8207701BEF8B43002C8C98 /* VBMathParserMissingValueForVarException.h */,
+				5B8207711BEF8B43002C8C98 /* VBMathParserMissingValueForVarException.m */,
+				5B8207721BEF8B43002C8C98 /* VBMathParserNotImplementedException.h */,
+				5B8207731BEF8B43002C8C98 /* VBMathParserNotImplementedException.m */,
+				5B8207741BEF8B43002C8C98 /* VBMathParserUnknownTokenException.h */,
+				5B8207751BEF8B43002C8C98 /* VBMathParserUnknownTokenException.m */,
+				5B8207761BEF8B43002C8C98 /* VBMathParserVarIsNotStringException.h */,
+				5B8207771BEF8B43002C8C98 /* VBMathParserVarIsNotStringException.m */,
+				5B8207781BEF8B43002C8C98 /* VBMathParserVarIsNotValidException.h */,
+				5B8207791BEF8B43002C8C98 /* VBMathParserVarIsNotValidException.m */,
 			);
 			path = VBMathParserExceptions;
 			sourceTree = "<group>";
 		};
-		5B7627FB18D5D3F5009FF7E2 /* VBMathParserTokens */ = {
+		5B82077A1BEF8B43002C8C98 /* VBMathParserTokens */ = {
 			isa = PBXGroup;
 			children = (
-				5B7627FC18D5D3F5009FF7E2 /* VBMathParserToken.h */,
-				5B7627FD18D5D3F5009FF7E2 /* VBMathParserToken.m */,
-				5BDE6F171A0D85820078A4EB /* action */,
-				5BDE6F321A0D85820078A4EB /* const */,
-				5BDE6F371A0D85820078A4EB /* number */,
-				5BDE6F3E1A0D85820078A4EB /* special */,
+				5B82077B1BEF8B43002C8C98 /* action */,
+				5B8207961BEF8B43002C8C98 /* const */,
+				5B82079B1BEF8B43002C8C98 /* number */,
+				5B8207A21BEF8B43002C8C98 /* special */,
+				5B8207A91BEF8B43002C8C98 /* VBMathParserToken.h */,
+				5B8207AA1BEF8B43002C8C98 /* VBMathParserToken.m */,
 			);
 			path = VBMathParserTokens;
 			sourceTree = "<group>";
 		};
-		5B8D22011A0EB38300C7DF30 /* VBException */ = {
+		5B82077B1BEF8B43002C8C98 /* action */ = {
 			isa = PBXGroup;
 			children = (
-				5B8D22021A0EB38300C7DF30 /* VBException.h */,
-				5B8D22031A0EB38300C7DF30 /* VBException.m */,
-			);
-			path = VBException;
-			sourceTree = "<group>";
-		};
-		5BDE6F171A0D85820078A4EB /* action */ = {
-			isa = PBXGroup;
-			children = (
-				5BDE6F181A0D85820078A4EB /* function */,
-				5BDE6F231A0D85820078A4EB /* operation */,
-				5BDE6F301A0D85820078A4EB /* VBMathParserTokenAction.h */,
-				5BDE6F311A0D85820078A4EB /* VBMathParserTokenAction.m */,
+				5B82077C1BEF8B43002C8C98 /* function */,
+				5B8207871BEF8B43002C8C98 /* operation */,
+				5B8207941BEF8B43002C8C98 /* VBMathParserTokenAction.h */,
+				5B8207951BEF8B43002C8C98 /* VBMathParserTokenAction.m */,
 			);
 			path = action;
 			sourceTree = "<group>";
 		};
-		5BDE6F181A0D85820078A4EB /* function */ = {
+		5B82077C1BEF8B43002C8C98 /* function */ = {
 			isa = PBXGroup;
 			children = (
-				5BDE6F191A0D85820078A4EB /* VBMathParserTokenFunction.h */,
-				5BDE6F1A1A0D85820078A4EB /* VBMathParserTokenFunction.m */,
-				5BDE6F1B1A0D85820078A4EB /* VBMathParserTokenFunctionAbs.h */,
-				5BDE6F1C1A0D85820078A4EB /* VBMathParserTokenFunctionAbs.m */,
-				5BDE6F1D1A0D85820078A4EB /* VBMathParserTokenFunctionCos.h */,
-				5BDE6F1E1A0D85820078A4EB /* VBMathParserTokenFunctionCos.m */,
-				5BDE6F1F1A0D85820078A4EB /* VBMathParserTokenFunctionSin.h */,
-				5BDE6F201A0D85820078A4EB /* VBMathParserTokenFunctionSin.m */,
-				5BDE6F211A0D85820078A4EB /* VBMathParserTokenFunctionTan.h */,
-				5BDE6F221A0D85820078A4EB /* VBMathParserTokenFunctionTan.m */,
+				5B82077D1BEF8B43002C8C98 /* VBMathParserTokenFunction.h */,
+				5B82077E1BEF8B43002C8C98 /* VBMathParserTokenFunction.m */,
+				5B82077F1BEF8B43002C8C98 /* VBMathParserTokenFunctionAbs.h */,
+				5B8207801BEF8B43002C8C98 /* VBMathParserTokenFunctionAbs.m */,
+				5B8207811BEF8B43002C8C98 /* VBMathParserTokenFunctionCos.h */,
+				5B8207821BEF8B43002C8C98 /* VBMathParserTokenFunctionCos.m */,
+				5B8207831BEF8B43002C8C98 /* VBMathParserTokenFunctionSin.h */,
+				5B8207841BEF8B43002C8C98 /* VBMathParserTokenFunctionSin.m */,
+				5B8207851BEF8B43002C8C98 /* VBMathParserTokenFunctionTan.h */,
+				5B8207861BEF8B43002C8C98 /* VBMathParserTokenFunctionTan.m */,
 			);
 			path = function;
 			sourceTree = "<group>";
 		};
-		5BDE6F231A0D85820078A4EB /* operation */ = {
+		5B8207871BEF8B43002C8C98 /* operation */ = {
 			isa = PBXGroup;
 			children = (
-				5BDE6F241A0D85820078A4EB /* VBMathParserTokenOperation.h */,
-				5BDE6F251A0D85820078A4EB /* VBMathParserTokenOperation.m */,
-				5BDE6F261A0D85820078A4EB /* VBMathParserTokenOperationAddition.h */,
-				5BDE6F271A0D85820078A4EB /* VBMathParserTokenOperationAddition.m */,
-				5BDE6F281A0D85820078A4EB /* VBMathParserTokenOperationDivision.h */,
-				5BDE6F291A0D85820078A4EB /* VBMathParserTokenOperationDivision.m */,
-				5BDE6F2A1A0D85820078A4EB /* VBMathParserTokenOperationMultiplication.h */,
-				5BDE6F2B1A0D85820078A4EB /* VBMathParserTokenOperationMultiplication.m */,
-				5BDE6F2C1A0D85820078A4EB /* VBMathParserTokenOperationPower.h */,
-				5BDE6F2D1A0D85820078A4EB /* VBMathParserTokenOperationPower.m */,
-				5BDE6F2E1A0D85820078A4EB /* VBMathParserTokenOperationSubstraction.h */,
-				5BDE6F2F1A0D85820078A4EB /* VBMathParserTokenOperationSubstraction.m */,
+				5B8207881BEF8B43002C8C98 /* VBMathParserTokenOperation.h */,
+				5B8207891BEF8B43002C8C98 /* VBMathParserTokenOperation.m */,
+				5B82078A1BEF8B43002C8C98 /* VBMathParserTokenOperationAddition.h */,
+				5B82078B1BEF8B43002C8C98 /* VBMathParserTokenOperationAddition.m */,
+				5B82078C1BEF8B43002C8C98 /* VBMathParserTokenOperationDivision.h */,
+				5B82078D1BEF8B43002C8C98 /* VBMathParserTokenOperationDivision.m */,
+				5B82078E1BEF8B43002C8C98 /* VBMathParserTokenOperationMultiplication.h */,
+				5B82078F1BEF8B43002C8C98 /* VBMathParserTokenOperationMultiplication.m */,
+				5B8207901BEF8B43002C8C98 /* VBMathParserTokenOperationPower.h */,
+				5B8207911BEF8B43002C8C98 /* VBMathParserTokenOperationPower.m */,
+				5B8207921BEF8B43002C8C98 /* VBMathParserTokenOperationSubstraction.h */,
+				5B8207931BEF8B43002C8C98 /* VBMathParserTokenOperationSubstraction.m */,
 			);
 			path = operation;
 			sourceTree = "<group>";
 		};
-		5BDE6F321A0D85820078A4EB /* const */ = {
+		5B8207961BEF8B43002C8C98 /* const */ = {
 			isa = PBXGroup;
 			children = (
-				5BDE6F331A0D85820078A4EB /* VBMathParserTokenConst.h */,
-				5BDE6F341A0D85820078A4EB /* VBMathParserTokenConst.m */,
-				5BDE6F351A0D85820078A4EB /* VBMathParserTokenConstPi.h */,
-				5BDE6F361A0D85820078A4EB /* VBMathParserTokenConstPi.m */,
+				5B8207971BEF8B43002C8C98 /* VBMathParserTokenConst.h */,
+				5B8207981BEF8B43002C8C98 /* VBMathParserTokenConst.m */,
+				5B8207991BEF8B43002C8C98 /* VBMathParserTokenConstPi.h */,
+				5B82079A1BEF8B43002C8C98 /* VBMathParserTokenConstPi.m */,
 			);
 			path = const;
 			sourceTree = "<group>";
 		};
-		5BDE6F371A0D85820078A4EB /* number */ = {
+		5B82079B1BEF8B43002C8C98 /* number */ = {
 			isa = PBXGroup;
 			children = (
-				5BDE6F381A0D85820078A4EB /* VBMathParserTokenNumber.h */,
-				5BDE6F391A0D85820078A4EB /* VBMathParserTokenNumber.m */,
-				5BDE6F3A1A0D85820078A4EB /* VBMathParserTokenString.h */,
-				5BDE6F3B1A0D85820078A4EB /* VBMathParserTokenString.m */,
-				5BDE6F3C1A0D85820078A4EB /* VBMathParserTokenVar.h */,
-				5BDE6F3D1A0D85820078A4EB /* VBMathParserTokenVar.m */,
+				5B82079C1BEF8B43002C8C98 /* VBMathParserTokenNumber.h */,
+				5B82079D1BEF8B43002C8C98 /* VBMathParserTokenNumber.m */,
+				5B82079E1BEF8B43002C8C98 /* VBMathParserTokenString.h */,
+				5B82079F1BEF8B43002C8C98 /* VBMathParserTokenString.m */,
+				5B8207A01BEF8B43002C8C98 /* VBMathParserTokenVar.h */,
+				5B8207A11BEF8B43002C8C98 /* VBMathParserTokenVar.m */,
 			);
 			path = number;
 			sourceTree = "<group>";
 		};
-		5BDE6F3E1A0D85820078A4EB /* special */ = {
+		5B8207A21BEF8B43002C8C98 /* special */ = {
 			isa = PBXGroup;
 			children = (
-				5BDE6F3F1A0D85820078A4EB /* VBMathParserTokenSpecial.h */,
-				5BDE6F401A0D85820078A4EB /* VBMathParserTokenSpecial.m */,
-				5BDE6F411A0D85820078A4EB /* VBMathParserTokenSpecialBracketClose.h */,
-				5BDE6F421A0D85820078A4EB /* VBMathParserTokenSpecialBracketClose.m */,
-				5BDE6F431A0D85820078A4EB /* VBMathParserTokenSpecialBracketOpen.h */,
-				5BDE6F441A0D85820078A4EB /* VBMathParserTokenSpecialBracketOpen.m */,
+				5B8207A31BEF8B43002C8C98 /* VBMathParserTokenSpecial.h */,
+				5B8207A41BEF8B43002C8C98 /* VBMathParserTokenSpecial.m */,
+				5B8207A51BEF8B43002C8C98 /* VBMathParserTokenSpecialBracketClose.h */,
+				5B8207A61BEF8B43002C8C98 /* VBMathParserTokenSpecialBracketClose.m */,
+				5B8207A71BEF8B43002C8C98 /* VBMathParserTokenSpecialBracketOpen.h */,
+				5B8207A81BEF8B43002C8C98 /* VBMathParserTokenSpecialBracketOpen.m */,
 			);
 			path = special;
 			sourceTree = "<group>";
@@ -562,43 +550,42 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5BDE6F4C1A0D85820078A4EB /* VBMathParserTokenOperationDivision.m in Sources */,
-				5BDE6F471A0D85820078A4EB /* VBMathParserTokenFunctionCos.m in Sources */,
-				5BDE6F451A0D85820078A4EB /* VBMathParserTokenFunction.m in Sources */,
+				5B8207BB1BEF8B43002C8C98 /* VBMathParserTokenFunctionCos.m in Sources */,
+				5B8207CD1BEF8B43002C8C98 /* VBMathParserToken.m in Sources */,
+				5B8207C91BEF8B43002C8C98 /* VBMathParserTokenVar.m in Sources */,
+				5B8207CA1BEF8B43002C8C98 /* VBMathParserTokenSpecial.m in Sources */,
+				5B8207C61BEF8B43002C8C98 /* VBMathParserTokenConstPi.m in Sources */,
+				5B8207BC1BEF8B43002C8C98 /* VBMathParserTokenFunctionSin.m in Sources */,
+				5B8207C41BEF8B43002C8C98 /* VBMathParserTokenAction.m in Sources */,
+				5B8207AC1BEF8B43002C8C98 /* VBMathParser.m in Sources */,
+				5B8207CC1BEF8B43002C8C98 /* VBMathParserTokenSpecialBracketOpen.m in Sources */,
+				5B8207B51BEF8B43002C8C98 /* VBMathParserNotImplementedException.m in Sources */,
+				5B8207B41BEF8B43002C8C98 /* VBMathParserMissingValueForVarException.m in Sources */,
+				5B8207B81BEF8B43002C8C98 /* VBMathParserVarIsNotValidException.m in Sources */,
 				5B76279218D5D0A1009FF7E2 /* VBAppDelegate.m in Sources */,
-				5BDE6F581A0D85820078A4EB /* VBMathParserTokenSpecialBracketOpen.m in Sources */,
-				5B76280718D5D3F5009FF7E2 /* VBMathParserSyntaxAnalyzer.m in Sources */,
-				5BDE6F4E1A0D85820078A4EB /* VBMathParserTokenOperationPower.m in Sources */,
-				5BDE6F4B1A0D85820078A4EB /* VBMathParserTokenOperationAddition.m in Sources */,
-				5BDE6F501A0D85820078A4EB /* VBMathParserTokenAction.m in Sources */,
-				5BDE6F511A0D85820078A4EB /* VBMathParserTokenConst.m in Sources */,
+				5B8207B01BEF8B43002C8C98 /* VBStack.m in Sources */,
+				5B8207C51BEF8B43002C8C98 /* VBMathParserTokenConst.m in Sources */,
+				5B8207BE1BEF8B43002C8C98 /* VBMathParserTokenOperation.m in Sources */,
+				5B8207C31BEF8B43002C8C98 /* VBMathParserTokenOperationSubstraction.m in Sources */,
+				5B8207BF1BEF8B43002C8C98 /* VBMathParserTokenOperationAddition.m in Sources */,
+				5B8207B71BEF8B43002C8C98 /* VBMathParserVarIsNotStringException.m in Sources */,
+				5B8207C11BEF8B43002C8C98 /* VBMathParserTokenOperationMultiplication.m in Sources */,
+				5B8207B91BEF8B43002C8C98 /* VBMathParserTokenFunction.m in Sources */,
 				5B76278E18D5D0A1009FF7E2 /* main.m in Sources */,
-				5B9CFFA91A07B3F900AE8A26 /* VBMathParserNotImplementedException.m in Sources */,
-				5B8D22041A0EB38300C7DF30 /* VBException.m in Sources */,
-				5BCD6419195EF7EA000315EC /* VBMathParserMissingValueForVarException.m in Sources */,
-				5B76280618D5D3F5009FF7E2 /* VBMathParserRPNWorker.m in Sources */,
-				5BDE6F531A0D85820078A4EB /* VBMathParserTokenNumber.m in Sources */,
-				5BDE6F561A0D85820078A4EB /* VBMathParserTokenSpecial.m in Sources */,
-				5BDE6F481A0D85820078A4EB /* VBMathParserTokenFunctionSin.m in Sources */,
-				5B76280818D5D3F5009FF7E2 /* VBStack.m in Sources */,
-				5BDE6F491A0D85820078A4EB /* VBMathParserTokenFunctionTan.m in Sources */,
-				5B76280D18D5D3F5009FF7E2 /* VBMathParserUnknownTokenException.m in Sources */,
-				5B76280418D5D3F5009FF7E2 /* VBMathParser.m in Sources */,
-				5B76280518D5D3F5009FF7E2 /* VBMathParserLexicalAnalyzer.m in Sources */,
-				5B1DD87619634A2600F22207 /* VBMathParserVarIsNotValidException.m in Sources */,
-				5BDE6F4A1A0D85820078A4EB /* VBMathParserTokenOperation.m in Sources */,
-				5B1DD873196345F700F22207 /* VBMathParserVarIsNotStringException.m in Sources */,
-				5BDE6F571A0D85820078A4EB /* VBMathParserTokenSpecialBracketClose.m in Sources */,
-				5BDE6F521A0D85820078A4EB /* VBMathParserTokenConstPi.m in Sources */,
-				5B76280E18D5D3F5009FF7E2 /* VBMathParserToken.m in Sources */,
-				5BDE6F4F1A0D85820078A4EB /* VBMathParserTokenOperationSubstraction.m in Sources */,
-				5B76280C18D5D3F5009FF7E2 /* VBMathParserMissingTokenException.m in Sources */,
-				5BDE6F541A0D85820078A4EB /* VBMathParserTokenString.m in Sources */,
-				5BDE6F551A0D85820078A4EB /* VBMathParserTokenVar.m in Sources */,
-				5BDE6F461A0D85820078A4EB /* VBMathParserTokenFunctionAbs.m in Sources */,
-				5B76280B18D5D3F5009FF7E2 /* VBMathParserBracketNotOpenedException.m in Sources */,
-				5BDE6F4D1A0D85820078A4EB /* VBMathParserTokenOperationMultiplication.m in Sources */,
-				5B76280A18D5D3F5009FF7E2 /* VBMathParserBracketNotClosedException.m in Sources */,
+				5B8207AD1BEF8B43002C8C98 /* VBMathParserLexicalAnalyzer.m in Sources */,
+				5B8207AE1BEF8B43002C8C98 /* VBMathParserRPNWorker.m in Sources */,
+				5B8207C71BEF8B43002C8C98 /* VBMathParserTokenNumber.m in Sources */,
+				5B8207BD1BEF8B43002C8C98 /* VBMathParserTokenFunctionTan.m in Sources */,
+				5B8207B61BEF8B43002C8C98 /* VBMathParserUnknownTokenException.m in Sources */,
+				5B8207BA1BEF8B43002C8C98 /* VBMathParserTokenFunctionAbs.m in Sources */,
+				5B8207B31BEF8B43002C8C98 /* VBMathParserMissingTokenException.m in Sources */,
+				5B8207AF1BEF8B43002C8C98 /* VBMathParserSyntaxAnalyzer.m in Sources */,
+				5B8207C81BEF8B43002C8C98 /* VBMathParserTokenString.m in Sources */,
+				5B8207C01BEF8B43002C8C98 /* VBMathParserTokenOperationDivision.m in Sources */,
+				5B8207B21BEF8B43002C8C98 /* VBMathParserBracketNotOpenedException.m in Sources */,
+				5B8207C21BEF8B43002C8C98 /* VBMathParserTokenOperationPower.m in Sources */,
+				5B8207B11BEF8B43002C8C98 /* VBMathParserBracketNotClosedException.m in Sources */,
+				5B8207CB1BEF8B43002C8C98 /* VBMathParserTokenSpecialBracketClose.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
