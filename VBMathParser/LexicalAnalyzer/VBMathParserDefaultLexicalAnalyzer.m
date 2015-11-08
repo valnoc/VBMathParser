@@ -38,6 +38,12 @@
 //#import "VBMathParserVarIsNotValidException.h"
 //
 @implementation VBMathParserDefaultLexicalAnalyzer
+
+- (NSArray *) analyseExpression:(NSString *)expression
+                  withVariables:(NSArray<NSString *> *)variables {
+    return nil;
+}
+
 //
 //- (NSArray*) analyseString:(NSString*)str {
 //    return [self analyseString:str
