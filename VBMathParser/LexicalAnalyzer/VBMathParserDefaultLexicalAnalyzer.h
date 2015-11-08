@@ -24,10 +24,8 @@
 
 #import <Foundation/Foundation.h>
 
-//@interface VBMathParserLexicalAnalyzer : NSObject
-//
-//- (NSArray*) analyseString:(NSString*)str;
-//- (NSArray*) analyseString:(NSString*)str
-//                  withVars:(NSArray*)vars;
-//
-//@end
+#import "VBMathParserLexicalAnalyzer.h"
+
+@interface VBMathParserDefaultLexicalAnalyzer : NSObject <VBMathParserLexicalAnalyzer>
+
+@end

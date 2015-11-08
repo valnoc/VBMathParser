@@ -24,7 +24,7 @@
 
 #import "VBMathParser.h"
 
-
+#import "VBMathParserDefaultLexicalAnalyzer.h"
 
 @interface VBMathParser ()
 
@@ -43,7 +43,7 @@
                                        rpnWorker:(nullable id<VBMathParserRPNWorker>) rpnWorker {
     self = [super init];
     if (self) {
-        self.lexicalAnalyzer = lexicalAnalyzer;
+        self.lexicalAnalyzer = lexicalAnalyzer ? lexicalAnalyzer : [VBMathParserDefaultLexicalAnalyzer new];
         self.syntaxAnalyzer = syntaxAnalyzer;
         self.rpnWorker = rpnWorker;
     }

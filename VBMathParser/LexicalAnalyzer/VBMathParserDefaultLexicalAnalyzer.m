@@ -22,7 +22,7 @@
 //    SOFTWARE.
 //
 
-#import "VBMathParserLexicalAnalyzer.h"
+#import "VBMathParserDefaultLexicalAnalyzer.h"
 
 //#import "VBMathParserDefines.h"
 //
@@ -37,7 +37,7 @@
 //#import "VBMathParserVarIsNotStringException.h"
 //#import "VBMathParserVarIsNotValidException.h"
 //
-//@implementation VBMathParserLexicalAnalyzer
+@implementation VBMathParserDefaultLexicalAnalyzer
 //
 //- (NSArray*) analyseString:(NSString*)str {
 //    return [self analyseString:str
@@ -163,5 +163,5 @@
 //    strPrep = [strPrep lowercaseString];
 //    return strPrep;
 //}
-//
-//@end
+
+@end
