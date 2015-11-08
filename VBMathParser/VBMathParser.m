@@ -24,15 +24,13 @@
 
 #import "VBMathParser.h"
 
-#import "VBMathParserLexicalAnalyzer.h"
-#import "VBMathParserSyntaxAnalyzer.h"
-#import "VBMathParserRPNWorker.h"
+
 
 @interface VBMathParser ()
 
-@property (nonatomic, strong) VBMathParserLexicalAnalyzer* lexicalAnalyzer;
-@property (nonatomic, strong) VBMathParserSyntaxAnalyzer* syntaxAnalyzer;
-@property (nonatomic, strong) VBMathParserRPNWorker* rpnWorker;
+@property (nonnull, nonatomic, strong) id<VBMathParserLexicalAnalyzer> lexicalAnalyzer;
+@property (nonnull, nonatomic, strong) id<VBMathParserSyntaxAnalyzer> syntaxAnalyzer;
+@property (nonnull, nonatomic, strong) id<VBMathParserRPNWorker> rpnWorker;
 
 @property (nonatomic, strong) NSArray* tokens;
 
@@ -40,84 +38,47 @@
 
 @implementation VBMathParser
 
-+ (instancetype) mathParserWithExpression:(NSString*)expression {
-    return [[self alloc] initWithExpression:expression
-                                       vars:nil];
-}
-+ (instancetype) mathParserWithExpression:(NSString*)expression
-                                     vars:(NSArray*)vars{
-    return [[self alloc] initWithExpression:expression
-                                       vars:vars];
-}
-
-- (instancetype) initWithExpression:(NSString*)expression
-                               vars:(NSArray*)vars {
+- (nonnull instancetype) initWithLexicalAnalyzer:(nullable id<VBMathParserLexicalAnalyzer>) lexicalAnalyzer
+                                  syntaxAnalyzer:(nullable id<VBMathParserSyntaxAnalyzer>) syntaxAnalyzer
+                                       rpnWorker:(nullable id<VBMathParserRPNWorker>) rpnWorker {
     self = [super init];
     if (self) {
-        self.vars = vars;
-        self.expression = expression;
+        self.lexicalAnalyzer = lexicalAnalyzer;
+        self.syntaxAnalyzer = syntaxAnalyzer;
+        self.rpnWorker = rpnWorker;
     }
     return self;
 }
 
-#pragma mark - public change expression
-- (void) setExpression:(NSString *)expression {
-    @synchronized(self){
-        _expression = expression;
-        [self parse:expression
-           withVars:self.vars];
-    }
+#pragma mark - parse
+- (void) setExpression:(nonnull NSString *)expression {
+    [self setExpression:expression
+          withVariables:nil];
 }
 
-- (void) parse:(NSString*)expression
-      withVars:(NSArray*)vars {
-    NSArray* tokens = [self.lexicalAnalyzer analyseString:expression
-                                                 withVars:vars];
-    tokens = [self.syntaxAnalyzer analyseTokens:tokens];
-    self.tokens = [self.rpnWorker formatTokens:tokens];
+- (void) setExpression:(nonnull NSString *) expression
+         withVariables:(nullable NSArray<NSString*>*) variables {
+    _expression = expression;
+    _variables = variables;
+    [self parseExpression];
+}
+
+- (void) parseExpression {
+    NSArray* tokens = [self.lexicalAnalyzer analyseExpression:self.expression
+                                                withVariables:self.variables];
+//    tokens = [self.syntaxAnalyzer analyseTokens:tokens];
+//    self.tokens = [self.rpnWorker formatTokens:tokens];
 }
 
 #pragma mark - evaluate
-+ (double) evaluateExpression:(NSString*)expression {
-    return [self evaluateExpression:expression
-                     withVarsValues:nil];
-}
-+ (double) evaluateExpression:(NSString*)expression
-               withVarsValues:(NSDictionary*)varsValues {
-    VBMathParser* parser = [self mathParserWithExpression:expression
-                                                     vars:varsValues.allKeys];
-    return [parser evaluateWithVarsValues:varsValues];
-}
-
 - (double) evaluate {
-    return [self evaluateWithVarsValues:nil];
+    return [self evaluateWithVariablesValues:nil];
 }
 
-- (double) evaluateWithVarsValues:(NSDictionary*)varsValues{
-    return [self.rpnWorker evaluate:self.tokens
-                     withVarsValues:varsValues];
-}
-
-#pragma mark - private props
-- (VBMathParserLexicalAnalyzer *) lexicalAnalyzer {
-    if (_lexicalAnalyzer == nil) {
-        _lexicalAnalyzer = [VBMathParserLexicalAnalyzer new];
-    }
-    return _lexicalAnalyzer;
-}
-
-- (VBMathParserSyntaxAnalyzer *) syntaxAnalyzer {
-    if (_syntaxAnalyzer == nil) {
-        _syntaxAnalyzer = [VBMathParserSyntaxAnalyzer new];
-    }
-    return _syntaxAnalyzer;
-}
-
-- (VBMathParserRPNWorker*) rpnWorker {
-    if (_rpnWorker == nil) {
-        _rpnWorker = [VBMathParserRPNWorker new];
-    }
-    return _rpnWorker;
+- (double) evaluateWithVariablesValues:(nullable NSDictionary<NSString*, NSNumber*>*) variablesValues {
+    return 0;
+//    return [self.rpnWorker evaluate:self.tokens
+//                     withVarsValues:varsValues];
 }
 
 @end

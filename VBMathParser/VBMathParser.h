@@ -95,20 +95,28 @@
 
 #import <Foundation/Foundation.h>
 
+#import "VBMathParserLexicalAnalyzer.h"
+#import "VBMathParserSyntaxAnalyzer.h"
+#import "VBMathParserRPNWorker.h"
+
 @interface VBMathParser : NSObject
 
-@property (nonatomic, strong) NSString* expression;
-@property (nonatomic, strong) NSArray* vars;
+@property (nonnull, nonatomic, strong) NSString* expression;
+@property (nullable, nonatomic, strong, readonly) NSArray<NSString*>* variables;
 
-+ (instancetype) mathParserWithExpression:(NSString*)expression;
-+ (instancetype) mathParserWithExpression:(NSString*)expression
-                                     vars:(NSArray*)vars;
+- (nonnull instancetype) initWithLexicalAnalyzer:(nullable id<VBMathParserLexicalAnalyzer>) lexicalAnalyzer
+                                  syntaxAnalyzer:(nullable id<VBMathParserSyntaxAnalyzer>) syntaxAnalyzer
+                                       rpnWorker:(nullable id<VBMathParserRPNWorker>) rpnWorker;
 
-+ (double) evaluateExpression:(NSString*)expression;
-+ (double) evaluateExpression:(NSString*)expression
-               withVarsValues:(NSDictionary*)varsValues;
+#pragma mark - parse
+- (void) setExpression:(nonnull NSString *)expression;
+- (void) setExpression:(nonnull NSString *) expression
+         withVariables:(nullable NSArray<NSString*>*) variables;
 
+- (void) parseExpression;
+
+#pragma mark - evaluate
 - (double) evaluate;
-- (double) evaluateWithVarsValues:(NSDictionary*)varsValues;
+- (double) evaluateWithVariablesValues:(nullable NSDictionary<NSString*, NSNumber*>*) variablesValues;
 
 @end
