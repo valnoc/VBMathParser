@@ -14,20 +14,20 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    double result = [VBMathParser evaluateExpression:@"1"];
-    
-    VBMathParser* parser = [VBMathParser mathParserWithExpression:@"2 + 4"];
-    result = [parser evaluate];
-    
-    parser.expression = @"2(1+3)";
-    result = [parser evaluate];
-    
-    parser.expression = @"(-abs(-4)+14)";
-    result = [parser evaluate];
-    
-    parser.vars = @[@"x"];
-    parser.expression = @"x+1";
-    result = [parser evaluateWithVarsValues:@{@"x": @(2)}];
+//    double result = [VBMathParser evaluateExpression:@"1"];
+//    
+//    VBMathParser* parser = [VBMathParser mathParserWithExpression:@"2 + 4"];
+//    result = [parser evaluate];
+//    
+//    parser.expression = @"2(1+3)";
+//    result = [parser evaluate];
+//    
+//    parser.expression = @"(-abs(-4)+14)";
+//    result = [parser evaluate];
+//    
+//    parser.vars = @[@"x"];
+//    parser.expression = @"x+1";
+//    result = [parser evaluateWithVarsValues:@{@"x": @(2)}];
     
 //    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 //    // Override point for customization after application launch.
