@@ -27,7 +27,7 @@
 @implementation VBMathParserTokenVar
 
 #pragma mark - token abstract
-+ (NSString *) regexPattern {
++ (NSString *) regexpPattern {
     return @"^[A-Za-z]+[A-Za-z0-9]*$";
 }
 

@@ -24,19 +24,11 @@
 
 #import "VBMathParserTokenSpecial.h"
 
-#import "VBMathParserTokenSpecialBracketOpen.h"
-#import "VBMathParserTokenSpecialBracketClose.h"
-
 @implementation VBMathParserTokenSpecial
 
-#pragma mark - token abstract
-+ (NSString *) regexPattern {
+#pragma mark - regexp
++ (NSString *) regexpPattern {
     return @"^[()]$";
-}
-
-+ (NSArray *) tokenFactoryList {
-    return @[[VBMathParserTokenSpecialBracketOpen class],
-             [VBMathParserTokenSpecialBracketClose class]];
 }
 
 @end

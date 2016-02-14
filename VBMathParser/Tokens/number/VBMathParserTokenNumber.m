@@ -26,7 +26,7 @@
 
 @implementation VBMathParserTokenNumber
 
-#pragma mark - token abstract
+#pragma mark - regexp
 + (NSString *) regexpPattern {
     return @"^[0-9]+\\.?[0-9]*$";
 }
@@ -46,7 +46,7 @@
     }
 }
 
-#pragma mark - token concrete
+#pragma mark - number
 - (double) doubleValue { 
     return [[self stringValue] doubleValue];
 }

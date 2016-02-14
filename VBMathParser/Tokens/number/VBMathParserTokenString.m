@@ -24,8 +24,6 @@
 
 #import "VBMathParserTokenString.h"
 
-#import "VBMathParserUnknownTokenException.h"
-
 @interface VBMathParserTokenString ()
 
 @property (nonatomic, strong) NSString* string;

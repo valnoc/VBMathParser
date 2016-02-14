@@ -25,7 +25,6 @@
 #import "VBMathParserToken.h"
 
 #import "VBMathParserNotImplementedException.h"
-#import "VBMathParserUnknownTokenException.h"
 
 @interface VBMathParserToken ()
 
@@ -57,7 +56,7 @@
     return regex;
 }
 
-#pragma mark - token concrete
+#pragma mark - string
 + (NSString *) rawString {
     @throw [VBMathParserNotImplementedException exception];
 }

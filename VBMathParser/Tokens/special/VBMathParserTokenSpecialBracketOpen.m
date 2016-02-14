@@ -26,7 +26,7 @@
 
 @implementation VBMathParserTokenSpecialBracketOpen
 
-#pragma mark - token concrete
+#pragma mark - string
 + (NSString *) rawString {
     return @"(";
 }
