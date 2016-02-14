@@ -26,18 +26,20 @@
 
 @implementation VBMathParserTokenOperationSubstraction
 
-#pragma mark - token concrete
+#pragma mark - string
 + (NSString *) rawString {
     return @"-";
 }
 
+#pragma mark - action
 - (VBMathParserTokenActionPriority) priority {
     return VBMathParserTokenActionPriorityLow;
 }
 
-- (double) evaluateWithParamLeft:(double)paramLeft
-                      paramRight:(double)paramRight {
-    return paramLeft - paramRight;
+#pragma mark - operation
+- (double) evaluateWithArgLeft:(double) argLeft
+                      argRight:(double) argRight {
+    return argLeft - argRight;
 }
 
 @end

@@ -26,18 +26,20 @@
 
 @implementation VBMathParserTokenOperationPower
 
-#pragma mark - token concrete
+#pragma mark - string
 + (NSString *) rawString {
     return @"^";
 }
 
+#pragma mark - action
 - (VBMathParserTokenActionPriority) priority {
     return VBMathParserTokenActionPriorityHigh;
 }
 
-- (double) evaluateWithParamLeft:(double)paramLeft
-                      paramRight:(double)paramRight {
-    return pow(paramLeft, paramRight);
+#pragma mark - operation
+- (double) evaluateWithArgLeft:(double) argLeft
+                      argRight:(double) argRight {
+    return pow(argLeft, argRight);
 }
 
 @end

@@ -26,30 +26,16 @@
 
 #import "VBMathParserNotImplementedException.h"
 
-#import "VBMathParserTokenOperationAddition.h"
-#import "VBMathParserTokenOperationSubstraction.h"
-#import "VBMathParserTokenOperationMultiplication.h"
-#import "VBMathParserTokenOperationDivision.h"
-#import "VBMathParserTokenOperationPower.h"
-
 @implementation VBMathParserTokenOperation
 
-#pragma mark - token abstract
-+ (NSString *) regexPattern {
+#pragma mark - regexp
++ (NSString *) regexpPattern {
     return @"^[\\+\\-\\*/^]$";
 }
 
-+ (NSArray *) tokenFactoryList {
-    return @[[VBMathParserTokenOperationAddition class],
-             [VBMathParserTokenOperationSubstraction class],
-             [VBMathParserTokenOperationMultiplication class],
-             [VBMathParserTokenOperationDivision class],
-             [VBMathParserTokenOperationPower class]];
-}
-
-#pragma mark - token concrete
-- (double) evaluateWithParamLeft:(double)paramLeft
-                      paramRight:(double)paramRight {
+#pragma mark - operation
+- (double) evaluateWithArgLeft:(double)argLeft
+                      argRight:(double)argRight {
     @throw [VBMathParserNotImplementedException exception];
 }
 

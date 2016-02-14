@@ -26,8 +26,8 @@
 
 @interface VBMathParserTokenOperation : VBMathParserTokenAction
 
-#pragma mark - token concrete
-- (double) evaluateWithParamLeft:(double)paramLeft
-                      paramRight:(double)paramRight;
+#pragma mark - operation
+- (double) evaluateWithArgLeft:(double) argLeft
+                      argRight:(double) argRight;
 
 @end
