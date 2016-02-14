@@ -34,11 +34,8 @@
 
 @implementation VBMathParserTokenString
 
-+ (VBMathParserToken *) tokenWithString:(NSString *)string {
-    if ([self isToken:string]) {
-        return [[self alloc] initWithString:string];
-    }
-    @throw [VBMathParserUnknownTokenException exceptionWithToken:string];
++ (instancetype) tokenWithString:(NSString *)string {
+    return [[self alloc] initWithString:string];
 }
 
 - (instancetype) initWithString:(NSString*) string {
@@ -50,20 +47,13 @@
 }
 
 + (BOOL) isToken:(NSString*)string {
-    @try {
-        NSRegularExpression* regex = [NSRegularExpression regularExpressionWithPattern:[self.class regexPattern]
-                                                                               options:NSRegularExpressionCaseInsensitive|NSRegularExpressionAnchorsMatchLines
-                                                                                 error:nil];
-        NSRange range = [regex rangeOfFirstMatchInString:string
-                                                 options:0
-                                                   range:NSMakeRange(0, string.length)];
-        if (range.location == 0 && range.length == string.length) {
-            return YES;
-        }else{
-            return NO;
-        }
-    }
-    @catch (NSException *exception) {
+    NSRegularExpression* regex = [self regularExpression];
+    NSRange range = [regex rangeOfFirstMatchInString:string
+                                             options:0
+                                               range:NSMakeRange(0, string.length)];
+    if (range.location == 0 && range.length == string.length) {
+        return YES;
+    }else{
         return NO;
     }
 }

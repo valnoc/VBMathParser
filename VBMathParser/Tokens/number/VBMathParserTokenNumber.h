@@ -26,7 +26,7 @@
 
 @interface VBMathParserTokenNumber : VBMathParserTokenString
 
-#pragma mark - token concrete
+#pragma mark - number
 - (double) doubleValue;
 
 @end
