@@ -44,6 +44,7 @@
     self = [super init];
     if (self) {
         self.lexicalAnalyzer = lexicalAnalyzer ? lexicalAnalyzer : [VBMathParserDefaultLexicalAnalyzer new];
+#warning TODO
         self.syntaxAnalyzer = syntaxAnalyzer;
         self.rpnWorker = rpnWorker;
     }
@@ -76,6 +77,7 @@
 }
 
 - (double) evaluateWithVariablesValues:(nullable NSDictionary<NSString*, NSNumber*>*) variablesValues {
+#warning TODO exception if nil
     return 0;
 //    return [self.rpnWorker evaluate:self.tokens
 //                     withVarsValues:varsValues];

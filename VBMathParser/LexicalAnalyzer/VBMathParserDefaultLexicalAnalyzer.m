@@ -26,77 +26,78 @@
 
 //#import "VBMathParserDefines.h"
 //
-//#import "VBMathParserTokenNumber.h"
-//#import "VBMathParserTokenOperation.h"
-//#import "VBMathParserTokenFunction.h"
-//#import "VBMathParserTokenSpecial.h"
-//#import "VBMathParserTokenVar.h"
-//#import "VBMathParserTokenConst.h"
+#import "VBMathParserTokenNumber.h"
+#import "VBMathParserTokenOperation.h"
+#import "VBMathParserTokenFunction.h"
+#import "VBMathParserTokenSpecial.h"
+#import "VBMathParserTokenVar.h"
+#import "VBMathParserTokenConst.h"
 //
-//#import "VBMathParserUnknownTokenException.h"
+#import "VBMathParserUnknownTokenException.h"
 //#import "VBMathParserVarIsNotStringException.h"
 //#import "VBMathParserVarIsNotValidException.h"
-//
+
+#import "VBMathParserTokenFactory.h"
+
+@interface VBMathParserDefaultLexicalAnalyzer ()
+
+@property (nonatomic, strong, nonnull) id<VBMathParserTokenFactory> tokenFactory;
+
+@end
+
 @implementation VBMathParserDefaultLexicalAnalyzer
 
-- (NSArray *) analyseExpression:(NSString *)expression
-                  withVariables:(NSArray<NSString *> *)variables {
-    return nil;
+
+
+- (nonnull NSArray<VBMathParserToken *>*) analyseExpression:(nonnull NSString*) expression
+                                              withVariables:(nonnull NSArray<NSString*>*) variables {
+//    VBMathParserLog(@"LexicalAnalyzer: analyseString: %@ vars: %@", str, vars);
+
+    [self validateVariableNames:variables];
+    //
+    NSString* expr = [self prepareStringForParsing:expression];
+//    VBMathParserLog(@"LexicalAnalyzer: Prepared string: %@", str);
+
+    NSMutableArray* tokens = [NSMutableArray new];
+    while (expr.length > 0) {
+        VBMathParserToken* token = nil;
+        for (Class tokenClass in @[[VBMathParserTokenNumber class],
+                                   [VBMathParserTokenSpecial class],
+                                   [VBMathParserTokenOperation class],
+                                   [VBMathParserTokenFunction class],
+                                   [VBMathParserTokenConst class],
+                                   [VBMathParserTokenVar class]]) {
+            token = [self nextTokenFromExpression:expr
+                                   withTokenClass:tokenClass];
+            // check whether we know this var or not
+            if (tokenClass == [VBMathParserTokenVar class]) {
+                BOOL knownVar = [variables indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+                    return [obj isEqualToString:[(VBMathParserTokenVar*)token stringValue]];
+                }] != NSNotFound;
+                if (knownVar == NO) {
+                    token = nil;
+                }
+            }
+            if (token) {
+                expr = [expr substringFromIndex:token.stringValue.length];
+                [tokens addObject:token];
+                break;
+            }
+        }
+        if (token == nil) {
+            @throw [VBMathParserUnknownTokenException exceptionWithToken:expr];
+        }
+    }
+
+//    VBMathParserLog(@"LexicalAnalyzer: Analysis finished");
+//    VBMathParserLog(@"LexicalAnalyzer: Analysis finished\n%@", tokens);
+    return tokens;
 }
 
-//
-//- (NSArray*) analyseString:(NSString*)str {
-//    return [self analyseString:str
-//                      withVars:nil];
-//}
-//
-//- (NSArray*) analyseString:(NSString*)str
-//                  withVars:(NSArray*)vars {
-//    
-//    VBMathParserLog(@"LexicalAnalyzer: analyseString: %@ vars: %@", str, vars);
-//    
-//    [self validateVarNames:vars];
-//
-//    str = [self prepareStringForParsing:str];
-//    VBMathParserLog(@"LexicalAnalyzer: Prepared string: %@", str);
-//    
-//    NSMutableArray* tokens = [NSMutableArray new];
-//    while (str.length > 0) {
-//        VBMathParserToken* token = nil;
-//        for (Class tokenClass in @[[VBMathParserTokenNumber class],
-//                                   [VBMathParserTokenSpecial class],
-//                                   [VBMathParserTokenOperation class],
-//                                   [VBMathParserTokenFunction class],
-//                                   [VBMathParserTokenConst class],
-//                                   [VBMathParserTokenVar class]]) {
-//            token = [self parseNextTokenFromString:str
-//                                        tokenClass:tokenClass];
-//            if (tokenClass == [VBMathParserTokenVar class]) {
-//                BOOL knownVar = [vars indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
-//                    return [obj isEqualToString:[(VBMathParserTokenVar*)token stringValue]];
-//                }] != NSNotFound;
-//                if (knownVar == NO) {
-//                    token = nil;
-//                }
-//            }
-//            if (token) {
-//                str = [str substringFromIndex:token.stringValue.length];
-//                [tokens addObject:token];
-//                break;
-//            }
-//        }
-//        if (token == nil) {
-//            @throw [VBMathParserUnknownTokenException exceptionWithToken:str];
-//        }
-//    }
-//    
-//    VBMathParserLog(@"LexicalAnalyzer: Analysis finished");
-////    VBMathParserLog(@"LexicalAnalyzer: Analysis finished\n%@", tokens);
-//    return tokens;
-//}
-//
-//- (VBMathParserToken*) parseNextTokenFromString:(NSString*)str
-//                                     tokenClass:(Class)tokenClass {
+- (nullable VBMathParserToken*) nextTokenFromExpression:(nonnull NSString*) expression
+                                         withTokenClass:(Class) tokenClass {
+#warning TODO
+    return nil;
 //    // length - length of token to be removed from source string
 //    NSInteger length = 1;
 //    // substr - substring which forms a token
@@ -143,9 +144,10 @@
 //        }
 //    }
 //    return token;
-//}
-//
-//- (void) validateVarNames:(NSArray*)vars {
+}
+
+- (void) validateVariableNames:(NSArray<NSString *>*) vars {
+#warning TODO implement
 //    NSRegularExpression* regex = [NSRegularExpression regularExpressionWithPattern:[VBMathParserTokenVar regexPattern]
 //                                                                           options:NSRegularExpressionCaseInsensitive|NSRegularExpressionAnchorsMatchLines
 //                                                                             error:nil];
@@ -160,14 +162,14 @@
 //            @throw [VBMathParserVarIsNotValidException exceptionWithVar:obj];
 //        }
 //    }
-//}
-//
-//- (NSString*) prepareStringForParsing:(NSString*)string {
-//    NSString* strPrep = [NSString stringWithFormat:@"%@", string];
-//    strPrep = [strPrep stringByReplacingOccurrencesOfString:@" " withString:@""];
-//    strPrep = [strPrep stringByReplacingOccurrencesOfString:@"," withString:@"."];
-//    strPrep = [strPrep lowercaseString];
-//    return strPrep;
-//}
+}
+
+- (nonnull NSString*) prepareStringForParsing:(nonnull NSString*) string {
+    NSString* strPrep = [NSString stringWithFormat:@"%@", string];
+    strPrep = [strPrep stringByReplacingOccurrencesOfString:@" " withString:@""];
+    strPrep = [strPrep stringByReplacingOccurrencesOfString:@"," withString:@"."];
+    strPrep = [strPrep lowercaseString];
+    return strPrep;
+}
 
 @end

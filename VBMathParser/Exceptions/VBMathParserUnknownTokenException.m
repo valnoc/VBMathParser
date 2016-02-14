@@ -22,13 +22,12 @@
 //    SOFTWARE.
 //
 
-#ifndef VBMathExamples_VBMathParserDefines_h
-#define VBMathExamples_VBMathParserDefines_h
+#import "VBMathParserUnknownTokenException.h"
 
-#if 0
-#define VBMathParserLog(str, ...) NSLog(str, ##__VA_ARGS__)
-#else
-#define VBMathParserLog(str, ...)
-#endif
+@implementation VBMathParserUnknownTokenException
 
-#endif
++ (instancetype)exceptionWithToken:(NSString *)token {
+    return [super exceptionWithUserInfo:@{@"token": token}];
+}
+
+@end

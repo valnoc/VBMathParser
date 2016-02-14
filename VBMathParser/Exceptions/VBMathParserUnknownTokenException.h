@@ -22,17 +22,10 @@
 //    SOFTWARE.
 //
 
-#import "VBMathParserUnknownTokenException.h"
+#import "VBException.h"
 
-@implementation VBMathParserUnknownTokenException
+@interface VBMathParserUnknownTokenException : VBException
 
-+ (instancetype) exception {
-    return [self exceptionWithReason:@"Token is unknown"];
-}
-
-+ (instancetype) exceptionWithToken:(NSString*)token {
-    return [self exceptionWithReason:[NSString stringWithFormat:@"Token %@ is unknown", token]
-                            userInfo:@{@"token": token}];
-}
++ (instancetype) exceptionWithToken:(nonnull NSString*)token;
 
 @end
