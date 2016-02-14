@@ -26,7 +26,7 @@
 
 @interface VBMathParserTokenConst : VBMathParserToken
 
-#pragma mark - token concrete
+#pragma mark - const
 - (double) doubleValue;
 
 @end

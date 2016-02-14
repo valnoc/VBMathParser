@@ -26,20 +26,14 @@
 
 #import "VBMathParserNotImplementedException.h"
 
-#import "VBMathParserTokenConstPi.h"
-
 @implementation VBMathParserTokenConst
 
 #pragma mark - token abstract
-+ (NSString *) regexPattern {
++ (NSString *) regexpPattern {
     return @"^[A-Za-z]+$";
 }
 
-+ (NSArray *) tokenFactoryList {
-    return @[[VBMathParserTokenConstPi class]];
-}
-
-#pragma mark - token concrete
+#pragma mark - const
 - (double) doubleValue {
     @throw [VBMathParserNotImplementedException exception];
 }

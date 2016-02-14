@@ -26,11 +26,12 @@
 
 @implementation VBMathParserTokenConstPi
 
-#pragma mark - token concrete
+#pragma mark - string
 + (NSString *) rawString {
     return @"pi";
 }
 
+#pragma mark - const
 - (double) doubleValue {
     return M_PI;
 }
