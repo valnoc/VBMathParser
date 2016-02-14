@@ -26,7 +26,7 @@
 
 @interface VBMathParserTokenFunction : VBMathParserTokenAction
 
-#pragma mark - token concrete
-- (double) evaluateWithParam:(double)param;
+#pragma mark - function
+- (double) evaluateWithArg:(double)arg;
 
 @end

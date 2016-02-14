@@ -26,13 +26,14 @@
 
 @implementation VBMathParserTokenFunctionCos
 
-#pragma mark - token concrete
+#pragma mark - string
 + (NSString *) rawString {
     return @"cos";
 }
 
-- (double) evaluateWithParam:(double)param {
-    return cos(param);
+#pragma mark - function
+- (double) evaluateWithArg:(double)arg {
+    return cos(arg);
 }
 
 @end

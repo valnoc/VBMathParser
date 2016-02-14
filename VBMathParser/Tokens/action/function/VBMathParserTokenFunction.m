@@ -26,31 +26,20 @@
 
 #import "VBMathParserNotImplementedException.h"
 
-#import "VBMathParserTokenFunctionAbs.h"
-#import "VBMathParserTokenFunctionSin.h"
-#import "VBMathParserTokenFunctionCos.h"
-#import "VBMathParserTokenFunctionTan.h"
-
 @implementation VBMathParserTokenFunction
 
-#pragma mark - token abstract
-+ (NSString *) regexPattern {
+#pragma mark - regexp
++ (NSString *) regexpPattern {
     return @"^[A-Za-z]+$";
 }
 
-+ (NSArray *) tokenFactoryList {
-    return @[[VBMathParserTokenFunctionAbs class],
-             [VBMathParserTokenFunctionCos class],
-             [VBMathParserTokenFunctionSin class],
-             [VBMathParserTokenFunctionTan class]];
-}
-
-#pragma mark - token concrete
+#pragma mark - action
 - (VBMathParserTokenActionPriority) priority {
     return VBMathParserTokenActionPriorityHigh;
 }
 
-- (double) evaluateWithParam:(double)param {
+#pragma mark - function
+- (double) evaluateWithArg:(double)arg {
     @throw [VBMathParserNotImplementedException exception];
 }
 

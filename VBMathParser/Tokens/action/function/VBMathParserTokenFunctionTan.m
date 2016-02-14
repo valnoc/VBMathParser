@@ -26,13 +26,14 @@
 
 @implementation VBMathParserTokenFunctionTan
 
-#pragma mark - token concrete
+#pragma mark - string
 + (NSString *) rawString {
     return @"tan";
 }
 
-- (double) evaluateWithParam:(double)param {
-    return tan(param);
+#pragma mark - function
+- (double) evaluateWithArg:(double)arg {
+    return tan(arg);
 }
 
 @end

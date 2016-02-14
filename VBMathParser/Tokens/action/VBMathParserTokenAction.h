@@ -32,7 +32,7 @@ typedef enum{
 
 @interface VBMathParserTokenAction : VBMathParserToken
 
-#pragma mark - token concrete
+#pragma mark - action
 - (VBMathParserTokenActionPriority) priority;
 
 @end

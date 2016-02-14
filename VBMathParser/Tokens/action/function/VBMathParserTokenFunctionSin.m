@@ -26,13 +26,14 @@
 
 @implementation VBMathParserTokenFunctionSin
 
-#pragma mark - token concrete
+#pragma mark - string
 + (NSString *) rawString {
     return @"sin";
 }
 
-- (double) evaluateWithParam:(double)param {
-    return sin(param);
+#pragma mark - function
+- (double) evaluateWithArg:(double)arg {
+    return sin(arg);
 }
 
 @end

@@ -28,7 +28,7 @@
 
 @implementation VBMathParserTokenAction
 
-#pragma mark - token concrete
+#pragma mark - action
 - (VBMathParserTokenActionPriority) priority {
     @throw [VBMathParserNotImplementedException exception];
 }

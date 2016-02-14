@@ -27,13 +27,14 @@
 
 @implementation VBMathParserTokenFunctionAbs
 
-#pragma mark - token concrete
+#pragma mark - string
 + (NSString *) rawString {
     return @"abs";
 }
 
-- (double) evaluateWithParam:(double)param {
-    return ABS(param);
+#pragma mark - function
+- (double) evaluateWithArg:(double)arg {
+    return ABS(arg);
 }
 
 @end
