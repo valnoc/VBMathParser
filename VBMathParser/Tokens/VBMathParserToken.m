@@ -33,26 +33,28 @@
 
 @implementation VBMathParserToken
 
-+ (VBMathParserToken*) tokenWithString:(NSString*)string {
-    for (Class tokenClass in [self tokenFactoryList]) {
-        if ([tokenClass isToken:string]) {
-            return [[tokenClass alloc] init];
-        }
-    }
-    @throw [VBMathParserUnknownTokenException exceptionWithToken:string];
++ (nonnull instancetype) tokenWithString:(nonnull NSString*)string {
+    return [self new];
 }
 
-+ (BOOL) isToken:(NSString*)string {
++ (BOOL) isToken:(nonnull NSString*)string {
     return [[self rawString] isEqualToString:string];
 }
 
-#pragma mark - token abstract
-+ (NSString*) regexPattern {
++ (nonnull NSString*) tokenType {
     @throw [VBMathParserNotImplementedException exception];
 }
 
-+ (NSArray*) tokenFactoryList {
+#pragma mark - regexp
++ (nonnull NSString*) regexpPattern {
     @throw [VBMathParserNotImplementedException exception];
+}
++ (nonnull NSRegularExpression*) regularExpression {
+    NSError* error = nil;
+    NSRegularExpression* regex = [NSRegularExpression regularExpressionWithPattern:[self regexpPattern]
+                                                                           options:NSRegularExpressionCaseInsensitive|NSRegularExpressionAnchorsMatchLines
+                                                                             error:&error];
+    return regex;
 }
 
 #pragma mark - token concrete

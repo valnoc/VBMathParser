@@ -26,15 +26,30 @@
 
 @interface VBMathParserToken : NSObject
 
-+ (VBMathParserToken*) tokenWithString:(NSString*)string;
-+ (BOOL) isToken:(NSString*)string;
++ (nonnull instancetype) tokenWithString:(nonnull NSString*)string;
 
-#pragma mark - token abstract
-+ (NSString*) regexPattern;
-+ (NSArray*) tokenFactoryList;
++ (BOOL) isToken:(nonnull NSString*)string;
 
-#pragma mark - token concrete
-+ (NSString*) rawString;
-- (NSString*) stringValue;
+/**
+ *  @return token type like number, special, const, etc.
+ */
++ (nonnull NSString*) tokenType;
+
+#pragma mark - regexp
+/**
+ * regular expression to recognize token
+ */
++ (nonnull NSString*) regexpPattern;
+/**
+ * regular expression to recognize token
+ */
++ (nonnull NSRegularExpression*) regularExpression;
+/**
+ *  @return equal string value for concrete token
+ */
++ (nonnull NSString*) rawString;
+
+#pragma mark - string
+- (nonnull NSString*) stringValue;
 
 @end

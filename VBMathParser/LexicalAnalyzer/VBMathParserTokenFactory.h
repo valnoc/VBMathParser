@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+@class VBMathParserToken;
+
 @protocol VBMathParserTokenFactory <NSObject>
+
+- (nullable VBMathParserToken*) tokenWithType:(nonnull NSString*) tokenType
+                                       string:(nonnull NSString*) string;
 
 @end

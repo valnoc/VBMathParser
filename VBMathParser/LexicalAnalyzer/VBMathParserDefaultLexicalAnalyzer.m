@@ -96,54 +96,45 @@
 
 - (nullable VBMathParserToken*) nextTokenFromExpression:(nonnull NSString*) expression
                                          withTokenClass:(Class) tokenClass {
-#warning TODO
-    return nil;
-//    // length - length of token to be removed from source string
-//    NSInteger length = 1;
-//    // substr - substring which forms a token
-//    NSString* substr = [str substringToIndex:length];
-//    
-//    NSError* error = nil;
-//    NSRegularExpression* regex = [NSRegularExpression regularExpressionWithPattern:[tokenClass regexPattern]
-//                                                                           options:NSRegularExpressionCaseInsensitive|NSRegularExpressionAnchorsMatchLines
-//                                                                             error:&error];
-//    NSRange rangeOfFirstMatch = [regex rangeOfFirstMatchInString:substr
-//                                                         options:0
-//                                                           range:NSMakeRange(0, substr.length)];
-//    // can be token - substr can be token as to token regex
-//    BOOL canBeToken = NO;
-//    // substractOne - go one symbol back
-//    BOOL substractOne = NO;
-//    while (!NSEqualRanges(rangeOfFirstMatch, NSMakeRange(NSNotFound, 0))) {
-//        // if first symbol is token (by regexPattern), then add one symbol each step up to next token
-//        canBeToken = YES;
-//        if (str.length > length) {
-//            substractOne = YES;
-//            substr = [str substringToIndex:++length];
-//            rangeOfFirstMatch = [regex rangeOfFirstMatchInString:substr
-//                                                         options:0
-//                                                           range:NSMakeRange(0, substr.length)];
-//        }else{
-//            // do not go one symbol back if this token is the last one
-//            substractOne = NO;
-//            break;
-//        }
-//    }
-//    if (substractOne) {
-//        substr = [substr substringToIndex:substr.length - 1];
-//    }
-//    
-//    VBMathParserToken* token = nil;
-//    if (canBeToken) {
-//        @try {
-//            token = [tokenClass tokenWithString:substr];
+    // length - length of token to be removed from source string
+    NSInteger length = 1;
+    // substr - substring which forms a token
+    NSString* substr = [expression substringToIndex:length];
+    
+    NSRegularExpression* regexp = [tokenClass regularExpression];
+    NSRange rangeOfFirstMatch = [regexp rangeOfFirstMatchInString:substr
+                                                          options:0
+                                                            range:NSMakeRange(0, substr.length)];
+    // can be token - substr can be token as to token regex
+    BOOL canBeToken = NO;
+    // substractOne - go one symbol back
+    BOOL substractOne = NO;
+    while (!NSEqualRanges(rangeOfFirstMatch, NSMakeRange(NSNotFound, 0))) {
+        // if first symbol is token (by regexPattern), then add one symbol each step up to next token
+        canBeToken = YES;
+        if (expression.length > length) {
+            substractOne = YES;
+            substr = [expression substringToIndex:++length];
+            rangeOfFirstMatch = [regexp rangeOfFirstMatchInString:substr
+                                                         options:0
+                                                           range:NSMakeRange(0, substr.length)];
+        }else{
+            // do not go one symbol back if this token is the last one
+            substractOne = NO;
+            break;
+        }
+    }
+    if (substractOne) {
+        substr = [substr substringToIndex:substr.length - 1];
+    }
+    
+    VBMathParserToken* token = nil;
+    if (canBeToken) {
+        token = [self.tokenFactory tokenWithType:[tokenClass tokenType]
+                                          string:substr];
 //            VBMathParserLog(@"LexicalAnalyzer: Token %@: %@", tokenClass, substr);
-//        }
-//        @catch (VBMathParserUnknownTokenException *exception) {
-//            token = nil;
-//        }
-//    }
-//    return token;
+    }
+    return token;
 }
 
 - (void) validateVariableNames:(NSArray<NSString *>*) vars {

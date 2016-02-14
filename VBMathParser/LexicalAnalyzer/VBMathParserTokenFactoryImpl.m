@@ -10,4 +10,10 @@
 
 @implementation VBMathParserTokenFactoryImpl
 
+- (nullable VBMathParserToken*) tokenWithType:(nonnull NSString*) tokenType
+                                       string:(nonnull NSString*) string {
+#warning TODO
+    return nil;
+}
+
 @end
