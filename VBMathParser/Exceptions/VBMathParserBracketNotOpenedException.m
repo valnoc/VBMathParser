@@ -26,8 +26,4 @@
 
 @implementation VBMathParserBracketNotOpenedException
 
-+ (instancetype) exception {
-    return [super exceptionWithReason:@"No bracket to close."];
-}
-
 @end

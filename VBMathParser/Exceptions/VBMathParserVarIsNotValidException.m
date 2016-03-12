@@ -26,13 +26,8 @@
 
 @implementation VBMathParserVarIsNotValidException
 
-+ (instancetype) exception {
-    return [self exceptionWithReason:@"Variable name is not valid. It must consist of at least one letter plus letters and numbers."];
-}
-
 + (instancetype) exceptionWithVar:(NSString*)var {
-    return [self exceptionWithReason:[NSString stringWithFormat:@"Variable name \"%@\" is not valid. It must consist of at least one letter plus letters and numbers.", var]
-                            userInfo:@{@"var": var}];
+    return [self exceptionWithUserInfo:@{@"var": var}];
 }
 
 @end

@@ -34,8 +34,6 @@
 #import "VBMathParserTokenConst.h"
 //
 #import "VBMathParserUnknownTokenException.h"
-//#import "VBMathParserVarIsNotStringException.h"
-//#import "VBMathParserVarIsNotValidException.h"
 
 #import "VBMathParserTokenFactory.h"
 
@@ -46,8 +44,6 @@
 @end
 
 @implementation VBMathParserDefaultLexicalAnalyzer
-
-
 
 - (nonnull NSArray<VBMathParserToken *>*) analyseExpression:(nonnull NSString*) expression
                                               withVariables:(nonnull NSArray<NSString*>*) variables {

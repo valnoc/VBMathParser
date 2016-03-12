@@ -26,13 +26,8 @@
 
 @implementation VBMathParserMissingValueForVarException
 
-+ (instancetype) exception {
-    return [self exceptionWithReason:@"Missing value for var"];
-}
-
 + (instancetype) exceptionWithVar:(NSString*)var {
-    return [self exceptionWithReason:[NSString stringWithFormat:@"Variable %@ value is missing", var]
-                            userInfo:@{@"var": var}];
+    return [self exceptionWithUserInfo:@{@"var": var}];
 }
 
 @end
