@@ -26,7 +26,7 @@
 
 @interface VBMathParserToken : NSObject
 
-+ (nonnull instancetype) tokenWithString:(nonnull NSString*)string;
++ (nullable instancetype) tokenWithString:(nonnull NSString*)string;
 
 + (BOOL) isToken:(nonnull NSString*)string;
 

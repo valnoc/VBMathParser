@@ -39,14 +39,14 @@
 
 @interface VBMathParserDefaultLexicalAnalyzer ()
 
-@property (nonatomic, strong, nonnull) id<VBMathParserTokenFactory> tokenFactory;
+@property (nonatomic, strong) id<VBMathParserTokenFactory> tokenFactory;
 
 @end
 
 @implementation VBMathParserDefaultLexicalAnalyzer
 
-- (nonnull NSArray<VBMathParserToken *>*) analyseExpression:(nonnull NSString*) expression
-                                              withVariables:(nonnull NSArray<NSString*>*) variables {
+- (NSArray<VBMathParserToken *>*) analyseExpression:(NSString*) expression
+                                      withVariables:(NSArray<NSString*>*) variables {
 //    VBMathParserLog(@"LexicalAnalyzer: analyseString: %@ vars: %@", str, vars);
 
     [self validateVariableNames:variables];
@@ -90,8 +90,8 @@
     return tokens;
 }
 
-- (nullable VBMathParserToken*) nextTokenFromExpression:(nonnull NSString*) expression
-                                         withTokenClass:(Class) tokenClass {
+- (VBMathParserToken*) nextTokenFromExpression:(NSString*) expression
+                                withTokenClass:(Class) tokenClass {
     // length - length of token to be removed from source string
     NSInteger length = 1;
     // substr - substring which forms a token
@@ -151,7 +151,7 @@
 //    }
 }
 
-- (nonnull NSString*) prepareStringForParsing:(nonnull NSString*) string {
+- (NSString*) prepareStringForParsing:(NSString*) string {
     NSString* strPrep = [NSString stringWithFormat:@"%@", string];
     strPrep = [strPrep stringByReplacingOccurrencesOfString:@" " withString:@""];
     strPrep = [strPrep stringByReplacingOccurrencesOfString:@"," withString:@"."];

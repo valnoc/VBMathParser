@@ -32,23 +32,23 @@
 
 @implementation VBMathParserToken
 
-+ (nonnull instancetype) tokenWithString:(nonnull NSString*)string {
++ (instancetype) tokenWithString:(NSString*)string {
     return [self new];
 }
 
-+ (BOOL) isToken:(nonnull NSString*)string {
++ (BOOL) isToken:(NSString*)string {
     return [[self rawString] isEqualToString:string];
 }
 
-+ (nonnull NSString*) tokenType {
++ (NSString*) tokenType {
     @throw [VBMathParserNotImplementedException exception];
 }
 
 #pragma mark - regexp
-+ (nonnull NSString*) regexpPattern {
++ (NSString*) regexpPattern {
     @throw [VBMathParserNotImplementedException exception];
 }
-+ (nonnull NSRegularExpression*) regularExpression {
++ (NSRegularExpression*) regularExpression {
     NSError* error = nil;
     NSRegularExpression* regex = [NSRegularExpression regularExpressionWithPattern:[self regexpPattern]
                                                                            options:NSRegularExpressionCaseInsensitive|NSRegularExpressionAnchorsMatchLines
