@@ -10,6 +10,6 @@
 
 #import "VBMathParserTokenFactory.h"
 
-@interface VBMathParserTokenFactoryImpl : NSObject <VBMathParserTokenFactory>
+@interface VBMathParserDefaultTokenFactory : NSObject <VBMathParserTokenFactory>
 
 @end

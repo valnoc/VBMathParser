@@ -6,7 +6,7 @@
 //  Copyright © 2016 Valeriy Bezuglyy. All rights reserved.
 //
 
-#import "VBMathParserTokenFactoryImpl.h"
+#import "VBMathParserDefaultTokenFactory.h"
 
 #import "VBMathParserTokenSpecialBracketOpen.h"
 #import "VBMathParserTokenSpecialBracketClose.h"
@@ -27,7 +27,7 @@
 #import "VBMathParserTokenFunctionSin.h"
 #import "VBMathParserTokenFunctionTan.h"
 
-@implementation VBMathParserTokenFactoryImpl
+@implementation VBMathParserDefaultTokenFactory
 
 - (VBMathParserToken*) tokenWithType:(NSString*) tokenType
                               string:(NSString*) string {
