@@ -97,7 +97,7 @@
 
 #import "VBMathParserLexicalAnalyzer.h"
 #import "VBMathParserSyntaxAnalyzer.h"
-#import "VBMathParserRPNWorker.h"
+#import "VBMathParserCalculator.h"
 
 @interface VBMathParser : NSObject
 
@@ -106,15 +106,13 @@
 
 - (nullable instancetype) initWithDefaultAnalyzers;
 - (nullable instancetype) initWithLexicalAnalyzer:(nonnull id<VBMathParserLexicalAnalyzer>) lexicalAnalyzer
-                                  syntaxAnalyzer:(nonnull id<VBMathParserSyntaxAnalyzer>) syntaxAnalyzer
-                                       rpnWorker:(nonnull id<VBMathParserRPNWorker>) rpnWorker NS_DESIGNATED_INITIALIZER;
+                                   syntaxAnalyzer:(nonnull id<VBMathParserSyntaxAnalyzer>) syntaxAnalyzer
+                                       calculator:(nonnull id<VBMathParserCalculator>) calculator NS_DESIGNATED_INITIALIZER;
 
 #pragma mark - parse
 - (void) setExpression:(nonnull NSString *)expression;
 - (void) setExpression:(nonnull NSString *) expression
          withVariables:(nullable NSArray<NSString*>*) variables;
-
-- (void) parseExpression;
 
 #pragma mark - evaluate
 - (double) evaluate;

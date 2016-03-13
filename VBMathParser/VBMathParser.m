@@ -26,12 +26,13 @@
 
 #import "VBMathParserDefaultLexicalAnalyzer.h"
 #import "VBMathParserDefaultSyntaxAnalyzer.h"
+#import "VBMathParserDefaultRPNCalculator.h"
 
 @interface VBMathParser ()
 
-@property (nonnull, nonatomic, strong) id<VBMathParserLexicalAnalyzer> lexicalAnalyzer;
-@property (nonnull, nonatomic, strong) id<VBMathParserSyntaxAnalyzer> syntaxAnalyzer;
-@property (nonnull, nonatomic, strong) id<VBMathParserRPNWorker> rpnWorker;
+@property (nonatomic, strong) id<VBMathParserLexicalAnalyzer> lexicalAnalyzer;
+@property (nonatomic, strong) id<VBMathParserSyntaxAnalyzer> syntaxAnalyzer;
+@property (nonatomic, strong) id<VBMathParserCalculator> calculator;
 
 @property (nonatomic, strong) NSArray* tokens;
 
@@ -46,18 +47,17 @@
 - (instancetype) initWithDefaultAnalyzers {
     return [self initWithLexicalAnalyzer:[VBMathParserDefaultLexicalAnalyzer new]
                           syntaxAnalyzer:[VBMathParserDefaultSyntaxAnalyzer new]
-                               rpnWorker:nil];
+                              calculator:[VBMathParserDefaultRPNCalculator new]];
 }
 
 - (instancetype) initWithLexicalAnalyzer:(id<VBMathParserLexicalAnalyzer>) lexicalAnalyzer
                           syntaxAnalyzer:(id<VBMathParserSyntaxAnalyzer>) syntaxAnalyzer
-                               rpnWorker:(id<VBMathParserRPNWorker>) rpnWorker {
+                              calculator:(id<VBMathParserCalculator>) calculator {
     self = [super init];
     if (self) {
         self.lexicalAnalyzer = lexicalAnalyzer;
         self.syntaxAnalyzer = syntaxAnalyzer;
-#warning TODO
-        self.rpnWorker = rpnWorker;
+        self.calculator = calculator;
     }
     return self;
 }
@@ -78,8 +78,8 @@
 - (void) parseExpression {
     NSArray* tokens = [self.lexicalAnalyzer analyseExpression:self.expression
                                                 withVariables:self.variables];
-//    tokens = [self.syntaxAnalyzer analyseTokens:tokens];
-//    self.tokens = [self.rpnWorker formatTokens:tokens];
+    tokens = [self.syntaxAnalyzer analyseExpression:tokens];
+    self.tokens = [self.calculator prepareExpression:tokens];
 }
 
 #pragma mark - evaluate
@@ -87,11 +87,9 @@
     return [self evaluateWithVariablesValues:nil];
 }
 
-- (double) evaluateWithVariablesValues:(nullable NSDictionary<NSString*, NSNumber*>*) variablesValues {
-#warning TODO exception if nil
-    return 0;
-//    return [self.rpnWorker evaluate:self.tokens
-//                     withVarsValues:varsValues];
+- (double) evaluateWithVariablesValues:(NSDictionary<NSString*, NSNumber*>*) variablesValues {
+    return [self.calculator evaluateExpression:self.tokens
+                                withVarsValues:variablesValues];
 }
 
 @end
