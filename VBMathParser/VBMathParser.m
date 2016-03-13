@@ -25,6 +25,7 @@
 #import "VBMathParser.h"
 
 #import "VBMathParserDefaultLexicalAnalyzer.h"
+#import "VBMathParserDefaultSyntaxAnalyzer.h"
 
 @interface VBMathParser ()
 
@@ -44,7 +45,7 @@
 
 - (instancetype) initWithDefaultAnalyzers {
     return [self initWithLexicalAnalyzer:[VBMathParserDefaultLexicalAnalyzer new]
-                          syntaxAnalyzer:nil
+                          syntaxAnalyzer:[VBMathParserDefaultSyntaxAnalyzer new]
                                rpnWorker:nil];
 }
 
@@ -54,8 +55,8 @@
     self = [super init];
     if (self) {
         self.lexicalAnalyzer = lexicalAnalyzer;
-#warning TODO
         self.syntaxAnalyzer = syntaxAnalyzer;
+#warning TODO
         self.rpnWorker = rpnWorker;
     }
     return self;
