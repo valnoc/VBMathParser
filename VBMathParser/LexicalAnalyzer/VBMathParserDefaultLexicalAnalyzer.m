@@ -45,6 +45,10 @@
 
 @implementation VBMathParserDefaultLexicalAnalyzer
 
+- (instancetype) init {
+    return [self initWithDefaultTokenFactory];
+}
+
 - (instancetype) initWithDefaultTokenFactory {
     return [self initWithTokenFactory:[VBMathParserDefaultTokenFactory new]];
 }
