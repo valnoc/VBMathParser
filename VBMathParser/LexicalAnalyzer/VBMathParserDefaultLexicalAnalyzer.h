@@ -23,9 +23,13 @@
 //
 
 #import <Foundation/Foundation.h>
-
 #import "VBMathParserLexicalAnalyzer.h"
 
+#import "VBMathParserTokenFactory.h"
+
 @interface VBMathParserDefaultLexicalAnalyzer : NSObject <VBMathParserLexicalAnalyzer>
+
+- (nullable instancetype) initWithDefaultTokenFactory;
+- (nullable instancetype) initWithTokenFactory:(nonnull id<VBMathParserTokenFactory>) tokenFactory NS_DESIGNATED_INITIALIZER;
 
 @end

@@ -35,7 +35,7 @@
 //
 #import "VBMathParserUnknownTokenException.h"
 
-#import "VBMathParserTokenFactory.h"
+#import "VBMathParserDefaultTokenFactory.h"
 
 @interface VBMathParserDefaultLexicalAnalyzer ()
 
@@ -45,6 +45,19 @@
 
 @implementation VBMathParserDefaultLexicalAnalyzer
 
+- (instancetype) initWithDefaultTokenFactory {
+    return [self initWithTokenFactory:[VBMathParserDefaultTokenFactory new]];
+}
+
+- (instancetype) initWithTokenFactory:(id<VBMathParserTokenFactory>) tokenFactory {
+    self = [super init];
+    if (self) {
+        self.tokenFactory = tokenFactory;
+    }
+    return self;
+}
+
+#pragma mark -
 - (NSArray<VBMathParserToken *>*) analyseExpression:(NSString*) expression
                                       withVariables:(NSArray<NSString*>*) variables {
 //    VBMathParserLog(@"LexicalAnalyzer: analyseString: %@ vars: %@", str, vars);
