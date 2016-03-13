@@ -38,12 +38,22 @@
 
 @implementation VBMathParser
 
-- (nonnull instancetype) initWithLexicalAnalyzer:(nullable id<VBMathParserLexicalAnalyzer>) lexicalAnalyzer
-                                  syntaxAnalyzer:(nullable id<VBMathParserSyntaxAnalyzer>) syntaxAnalyzer
-                                       rpnWorker:(nullable id<VBMathParserRPNWorker>) rpnWorker {
+- (instancetype)init {
+    return [self initWithDefaultAnalyzers];
+}
+
+- (instancetype) initWithDefaultAnalyzers {
+    return [self initWithLexicalAnalyzer:[VBMathParserDefaultLexicalAnalyzer new]
+                          syntaxAnalyzer:nil
+                               rpnWorker:nil];
+}
+
+- (instancetype) initWithLexicalAnalyzer:(id<VBMathParserLexicalAnalyzer>) lexicalAnalyzer
+                          syntaxAnalyzer:(id<VBMathParserSyntaxAnalyzer>) syntaxAnalyzer
+                               rpnWorker:(id<VBMathParserRPNWorker>) rpnWorker {
     self = [super init];
     if (self) {
-        self.lexicalAnalyzer = lexicalAnalyzer ? lexicalAnalyzer : [VBMathParserDefaultLexicalAnalyzer new];
+        self.lexicalAnalyzer = lexicalAnalyzer;
 #warning TODO
         self.syntaxAnalyzer = syntaxAnalyzer;
         self.rpnWorker = rpnWorker;

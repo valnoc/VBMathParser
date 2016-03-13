@@ -104,12 +104,10 @@
 @property (nonnull, nonatomic, strong) NSString* expression;
 @property (nullable, nonatomic, strong, readonly) NSArray<NSString*>* variables;
 
-/**
- *  Will use default implemntation for nil values.
- */
-- (nonnull instancetype) initWithLexicalAnalyzer:(nullable id<VBMathParserLexicalAnalyzer>) lexicalAnalyzer
-                                  syntaxAnalyzer:(nullable id<VBMathParserSyntaxAnalyzer>) syntaxAnalyzer
-                                       rpnWorker:(nullable id<VBMathParserRPNWorker>) rpnWorker;
+- (nullable instancetype) initWithDefaultAnalyzers;
+- (nullable instancetype) initWithLexicalAnalyzer:(nonnull id<VBMathParserLexicalAnalyzer>) lexicalAnalyzer
+                                  syntaxAnalyzer:(nonnull id<VBMathParserSyntaxAnalyzer>) syntaxAnalyzer
+                                       rpnWorker:(nonnull id<VBMathParserRPNWorker>) rpnWorker NS_DESIGNATED_INITIALIZER;
 
 #pragma mark - parse
 - (void) setExpression:(nonnull NSString *)expression;
