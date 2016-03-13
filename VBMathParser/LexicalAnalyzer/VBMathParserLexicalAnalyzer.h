@@ -13,6 +13,6 @@
 @protocol VBMathParserLexicalAnalyzer <NSObject>
 
 - (nonnull NSArray<VBMathParserToken *>*) analyseExpression:(nonnull NSString*) expression
-                                              withVariables:(nonnull NSArray<NSString*>*) variables;
+                                              withVariables:(nullable NSArray<NSString*>*) variables;
 
 @end

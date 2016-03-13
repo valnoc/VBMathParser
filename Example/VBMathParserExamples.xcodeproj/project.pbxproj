@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B34B4EF1C9593AA00270828 /* VBMathParserDefaultSyntaxAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B34B4EE1C9593AA00270828 /* VBMathParserDefaultSyntaxAnalyzer.m */; };
 		5B76278218D5D0A1009FF7E2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B76278118D5D0A1009FF7E2 /* Foundation.framework */; };
 		5B76278418D5D0A1009FF7E2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B76278318D5D0A1009FF7E2 /* CoreGraphics.framework */; };
 		5B76278618D5D0A1009FF7E2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B76278518D5D0A1009FF7E2 /* UIKit.framework */; };
@@ -70,6 +71,8 @@
 		01E2E82861AB0B220C3116B8 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		2C2750AE3F7D8B5EFEFABADD /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		32C7FC6B662772B2E27CB56B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B34B4ED1C9593AA00270828 /* VBMathParserDefaultSyntaxAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserDefaultSyntaxAnalyzer.h; sourceTree = "<group>"; };
+		5B34B4EE1C9593AA00270828 /* VBMathParserDefaultSyntaxAnalyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserDefaultSyntaxAnalyzer.m; sourceTree = "<group>"; };
 		5B76277E18D5D0A1009FF7E2 /* VBMathParserExamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VBMathParserExamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B76278118D5D0A1009FF7E2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5B76278318D5D0A1009FF7E2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -298,6 +301,8 @@
 			isa = PBXGroup;
 			children = (
 				5B8207D51BEF931C002C8C98 /* VBMathParserSyntaxAnalyzer.h */,
+				5B34B4ED1C9593AA00270828 /* VBMathParserDefaultSyntaxAnalyzer.h */,
+				5B34B4EE1C9593AA00270828 /* VBMathParserDefaultSyntaxAnalyzer.m */,
 			);
 			path = SyntaxAnalyzer;
 			sourceTree = "<group>";
@@ -582,6 +587,7 @@
 				5B82080D1BEF9677002C8C98 /* VBMathParserTokenOperation.m in Sources */,
 				5B76279218D5D0A1009FF7E2 /* VBAppDelegate.m in Sources */,
 				5B9F2E6F1C709DD000028B66 /* VBMathParserNotImplementedException.m in Sources */,
+				5B34B4EF1C9593AA00270828 /* VBMathParserDefaultSyntaxAnalyzer.m in Sources */,
 				5B9F2E6B1C709DD000028B66 /* VBMathParserBracketNotClosedException.m in Sources */,
 				5B9F2E6E1C709DD000028B66 /* VBMathParserMissingValueForVarException.m in Sources */,
 				5B9F2E701C709DD000028B66 /* VBMathParserUnknownTokenException.m in Sources */,

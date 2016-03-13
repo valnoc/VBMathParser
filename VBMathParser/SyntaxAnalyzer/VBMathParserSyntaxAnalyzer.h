@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+@class VBMathParserToken;
+
 @protocol VBMathParserSyntaxAnalyzer <NSObject>
+
+- (nonnull NSArray<VBMathParserToken *>*) analyseExpression:(nonnull NSArray<VBMathParserToken *>*) expression;
 
 @end
