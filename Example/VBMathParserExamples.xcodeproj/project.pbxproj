@@ -55,7 +55,9 @@
 		5B7627B218D5D120009FF7E2 /* VBMathParserLexicalAnalyzerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B7627B018D5D120009FF7E2 /* VBMathParserLexicalAnalyzerTests.m */; };
 		5B7627B318D5D120009FF7E2 /* VBMathParserSyntaxAnalyzerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B7627B118D5D120009FF7E2 /* VBMathParserSyntaxAnalyzerTests.m */; };
 		5B76281818D5FD9A009FF7E2 /* VBMathParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B76281718D5FD9A009FF7E2 /* VBMathParserTests.m */; };
+		BDF84554250DA84CC4D6A1CB /* libPods-VBMathParserExamples.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 85F3D3D6F6D3E82B79DE0362 /* libPods-VBMathParserExamples.a */; };
 		BF659B6B75585E9EA4920959 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 32C7FC6B662772B2E27CB56B /* libPods.a */; };
+		D38E81320CEC9C9E0E367E3C /* libPods-VBMathParserExamples-VBMathParserExamplesTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 051B2E4CEFFB1DC6F19BAD7A /* libPods-VBMathParserExamples-VBMathParserExamplesTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +72,7 @@
 
 /* Begin PBXFileReference section */
 		01E2E82861AB0B220C3116B8 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		051B2E4CEFFB1DC6F19BAD7A /* libPods-VBMathParserExamples-VBMathParserExamplesTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VBMathParserExamples-VBMathParserExamplesTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C2750AE3F7D8B5EFEFABADD /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		32C7FC6B662772B2E27CB56B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B34B4F51C95A47B00270828 /* VBMathParserDefaultRPNCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserDefaultRPNCalculator.h; sourceTree = "<group>"; };
@@ -162,6 +165,9 @@
 		5B7627B018D5D120009FF7E2 /* VBMathParserLexicalAnalyzerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserLexicalAnalyzerTests.m; sourceTree = "<group>"; };
 		5B7627B118D5D120009FF7E2 /* VBMathParserSyntaxAnalyzerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserSyntaxAnalyzerTests.m; sourceTree = "<group>"; };
 		5B76281718D5FD9A009FF7E2 /* VBMathParserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserTests.m; sourceTree = "<group>"; };
+		85F3D3D6F6D3E82B79DE0362 /* libPods-VBMathParserExamples.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VBMathParserExamples.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		898A7FF5A1C49451B73EE837 /* Pods-VBMathParserExamples-VBMathParserExamplesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VBMathParserExamples-VBMathParserExamplesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VBMathParserExamples-VBMathParserExamplesTests/Pods-VBMathParserExamples-VBMathParserExamplesTests.release.xcconfig"; sourceTree = "<group>"; };
+		BA5BF569D494F59C7FBF587C /* Pods-VBMathParserExamples-VBMathParserExamplesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VBMathParserExamples-VBMathParserExamplesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VBMathParserExamples-VBMathParserExamplesTests/Pods-VBMathParserExamples-VBMathParserExamplesTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +179,7 @@
 				5B76278618D5D0A1009FF7E2 /* UIKit.framework in Frameworks */,
 				5B76278218D5D0A1009FF7E2 /* Foundation.framework in Frameworks */,
 				BF659B6B75585E9EA4920959 /* libPods.a in Frameworks */,
+				BDF84554250DA84CC4D6A1CB /* libPods-VBMathParserExamples.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,6 +190,7 @@
 				5B76279B18D5D0A2009FF7E2 /* XCTest.framework in Frameworks */,
 				5B76279D18D5D0A2009FF7E2 /* UIKit.framework in Frameworks */,
 				5B76279C18D5D0A2009FF7E2 /* Foundation.framework in Frameworks */,
+				D38E81320CEC9C9E0E367E3C /* libPods-VBMathParserExamples-VBMathParserExamplesTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,6 +394,8 @@
 				5B76278518D5D0A1009FF7E2 /* UIKit.framework */,
 				5B76279A18D5D0A2009FF7E2 /* XCTest.framework */,
 				32C7FC6B662772B2E27CB56B /* libPods.a */,
+				85F3D3D6F6D3E82B79DE0362 /* libPods-VBMathParserExamples.a */,
+				051B2E4CEFFB1DC6F19BAD7A /* libPods-VBMathParserExamples-VBMathParserExamplesTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -437,6 +447,8 @@
 			children = (
 				01E2E82861AB0B220C3116B8 /* Pods.debug.xcconfig */,
 				2C2750AE3F7D8B5EFEFABADD /* Pods.release.xcconfig */,
+				BA5BF569D494F59C7FBF587C /* Pods-VBMathParserExamples-VBMathParserExamplesTests.debug.xcconfig */,
+				898A7FF5A1C49451B73EE837 /* Pods-VBMathParserExamples-VBMathParserExamplesTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -453,6 +465,7 @@
 				5B76277B18D5D0A1009FF7E2 /* Frameworks */,
 				5B76277C18D5D0A1009FF7E2 /* Resources */,
 				69F129BB4A296F2461075CAD /* Copy Pods Resources */,
+				E0942260997AD38052697CE8 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -467,9 +480,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5B7627AD18D5D0A2009FF7E2 /* Build configuration list for PBXNativeTarget "VBMathParserExamplesTests" */;
 			buildPhases = (
+				8FD473895082A4EB9580F290 /* Check Pods Manifest.lock */,
 				5B76279518D5D0A2009FF7E2 /* Sources */,
 				5B76279618D5D0A2009FF7E2 /* Frameworks */,
 				5B76279718D5D0A2009FF7E2 /* Resources */,
+				459882903964FFAB7B19A98B /* Embed Pods Frameworks */,
+				66EDFBDFC65FD1A7934363B8 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -535,6 +551,36 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		459882903964FFAB7B19A98B /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VBMathParserExamples-VBMathParserExamplesTests/Pods-VBMathParserExamples-VBMathParserExamplesTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		66EDFBDFC65FD1A7934363B8 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VBMathParserExamples-VBMathParserExamplesTests/Pods-VBMathParserExamples-VBMathParserExamplesTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		69F129BB4A296F2461075CAD /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -547,7 +593,37 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VBMathParserExamples/Pods-VBMathParserExamples-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8FD473895082A4EB9580F290 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E0942260997AD38052697CE8 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VBMathParserExamples/Pods-VBMathParserExamples-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FB3A733F18F1BECFD662FF77 /* Check Pods Manifest.lock */ = {
@@ -755,6 +831,7 @@
 		};
 		5B7627AE18D5D0A2009FF7E2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BA5BF569D494F59C7FBF587C /* Pods-VBMathParserExamples-VBMathParserExamplesTests.debug.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/VBMathParserExamples.app/VBMathParserExamples";
@@ -778,6 +855,7 @@
 		};
 		5B7627AF18D5D0A2009FF7E2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 898A7FF5A1C49451B73EE837 /* Pods-VBMathParserExamples-VBMathParserExamplesTests.release.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/VBMathParserExamples.app/VBMathParserExamples";

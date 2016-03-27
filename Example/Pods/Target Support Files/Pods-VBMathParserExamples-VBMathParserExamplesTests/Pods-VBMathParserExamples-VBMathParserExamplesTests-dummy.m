@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_Pods_VBMathParserExamples_VBMathParserExamplesTests : NSObject
+@end
+@implementation PodsDummy_Pods_VBMathParserExamples_VBMathParserExamplesTests
+@end
