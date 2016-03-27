@@ -56,6 +56,7 @@
 		5B7627B318D5D120009FF7E2 /* VBMathParserSyntaxAnalyzerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B7627B118D5D120009FF7E2 /* VBMathParserSyntaxAnalyzerTests.m */; };
 		5B76281818D5FD9A009FF7E2 /* VBMathParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B76281718D5FD9A009FF7E2 /* VBMathParserTests.m */; };
 		5BE67D871CA8095A00B18D46 /* VBMathParserDefaultLexicalAnalyzerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BE67D861CA8095A00B18D46 /* VBMathParserDefaultLexicalAnalyzerSpec.m */; };
+		5BE67D891CA80F5100B18D46 /* VBMathParserDefaultTokenFactorySpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BE67D881CA80F5100B18D46 /* VBMathParserDefaultTokenFactorySpec.m */; };
 		BDF84554250DA84CC4D6A1CB /* libPods-VBMathParserExamples.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 85F3D3D6F6D3E82B79DE0362 /* libPods-VBMathParserExamples.a */; };
 		BF659B6B75585E9EA4920959 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 32C7FC6B662772B2E27CB56B /* libPods.a */; };
 		D38E81320CEC9C9E0E367E3C /* libPods-VBMathParserExamples-VBMathParserExamplesTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 051B2E4CEFFB1DC6F19BAD7A /* libPods-VBMathParserExamples-VBMathParserExamplesTests.a */; };
@@ -167,6 +168,7 @@
 		5B7627B118D5D120009FF7E2 /* VBMathParserSyntaxAnalyzerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserSyntaxAnalyzerTests.m; sourceTree = "<group>"; };
 		5B76281718D5FD9A009FF7E2 /* VBMathParserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserTests.m; sourceTree = "<group>"; };
 		5BE67D861CA8095A00B18D46 /* VBMathParserDefaultLexicalAnalyzerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserDefaultLexicalAnalyzerSpec.m; sourceTree = "<group>"; };
+		5BE67D881CA80F5100B18D46 /* VBMathParserDefaultTokenFactorySpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserDefaultTokenFactorySpec.m; sourceTree = "<group>"; };
 		85F3D3D6F6D3E82B79DE0362 /* libPods-VBMathParserExamples.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VBMathParserExamples.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		898A7FF5A1C49451B73EE837 /* Pods-VBMathParserExamples-VBMathParserExamplesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VBMathParserExamples-VBMathParserExamplesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VBMathParserExamples-VBMathParserExamplesTests/Pods-VBMathParserExamples-VBMathParserExamplesTests.release.xcconfig"; sourceTree = "<group>"; };
 		BA5BF569D494F59C7FBF587C /* Pods-VBMathParserExamples-VBMathParserExamplesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VBMathParserExamples-VBMathParserExamplesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VBMathParserExamples-VBMathParserExamplesTests/Pods-VBMathParserExamples-VBMathParserExamplesTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -428,6 +430,7 @@
 			isa = PBXGroup;
 			children = (
 				5BE67D861CA8095A00B18D46 /* VBMathParserDefaultLexicalAnalyzerSpec.m */,
+				5BE67D881CA80F5100B18D46 /* VBMathParserDefaultTokenFactorySpec.m */,
 				5B7627B018D5D120009FF7E2 /* VBMathParserLexicalAnalyzerTests.m */,
 				5B7627B118D5D120009FF7E2 /* VBMathParserSyntaxAnalyzerTests.m */,
 				5B76281718D5FD9A009FF7E2 /* VBMathParserTests.m */,
@@ -697,6 +700,7 @@
 				5B76281818D5FD9A009FF7E2 /* VBMathParserTests.m in Sources */,
 				5B7627B218D5D120009FF7E2 /* VBMathParserLexicalAnalyzerTests.m in Sources */,
 				5BE67D871CA8095A00B18D46 /* VBMathParserDefaultLexicalAnalyzerSpec.m in Sources */,
+				5BE67D891CA80F5100B18D46 /* VBMathParserDefaultTokenFactorySpec.m in Sources */,
 				5B7627B318D5D120009FF7E2 /* VBMathParserSyntaxAnalyzerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -13,7 +13,7 @@
 #import "VBMathParserDefaultLexicalAnalyzer.h"
 #import "VBMathParserDefaultTokenFactory.h"
 
-@interface VBMathParserDefaultLexicalAnalyzer ()
+@interface VBMathParserDefaultLexicalAnalyzer (tests)
 
 @property (nonatomic, strong) id<VBMathParserTokenFactory> tokenFactory;
 
