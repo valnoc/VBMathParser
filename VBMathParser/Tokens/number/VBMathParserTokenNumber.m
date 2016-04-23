@@ -28,7 +28,11 @@
 
 #pragma mark - regexp
 + (NSString *) regexpPattern {
-    return @"^[0-9]+\\.?[0-9]*$";
+    return @"^[0-9]*\\.?[0-9]*$";
+}
+
++ (NSString *) tokenType {
+    return @"VBMathParserTokenNumber";
 }
 
 + (BOOL) isToken:(NSString*)string {

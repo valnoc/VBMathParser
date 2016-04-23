@@ -31,4 +31,8 @@
     return @"^[()]$";
 }
 
++ (NSString *) tokenType {
+    return @"VBMathParserTokenSpecial";
+}
+
 @end

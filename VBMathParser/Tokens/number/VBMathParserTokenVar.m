@@ -31,4 +31,8 @@
     return @"^[A-Za-z]+[A-Za-z0-9]*$";
 }
 
++ (NSString *) tokenType {
+    return @"VBMathParserTokenVar";
+}
+
 @end

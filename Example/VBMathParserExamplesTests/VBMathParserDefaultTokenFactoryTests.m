@@ -129,23 +129,44 @@
 
 #pragma mark - const
 - (void) testThatItCreatesTokenConstPi {
-    VBMathParserToken *token = [self.tokenFactory tokenWithType:[VBMathParserTokenFunction tokenType]
+    VBMathParserToken *token = [self.tokenFactory tokenWithType:[VBMathParserTokenConst tokenType]
                                                          string:@"pi"];
     expect(token).to.beAnInstanceOf([VBMathParserTokenConstPi class]);
 }
 
 #pragma mark - number
-- (void) testThatItCreatesTokenNumber {
+- (void) testThatItCreatesTokenNumberSimple {
     NSMutableArray* strToParse = [NSMutableArray new];
     for (NSInteger i = 0; i < 10; i++) {
         [strToParse addObject:@(i).stringValue];
     }
-    [strToParse addObject:@"100500"];
-    [strToParse addObject:@"8001212"];
+    
+    [strToParse enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        VBMathParserToken *token = [self.tokenFactory tokenWithType:[VBMathParserTokenNumber tokenType]
+                                                             string:obj];
+        expect(token).to.beAnInstanceOf([VBMathParserTokenNumber class]);
+        expect(((VBMathParserTokenNumber*)token).doubleValue).to.equal([obj doubleValue]);
+    }];
+}
+
+- (void) testThatItCreatesTokenNumberInteger {
+    NSMutableArray* strToParse = [NSMutableArray new];
+        [strToParse addObject:@"100500"];
+        [strToParse addObject:@"8001212"];
+    
+    [strToParse enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        VBMathParserToken *token = [self.tokenFactory tokenWithType:[VBMathParserTokenNumber tokenType]
+                                                             string:obj];
+        expect(token).to.beAnInstanceOf([VBMathParserTokenNumber class]);
+        expect(((VBMathParserTokenNumber*)token).doubleValue).to.equal([obj doubleValue]);
+    }];
+}
+
+- (void) testThatItCreatesTokenNumberDouble {
+    NSMutableArray* strToParse = [NSMutableArray new];
     [strToParse addObject:@"0.0123"];
-    [strToParse addObject:@" 1.97         "];
-    [strToParse addObject:@" 2.         "];
-    [strToParse addObject:@"0."];
+    [strToParse addObject:@"2."];
+    [strToParse addObject:@".3"];
     
     [strToParse enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         VBMathParserToken *token = [self.tokenFactory tokenWithType:[VBMathParserTokenNumber tokenType]

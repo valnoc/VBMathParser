@@ -33,6 +33,10 @@
     return @"^[\\+\\-\\*/^]$";
 }
 
++ (NSString *) tokenType {
+    return @"VBMathParserTokenOperation";
+}
+
 #pragma mark - operation
 - (double) evaluateWithArgLeft:(double)argLeft
                       argRight:(double)argRight {

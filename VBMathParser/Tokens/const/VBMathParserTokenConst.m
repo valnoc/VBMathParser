@@ -33,6 +33,10 @@
     return @"^[A-Za-z]+$";
 }
 
++ (NSString *) tokenType {
+    return @"VBMathParserTokenConst";
+}
+
 #pragma mark - const
 - (double) doubleValue {
     @throw [VBMathParserNotImplementedException exception];

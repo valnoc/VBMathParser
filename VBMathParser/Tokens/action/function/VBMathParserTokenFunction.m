@@ -33,6 +33,10 @@
     return @"^[A-Za-z]+$";
 }
 
++ (NSString *) tokenType {
+    return @"VBMathParserTokenFunction";
+}
+
 #pragma mark - action
 - (VBMathParserTokenActionPriority) priority {
     return VBMathParserTokenActionPriorityHigh;
