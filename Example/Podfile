@@ -1,9 +1,7 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
-abstract_target 'Parser' do
-    target 'VBMathParserExamples' do
-        pod 'VBException', '~> 1.0'
-    end
+target 'VBMathParserExamples' do
+    pod 'VBException', '~> 1.0'
 
     target 'VBMathParserExamplesTests' do
         inherit! :search_paths

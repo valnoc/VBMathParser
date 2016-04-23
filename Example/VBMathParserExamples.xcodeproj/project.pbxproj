@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09837CCC968E68E5101481E7 /* libPods-VBMathParserExamples.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C9ECEBA269A8D001934079 /* libPods-VBMathParserExamples.a */; };
+		5B2DC8C01CCBC542004E3B3F /* VBMathParserDefaultLexicalAnalyzerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B47C1801CC3BC7E007333DE /* VBMathParserDefaultLexicalAnalyzerTests.m */; };
+		5B2DC8C11CCBC544004E3B3F /* VBMathParserDefaultTokenFactoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B47C1821CC3BCF8007333DE /* VBMathParserDefaultTokenFactoryTests.m */; };
 		5B34B5471C95A47B00270828 /* VBMathParserDefaultRPNCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B34B4F61C95A47B00270828 /* VBMathParserDefaultRPNCalculator.m */; };
 		5B34B5481C95A47B00270828 /* VBMathParserDefaultLexicalAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B34B4F91C95A47B00270828 /* VBMathParserDefaultLexicalAnalyzer.m */; };
 		5B34B5491C95A47B00270828 /* VBMathParserDefaultTokenFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B34B4FB1C95A47B00270828 /* VBMathParserDefaultTokenFactory.m */; };
@@ -41,8 +44,6 @@
 		5B34B5661C95A47B00270828 /* VBMathParserTokenSpecialBracketOpen.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B34B53F1C95A47B00270828 /* VBMathParserTokenSpecialBracketOpen.m */; };
 		5B34B5671C95A47B00270828 /* VBMathParserToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B34B5411C95A47B00270828 /* VBMathParserToken.m */; };
 		5B34B5681C95A47B00270828 /* VBMathParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B34B5431C95A47B00270828 /* VBMathParser.m */; };
-		5B47C1811CC3BC7E007333DE /* VBMathParserDefaultLexicalAnalyzerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B47C1801CC3BC7E007333DE /* VBMathParserDefaultLexicalAnalyzerTests.m */; };
-		5B47C1831CC3BCF8007333DE /* VBMathParserDefaultTokenFactoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B47C1821CC3BCF8007333DE /* VBMathParserDefaultTokenFactoryTests.m */; };
 		5B76278218D5D0A1009FF7E2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B76278118D5D0A1009FF7E2 /* Foundation.framework */; };
 		5B76278418D5D0A1009FF7E2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B76278318D5D0A1009FF7E2 /* CoreGraphics.framework */; };
 		5B76278618D5D0A1009FF7E2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B76278518D5D0A1009FF7E2 /* UIKit.framework */; };
@@ -50,20 +51,11 @@
 		5B76278E18D5D0A1009FF7E2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B76278D18D5D0A1009FF7E2 /* main.m */; };
 		5B76279218D5D0A1009FF7E2 /* VBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B76279118D5D0A1009FF7E2 /* VBAppDelegate.m */; };
 		5B76279418D5D0A1009FF7E2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B76279318D5D0A1009FF7E2 /* Images.xcassets */; };
-		5B76279B18D5D0A2009FF7E2 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B76279A18D5D0A2009FF7E2 /* XCTest.framework */; };
-		5B76279C18D5D0A2009FF7E2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B76278118D5D0A1009FF7E2 /* Foundation.framework */; };
-		5B76279D18D5D0A2009FF7E2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B76278518D5D0A1009FF7E2 /* UIKit.framework */; };
-		5B7627A518D5D0A2009FF7E2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B7627A318D5D0A2009FF7E2 /* InfoPlist.strings */; };
-		5B7627B218D5D120009FF7E2 /* VBMathParserLexicalAnalyzerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B7627B018D5D120009FF7E2 /* VBMathParserLexicalAnalyzerTests.m */; };
-		5B7627B318D5D120009FF7E2 /* VBMathParserSyntaxAnalyzerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B7627B118D5D120009FF7E2 /* VBMathParserSyntaxAnalyzerTests.m */; };
-		5B76281818D5FD9A009FF7E2 /* VBMathParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B76281718D5FD9A009FF7E2 /* VBMathParserTests.m */; };
-		930387CE4A7F5A4DB81D5C06 /* libPods-VBMathParserExamplesTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FE83048C589ED9BC753EF6B /* libPods-VBMathParserExamplesTests.a */; };
-		CFAB81DF996C12617C316C59 /* libPods-VBMathParserExamples.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C9ECEBA269A8D001934079 /* libPods-VBMathParserExamples.a */; };
-		D38E81320CEC9C9E0E367E3C /* libPods-VBMathParserExamples-VBMathParserExamplesTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 051B2E4CEFFB1DC6F19BAD7A /* libPods-VBMathParserExamples-VBMathParserExamplesTests.a */; };
+		AEB4214BB5EA71D1DE8343A0 /* libPods-VBMathParserExamplesTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FE83048C589ED9BC753EF6B /* libPods-VBMathParserExamplesTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		5B76279E18D5D0A2009FF7E2 /* PBXContainerItemProxy */ = {
+		5B2DC8BB1CCBC4E5004E3B3F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5B76277618D5D0A1009FF7E2 /* Project object */;
 			proxyType = 1;
@@ -81,6 +73,7 @@
 		32C7FC6B662772B2E27CB56B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		36B804965A9E81F51C97C2D6 /* Pods-VBMathParserExamplesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VBMathParserExamplesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VBMathParserExamplesTests/Pods-VBMathParserExamplesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4E3780637122D7734BFBF8F3 /* Pods-VBMathParserExamplesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VBMathParserExamplesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VBMathParserExamplesTests/Pods-VBMathParserExamplesTests.release.xcconfig"; sourceTree = "<group>"; };
+		5B2DC8B61CCBC4E4004E3B3F /* VBMathParserExamplesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VBMathParserExamplesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B34B4F51C95A47B00270828 /* VBMathParserDefaultRPNCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserDefaultRPNCalculator.h; sourceTree = "<group>"; };
 		5B34B4F61C95A47B00270828 /* VBMathParserDefaultRPNCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserDefaultRPNCalculator.m; sourceTree = "<group>"; };
 		5B34B4F81C95A47B00270828 /* VBMathParserDefaultLexicalAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBMathParserDefaultLexicalAnalyzer.h; sourceTree = "<group>"; };
@@ -166,7 +159,6 @@
 		5B76279018D5D0A1009FF7E2 /* VBAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VBAppDelegate.h; sourceTree = "<group>"; };
 		5B76279118D5D0A1009FF7E2 /* VBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VBAppDelegate.m; sourceTree = "<group>"; };
 		5B76279318D5D0A1009FF7E2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		5B76279918D5D0A2009FF7E2 /* VBMathParserExamplesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VBMathParserExamplesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B76279A18D5D0A2009FF7E2 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		5B7627A218D5D0A2009FF7E2 /* VBMathParserExamplesTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "VBMathParserExamplesTests-Info.plist"; sourceTree = "<group>"; };
 		5B7627A418D5D0A2009FF7E2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -180,6 +172,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5B2DC8B31CCBC4E4004E3B3F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AEB4214BB5EA71D1DE8343A0 /* libPods-VBMathParserExamplesTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5B76277B18D5D0A1009FF7E2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -187,19 +187,7 @@
 				5B76278418D5D0A1009FF7E2 /* CoreGraphics.framework in Frameworks */,
 				5B76278618D5D0A1009FF7E2 /* UIKit.framework in Frameworks */,
 				5B76278218D5D0A1009FF7E2 /* Foundation.framework in Frameworks */,
-				CFAB81DF996C12617C316C59 /* libPods-VBMathParserExamples.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5B76279618D5D0A2009FF7E2 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5B76279B18D5D0A2009FF7E2 /* XCTest.framework in Frameworks */,
-				5B76279D18D5D0A2009FF7E2 /* UIKit.framework in Frameworks */,
-				5B76279C18D5D0A2009FF7E2 /* Foundation.framework in Frameworks */,
-				D38E81320CEC9C9E0E367E3C /* libPods-VBMathParserExamples-VBMathParserExamplesTests.a in Frameworks */,
-				930387CE4A7F5A4DB81D5C06 /* libPods-VBMathParserExamplesTests.a in Frameworks */,
+				09837CCC968E68E5101481E7 /* libPods-VBMathParserExamples.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,7 +378,7 @@
 			isa = PBXGroup;
 			children = (
 				5B76277E18D5D0A1009FF7E2 /* VBMathParserExamples.app */,
-				5B76279918D5D0A2009FF7E2 /* VBMathParserExamplesTests.xctest */,
+				5B2DC8B61CCBC4E4004E3B3F /* VBMathParserExamplesTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -472,6 +460,27 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5B2DC8B51CCBC4E4004E3B3F /* VBMathParserExamplesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B2DC8BD1CCBC4E5004E3B3F /* Build configuration list for PBXNativeTarget "VBMathParserExamplesTests" */;
+			buildPhases = (
+				EE6500F9F17AA86193D32317 /* 📦 Check Pods Manifest.lock */,
+				5B2DC8B21CCBC4E4004E3B3F /* Sources */,
+				5B2DC8B31CCBC4E4004E3B3F /* Frameworks */,
+				5B2DC8B41CCBC4E4004E3B3F /* Resources */,
+				D9FB1E7480E5378009566F1C /* 📦 Embed Pods Frameworks */,
+				5766AEE5017F432C5C8F8509 /* 📦 Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5B2DC8BC1CCBC4E5004E3B3F /* PBXTargetDependency */,
+			);
+			name = VBMathParserExamplesTests;
+			productName = VBMathParserExamplesTests;
+			productReference = 5B2DC8B61CCBC4E4004E3B3F /* VBMathParserExamplesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		5B76277D18D5D0A1009FF7E2 /* VBMathParserExamples */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5B7627AA18D5D0A2009FF7E2 /* Build configuration list for PBXNativeTarget "VBMathParserExamples" */;
@@ -492,27 +501,6 @@
 			productReference = 5B76277E18D5D0A1009FF7E2 /* VBMathParserExamples.app */;
 			productType = "com.apple.product-type.application";
 		};
-		5B76279818D5D0A2009FF7E2 /* VBMathParserExamplesTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 5B7627AD18D5D0A2009FF7E2 /* Build configuration list for PBXNativeTarget "VBMathParserExamplesTests" */;
-			buildPhases = (
-				8FD473895082A4EB9580F290 /* 📦 Check Pods Manifest.lock */,
-				5B76279518D5D0A2009FF7E2 /* Sources */,
-				5B76279618D5D0A2009FF7E2 /* Frameworks */,
-				5B76279718D5D0A2009FF7E2 /* Resources */,
-				459882903964FFAB7B19A98B /* 📦 Embed Pods Frameworks */,
-				66EDFBDFC65FD1A7934363B8 /* 📦 Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				5B76279F18D5D0A2009FF7E2 /* PBXTargetDependency */,
-			);
-			name = VBMathParserExamplesTests;
-			productName = VBMathParserExamplesTests;
-			productReference = 5B76279918D5D0A2009FF7E2 /* VBMathParserExamplesTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -523,7 +511,8 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Valeriy Bezuglyy";
 				TargetAttributes = {
-					5B76279818D5D0A2009FF7E2 = {
+					5B2DC8B51CCBC4E4004E3B3F = {
+						CreatedOnToolsVersion = 7.1.1;
 						TestTargetID = 5B76277D18D5D0A1009FF7E2;
 					};
 				};
@@ -541,12 +530,19 @@
 			projectRoot = "";
 			targets = (
 				5B76277D18D5D0A1009FF7E2 /* VBMathParserExamples */,
-				5B76279818D5D0A2009FF7E2 /* VBMathParserExamplesTests */,
+				5B2DC8B51CCBC4E4004E3B3F /* VBMathParserExamplesTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5B2DC8B41CCBC4E4004E3B3F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5B76277C18D5D0A1009FF7E2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -556,33 +552,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5B76279718D5D0A2009FF7E2 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5B7627A518D5D0A2009FF7E2 /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		459882903964FFAB7B19A98B /* 📦 Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VBMathParserExamplesTests/Pods-VBMathParserExamplesTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		66EDFBDFC65FD1A7934363B8 /* 📦 Copy Pods Resources */ = {
+		5766AEE5017F432C5C8F8509 /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -612,19 +585,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VBMathParserExamples/Pods-VBMathParserExamples-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8FD473895082A4EB9580F290 /* 📦 Check Pods Manifest.lock */ = {
+		D9FB1E7480E5378009566F1C /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "📦 Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VBMathParserExamplesTests/Pods-VBMathParserExamplesTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E0942260997AD38052697CE8 /* 📦 Embed Pods Frameworks */ = {
@@ -640,6 +613,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VBMathParserExamples/Pods-VBMathParserExamples-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EE6500F9F17AA86193D32317 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		FB3A733F18F1BECFD662FF77 /* 📦 Check Pods Manifest.lock */ = {
@@ -660,6 +648,15 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5B2DC8B21CCBC4E4004E3B3F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B2DC8C01CCBC542004E3B3F /* VBMathParserDefaultLexicalAnalyzerTests.m in Sources */,
+				5B2DC8C11CCBC544004E3B3F /* VBMathParserDefaultTokenFactoryTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5B76277A18D5D0A1009FF7E2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -703,25 +700,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5B76279518D5D0A2009FF7E2 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5B76281818D5FD9A009FF7E2 /* VBMathParserTests.m in Sources */,
-				5B7627B218D5D120009FF7E2 /* VBMathParserLexicalAnalyzerTests.m in Sources */,
-				5B47C1811CC3BC7E007333DE /* VBMathParserDefaultLexicalAnalyzerTests.m in Sources */,
-				5B47C1831CC3BCF8007333DE /* VBMathParserDefaultTokenFactoryTests.m in Sources */,
-				5B7627B318D5D120009FF7E2 /* VBMathParserSyntaxAnalyzerTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		5B76279F18D5D0A2009FF7E2 /* PBXTargetDependency */ = {
+		5B2DC8BC1CCBC4E5004E3B3F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 5B76277D18D5D0A1009FF7E2 /* VBMathParserExamples */;
-			targetProxy = 5B76279E18D5D0A2009FF7E2 /* PBXContainerItemProxy */;
+			targetProxy = 5B2DC8BB1CCBC4E5004E3B3F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -745,6 +730,48 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		5B2DC8BE1CCBC4E5004E3B3F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 36B804965A9E81F51C97C2D6 /* Pods-VBMathParserExamplesTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = VBMathParserExamplesTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.examples.VBMathParserExamplesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VBMathParserExamples.app/VBMathParserExamples";
+			};
+			name = Debug;
+		};
+		5B2DC8BF1CCBC4E5004E3B3F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4E3780637122D7734BFBF8F3 /* Pods-VBMathParserExamplesTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = VBMathParserExamplesTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.examples.VBMathParserExamplesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VBMathParserExamples.app/VBMathParserExamples";
+			};
+			name = Release;
+		};
 		5B7627A818D5D0A2009FF7E2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -847,53 +874,18 @@
 			};
 			name = Release;
 		};
-		5B7627AE18D5D0A2009FF7E2 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 36B804965A9E81F51C97C2D6 /* Pods-VBMathParserExamplesTests.debug.xcconfig */;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "VBMathParserExamples/VBMathParserExamples-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "VBMathParserExamplesTests/VBMathParserExamplesTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VBMathParserExamples.app/VBMathParserExamples";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		5B7627AF18D5D0A2009FF7E2 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4E3780637122D7734BFBF8F3 /* Pods-VBMathParserExamplesTests.release.xcconfig */;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "VBMathParserExamples/VBMathParserExamples-Prefix.pch";
-				INFOPLIST_FILE = "VBMathParserExamplesTests/VBMathParserExamplesTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VBMathParserExamples.app/VBMathParserExamples";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5B2DC8BD1CCBC4E5004E3B3F /* Build configuration list for PBXNativeTarget "VBMathParserExamplesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B2DC8BE1CCBC4E5004E3B3F /* Debug */,
+				5B2DC8BF1CCBC4E5004E3B3F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		5B76277918D5D0A1009FF7E2 /* Build configuration list for PBXProject "VBMathParserExamples" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -908,15 +900,6 @@
 			buildConfigurations = (
 				5B7627AB18D5D0A2009FF7E2 /* Debug */,
 				5B7627AC18D5D0A2009FF7E2 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		5B7627AD18D5D0A2009FF7E2 /* Build configuration list for PBXNativeTarget "VBMathParserExamplesTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5B7627AE18D5D0A2009FF7E2 /* Debug */,
-				5B7627AF18D5D0A2009FF7E2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
