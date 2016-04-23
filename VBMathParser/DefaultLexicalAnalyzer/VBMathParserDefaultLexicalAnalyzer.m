@@ -64,12 +64,9 @@
 #pragma mark -
 - (NSArray<VBMathParserToken *>*) analyseExpression:(NSString*) expression
                                       withVariables:(NSArray<NSString*>*) variables {
-//    VBMathParserLog(@"LexicalAnalyzer: analyseString: %@ vars: %@", str, vars);
-
     [self validateVariableNames:variables];
     //
     NSString* expr = [self prepareStringForParsing:expression];
-//    VBMathParserLog(@"LexicalAnalyzer: Prepared string: %@", str);
 
     NSMutableArray* tokens = [NSMutableArray new];
     while (expr.length > 0) {
@@ -101,9 +98,6 @@
             @throw [VBMathParserUnknownTokenException exceptionWithToken:expr];
         }
     }
-
-//    VBMathParserLog(@"LexicalAnalyzer: Analysis finished");
-//    VBMathParserLog(@"LexicalAnalyzer: Analysis finished\n%@", tokens);
     return tokens;
 }
 
@@ -145,7 +139,6 @@
     if (canBeToken) {
         token = [self.tokenFactory tokenWithType:[tokenClass tokenType]
                                           string:substr];
-//            VBMathParserLog(@"LexicalAnalyzer: Token %@: %@", tokenClass, substr);
     }
     return token;
 }

@@ -11,6 +11,7 @@
 #import <OCMock/OCMock.h>
 
 #import "VBMathParserDefaultLexicalAnalyzer.h"
+#import "VBMathParserDefaultTokenFactory.h"
 
 @interface VBMathParserDefaultLexicalAnalyzer (tests)
 
@@ -20,6 +21,9 @@
 
 @interface VBMathParserDefaultLexicalAnalyzerTests : XCTestCase
 
+@property (nonatomic, strong) VBMathParserDefaultLexicalAnalyzer* lexicalAnalyzer;
+@property (nonatomic, strong) id<VBMathParserTokenFactory> mockTokenFactory;
+
 @end
 
 @implementation VBMathParserDefaultLexicalAnalyzerTests
@@ -27,23 +31,37 @@
 - (void)setUp {
     [super setUp];
     // Put setup code here. This method is called before the invocation of each test method in the class.
+    
+    self.mockTokenFactory = OCMProtocolMock(@protocol(VBMathParserTokenFactory));
+
+    self.lexicalAnalyzer = [[VBMathParserDefaultLexicalAnalyzer alloc] initWithTokenFactory:self.mockTokenFactory];
 }
 
 - (void)tearDown {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
+    
+    self.mockTokenFactory = nil;
+    
+    self.lexicalAnalyzer = nil;
 }
 
-- (void)testExample {
+- (void) testThatItImplementsLexicalAnalyzerProtocol {
     // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
+    expect(self.lexicalAnalyzer).to.conformTo(@protocol(VBMathParserLexicalAnalyzer));
 }
 
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
+- (void) testThatItUsesGivenFactory {
+    // This is an example of a functional test case.
+    expect(self.lexicalAnalyzer.tokenFactory).to.equal(self.mockTokenFactory);
 }
+
+- (void) testThatItCreatesDefaultTokenFactory {
+    // This is an example of a functional test case.
+    self.lexicalAnalyzer = [[VBMathParserDefaultLexicalAnalyzer alloc] initWithDefaultTokenFactory];
+    expect(self.lexicalAnalyzer.tokenFactory).to.beAnInstanceOf([VBMathParserDefaultTokenFactory class]);
+}
+
+#pragma mark - 
 
 @end

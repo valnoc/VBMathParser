@@ -176,4 +176,40 @@
     }];
 }
 
+#pragma mark - vars
+#warning vars tests missing !!!
+//- (void) testVars
+//{
+//    VBMathParserLexicalAnalyzer* lexicalAnalyzer = [VBMathParserLexicalAnalyzer new];
+//
+//    NSArray* exp = @[@"x", @"x2"];
+//
+//    for (NSString* str in exp) {
+//        NSArray* tokens;
+//
+//        XCTAssertNoThrow(tokens = [lexicalAnalyzer analyseString:str
+//                                                        withVars:@[str]],
+//                            @"failed to parse var, %@", str);
+//
+//        XCTAssert(tokens.count == 1,
+//                  @"parsed more token than it should, %@", str);
+//
+//        XCTAssert([tokens.lastObject isKindOfClass:[VBMathParserTokenVar class]],
+//                  @"parsed wrong class, %@", str);
+//
+//        XCTAssert([[tokens.lastObject stringValue] isEqualToString:str],
+//                  @"parsed wrong special, str = %@, parsed = %@", str, [tokens.lastObject stringValue]);
+//    }
+//
+//    XCTAssertThrowsSpecific([lexicalAnalyzer analyseString:@"1"
+//                                                  withVars:@[@(1)]],
+//                            VBMathParserVarIsNotStringException,
+//                            @"did not throw VBMathParserVarIsNotStringException");
+//
+//    XCTAssertThrowsSpecific([lexicalAnalyzer analyseString:@"1"
+//                                                  withVars:@[@"0x"]],
+//                            VBMathParserVarIsNotValidException,
+//                            @"did not throw VBMathParserVarIsNotValidException");
+//}
+
 @end

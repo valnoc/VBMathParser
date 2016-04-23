@@ -162,7 +162,6 @@
 		5B76279A18D5D0A2009FF7E2 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		5B7627A218D5D0A2009FF7E2 /* VBMathParserExamplesTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "VBMathParserExamplesTests-Info.plist"; sourceTree = "<group>"; };
 		5B7627A418D5D0A2009FF7E2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		5B7627B018D5D120009FF7E2 /* VBMathParserLexicalAnalyzerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserLexicalAnalyzerTests.m; sourceTree = "<group>"; };
 		5B7627B118D5D120009FF7E2 /* VBMathParserSyntaxAnalyzerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserSyntaxAnalyzerTests.m; sourceTree = "<group>"; };
 		5B76281718D5FD9A009FF7E2 /* VBMathParserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBMathParserTests.m; sourceTree = "<group>"; };
 		898A7FF5A1C49451B73EE837 /* Pods-VBMathParserExamples-VBMathParserExamplesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VBMathParserExamples-VBMathParserExamplesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VBMathParserExamples-VBMathParserExamplesTests/Pods-VBMathParserExamples-VBMathParserExamplesTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -423,9 +422,8 @@
 		5B7627A018D5D0A2009FF7E2 /* VBMathParserExamplesTests */ = {
 			isa = PBXGroup;
 			children = (
-				5B47C1801CC3BC7E007333DE /* VBMathParserDefaultLexicalAnalyzerTests.m */,
 				5B47C1821CC3BCF8007333DE /* VBMathParserDefaultTokenFactoryTests.m */,
-				5B7627B018D5D120009FF7E2 /* VBMathParserLexicalAnalyzerTests.m */,
+				5B47C1801CC3BC7E007333DE /* VBMathParserDefaultLexicalAnalyzerTests.m */,
 				5B7627B118D5D120009FF7E2 /* VBMathParserSyntaxAnalyzerTests.m */,
 				5B76281718D5FD9A009FF7E2 /* VBMathParserTests.m */,
 				5B7627A118D5D0A2009FF7E2 /* Supporting Files */,
