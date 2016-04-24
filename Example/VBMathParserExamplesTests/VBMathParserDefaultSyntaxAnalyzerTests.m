@@ -25,19 +25,22 @@
 
 #import "VBMathParserTokenNumber.h"
 
-#define kBracketOpen [VBMathParserTokenSpecialBracketOpen new]
-#define kBracketClose [VBMathParserTokenSpecialBracketClose new]
-
-#define kNumber1 [VBMathParserTokenNumber tokenWithString:@"1"]
-
-#define kOperation [VBMathParserTokenOperation new]
-#define kOperationAdd [VBMathParserTokenOperationAddition new]
-#define kOperationSub [VBMathParserTokenOperationSubstraction new]
+#import "VBMathParserTokenFunction.h"
 
 @interface VBMathParserDefaultSyntaxAnalyzerTests : XCTestCase
 
 @property (nonatomic, strong) VBMathParserDefaultSyntaxAnalyzer* syntaxAnalyzer;
 
+@property (nonatomic, strong) id mockTokenBracketOpen;
+@property (nonatomic, strong) id mockTokenBracketClose;
+
+@property (nonatomic, strong) id mockTokenNumber1;
+
+@property (nonatomic, strong) id mockTokenOperation;
+@property (nonatomic, strong) id mockTokenOperationAdd;
+@property (nonatomic, strong) id mockTokenOperationSub;
+
+@property (nonatomic, strong) id mockTokenFunction;
 
 @end
 
@@ -46,6 +49,17 @@
 - (void)setUp {
     [super setUp];
     // Put setup code here. This method is called before the invocation of each test method in the class.
+    
+    self.mockTokenBracketOpen = OCMClassMock([VBMathParserTokenSpecialBracketOpen class]);
+    self.mockTokenBracketClose = OCMClassMock([VBMathParserTokenSpecialBracketClose class]);
+    
+    self.mockTokenNumber1 = OCMClassMock([VBMathParserTokenNumber class]);
+    
+    self.mockTokenOperation = OCMClassMock([VBMathParserTokenOperation class]);
+    self.mockTokenOperationAdd = OCMClassMock([VBMathParserTokenOperationAddition class]);
+    self.mockTokenOperationSub = OCMClassMock([VBMathParserTokenOperationSubstraction class]);
+    
+    self.mockTokenFunction = OCMClassMock([VBMathParserTokenFunction class]);
     
     self.syntaxAnalyzer = [VBMathParserDefaultSyntaxAnalyzer new];
 }
@@ -63,104 +77,163 @@
 
 #pragma mark - brackets
 - (void) testThatItCountsBracketsCorrectly {
-    NSArray* tokens = @[kBracketOpen,
-                        kBracketOpen,
-                        kNumber1,
-                        kBracketClose,
-                        kBracketClose];
+    NSArray* tokens = @[self.mockTokenBracketOpen,
+                        self.mockTokenBracketOpen,
+                        self.mockTokenNumber1,
+                        self.mockTokenBracketClose,
+                        self.mockTokenBracketClose];
 
     XCTAssertNoThrow([self.syntaxAnalyzer analyseExpression:tokens]);
 }
 
 - (void) testThatItThrowsBracketNotClosedException {
-    NSArray* tokens = @[kBracketOpen,
-                        kBracketOpen,
-                        kNumber1,
-                        kBracketClose];
+    NSArray* tokens = @[self.mockTokenBracketOpen,
+                        self.mockTokenBracketOpen,
+                        self.mockTokenNumber1,
+                        self.mockTokenBracketClose];
     
     XCTAssertThrowsSpecific([self.syntaxAnalyzer analyseExpression:tokens],
                             VBMathParserBracketNotClosedException);
 }
 
 - (void) testThatItThrowsBracketNotOpennedException {
-    NSArray* tokens = @[kBracketOpen,
-                        kNumber1,
-                        kBracketClose,
-                        kBracketClose];
+    NSArray* tokens = @[self.mockTokenBracketOpen,
+                        self.mockTokenNumber1,
+                        self.mockTokenBracketClose,
+                        self.mockTokenBracketClose];
     
     XCTAssertThrowsSpecific([self.syntaxAnalyzer analyseExpression:tokens],
                             VBMathParserBracketNotOpenedException);
 }
 
 #pragma mark - missing tokens
+#pragma mark 1++1
 - (void) testThatItThrowsTokenMissingExceptionWhenOperationsOneByOne {
-    NSArray* tokens = @[kNumber1,
-                        kOperationAdd,
-                        kOperationAdd,
-                        kNumber1];
+    NSArray* tokens = @[self.mockTokenNumber1,
+                        self.mockTokenOperationAdd,
+                        self.mockTokenOperationAdd,
+                        self.mockTokenNumber1];
     
     XCTAssertThrowsSpecific([self.syntaxAnalyzer analyseExpression:tokens],
                             VBMathParserMissingTokenException);
 }
 
+- (void) testThatItDoesntThrowExceptionWhenNoOperationsOneByOne {
+    NSArray* tokens = @[self.mockTokenNumber1,
+                        self.mockTokenOperationAdd,
+                        self.mockTokenNumber1,
+                        self.mockTokenOperationAdd,
+                        self.mockTokenNumber1];
+    
+    XCTAssertNoThrow([self.syntaxAnalyzer analyseExpression:tokens]);
+}
+
+#pragma mark ()
 - (void) testThatItThrowsTokenMissingExceptionWhenBracketsWithoutNumber {
-    NSArray* tokens = @[kBracketOpen,
-                        kBracketClose];
+    NSArray* tokens = @[self.mockTokenBracketOpen,
+                        self.mockTokenBracketClose];
     
     XCTAssertThrowsSpecific([self.syntaxAnalyzer analyseExpression:tokens],
                             VBMathParserMissingTokenException);
 }
 
+- (void) testThatItDoesntThrowsExceptionWhenNumberInsideBrackets {
+    NSArray* tokens = @[self.mockTokenBracketOpen,
+                        self.mockTokenNumber1,
+                        self.mockTokenBracketClose];
+    
+    XCTAssertNoThrow([self.syntaxAnalyzer analyseExpression:tokens]);
+}
+
+#pragma mark (+1
 - (void) testThatItThrowsTokenMissingExceptionWhenBeginsWithOperationAfterBracket {
-    NSArray* tokens = @[kBracketOpen,
-                        kOperation,
-                        kNumber1,
-                        kBracketClose];
+    NSArray* tokens = @[self.mockTokenBracketOpen,
+                        self.mockTokenOperation,
+                        self.mockTokenNumber1,
+                        self.mockTokenBracketClose];
     
     XCTAssertThrowsSpecific([self.syntaxAnalyzer analyseExpression:tokens],
                             VBMathParserMissingTokenException);
 }
 
 - (void) testThatItDoesntThrowExceptionWhenBeginsWithUnaryMinusAfterBracket {
-    NSArray* tokens = @[kBracketOpen,
-                        kOperationSub,
-                        kNumber1,
-                        kBracketClose];
+    NSArray* tokens = @[self.mockTokenBracketOpen,
+                        self.mockTokenOperationSub,
+                        self.mockTokenNumber1,
+                        self.mockTokenBracketClose];
     
     XCTAssertNoThrow([self.syntaxAnalyzer analyseExpression:tokens]);
 }
 
+#pragma mark +1
 - (void) testThatItThrowsTokenMissingExceptionWhenBeginsWithOperation {
-    NSArray* tokens = @[kOperation,
-                        kNumber1];
+    NSArray* tokens = @[self.mockTokenOperation,
+                        self.mockTokenNumber1];
     
     XCTAssertThrowsSpecific([self.syntaxAnalyzer analyseExpression:tokens],
                             VBMathParserMissingTokenException);
 }
 
 - (void) testThatItDoesntThrowExceptionWhenBeginsWithUnaryMinus {
-    NSArray* tokens = @[kOperationSub,
-                        kNumber1];
+    NSArray* tokens = @[self.mockTokenOperationSub,
+                        self.mockTokenNumber1];
     
     XCTAssertNoThrow([self.syntaxAnalyzer analyseExpression:tokens]);
 }
 
+#pragma mark 1+)
 - (void) testThatItThrowsTokenMissingExceptionWhenEndsWithOperationBeforeBracket {
-    NSArray* tokens = @[kBracketOpen,
-                        kNumber1,
-                        kOperation,
-                        kBracketClose];
+    NSArray* tokens = @[self.mockTokenBracketOpen,
+                        self.mockTokenNumber1,
+                        self.mockTokenOperation,
+                        self.mockTokenBracketClose];
     
     XCTAssertThrowsSpecific([self.syntaxAnalyzer analyseExpression:tokens],
                             VBMathParserMissingTokenException);
 }
 
+#pragma mark 1+
 - (void) testThatItThrowsTokenMissingExceptionWhenEndsWithOperation {
-    NSArray* tokens = @[kNumber1,
-                        kOperation];
+    NSArray* tokens = @[self.mockTokenNumber1,
+                        self.mockTokenOperation];
     
     XCTAssertThrowsSpecific([self.syntaxAnalyzer analyseExpression:tokens],
                             VBMathParserMissingTokenException);
 }
+
+#pragma mark abs1
+- (void) testThatItThrowsTokenMissingExceptionWhenNoBracketAfterFunction {
+    NSArray* tokens = @[self.mockTokenFunction,
+                        self.mockTokenNumber1];
+    
+    XCTAssertThrowsSpecific([self.syntaxAnalyzer analyseExpression:tokens],
+                            VBMathParserMissingTokenException);
+}
+
+- (void) testThatItDoesntThrowExceptionWhenBracketAfterFunction {
+    NSArray* tokens = @[self.mockTokenFunction,
+                        self.mockTokenBracketOpen,
+                        self.mockTokenNumber1,
+                        self.mockTokenBracketClose];
+    
+    XCTAssertNoThrow([self.syntaxAnalyzer analyseExpression:tokens]);
+}
+
+#pragma mark ^+$, ^abs$
+- (void) testThatItThrowsTokenMissingExceptionWhenOnlyOperation {
+    NSArray* tokens = @[self.mockTokenOperation];
+    
+    XCTAssertThrowsSpecific([self.syntaxAnalyzer analyseExpression:tokens],
+                            VBMathParserMissingTokenException);
+}
+
+- (void) testThatItThrowsTokenMissingExceptionWhenOnlyFunction {
+    NSArray* tokens = @[self.mockTokenFunction];
+    
+    XCTAssertThrowsSpecific([self.syntaxAnalyzer analyseExpression:tokens],
+                            VBMathParserMissingTokenException);
+}
+
+#pragma mark - 
 
 @end
