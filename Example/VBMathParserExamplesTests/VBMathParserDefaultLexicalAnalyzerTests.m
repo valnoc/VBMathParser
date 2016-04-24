@@ -28,7 +28,8 @@
 @interface VBMathParserDefaultLexicalAnalyzerTests : XCTestCase
 
 @property (nonatomic, strong) VBMathParserDefaultLexicalAnalyzer* lexicalAnalyzer;
-@property (nonatomic, strong) id<VBMathParserTokenFactory> mockTokenFactory;
+
+@property (nonatomic, strong) id mockTokenFactory;
 
 @end
 
