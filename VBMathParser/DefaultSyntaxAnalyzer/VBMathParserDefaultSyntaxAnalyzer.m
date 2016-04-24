@@ -11,6 +11,7 @@
 #import "VBMathParserTokenSpecialBracketOpen.h"
 #import "VBMathParserTokenSpecialBracketClose.h"
 
+#import "VBMathParserTokenOperationMultiplication.h"
 #import "VBMathParserTokenOperationSubstraction.h"
 
 #import "VBMathParserTokenNumber.h"
@@ -136,7 +137,7 @@
         if ([tokens[i] isKindOfClass:[VBMathParserTokenSpecialBracketClose class]] &&
             [tokens[i + 1] isKindOfClass:[VBMathParserTokenSpecialBracketOpen class]]) {
             // ()() -> ()*()
-            [tokens insertObject:[VBMathParserTokenOperation tokenWithString:@"*"]
+            [tokens insertObject:[VBMathParserTokenOperationMultiplication new]
                          atIndex:i + 1];
             
         }else if (([tokens[i] isKindOfClass:[VBMathParserTokenNumber class]] ||
@@ -144,7 +145,7 @@
                    [tokens[i] isKindOfClass:[VBMathParserTokenConst class]]) &&
                   [tokens[i+1] isKindOfClass:[VBMathParserTokenSpecialBracketOpen class]]) {
             // 2() -> 2*()
-            [tokens insertObject:[VBMathParserTokenOperation tokenWithString:@"*"]
+            [tokens insertObject:[VBMathParserTokenOperationMultiplication new]
                          atIndex:i + 1];
         }
     }

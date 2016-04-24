@@ -22,8 +22,11 @@
 
 #import "VBMathParserTokenOperationAddition.h"
 #import "VBMathParserTokenOperationSubstraction.h"
+#import "VBMathParserTokenOperationMultiplication.h"
 
 #import "VBMathParserTokenNumber.h"
+#import "VBMathParserTokenConst.h"
+#import "VBMathParserTokenVar.h"
 
 #import "VBMathParserTokenFunction.h"
 
@@ -35,6 +38,8 @@
 @property (nonatomic, strong) id mockTokenBracketClose;
 
 @property (nonatomic, strong) id mockTokenNumber1;
+@property (nonatomic, strong) id mockTokenConst;
+@property (nonatomic, strong) id mockTokenVar;
 
 @property (nonatomic, strong) id mockTokenOperation;
 @property (nonatomic, strong) id mockTokenOperationAdd;
@@ -54,6 +59,8 @@
     self.mockTokenBracketClose = OCMClassMock([VBMathParserTokenSpecialBracketClose class]);
     
     self.mockTokenNumber1 = OCMClassMock([VBMathParserTokenNumber class]);
+    self.mockTokenConst = OCMClassMock([VBMathParserTokenConst class]);
+    self.mockTokenVar = OCMClassMock([VBMathParserTokenVar class]);
     
     self.mockTokenOperation = OCMClassMock([VBMathParserTokenOperation class]);
     self.mockTokenOperationAdd = OCMClassMock([VBMathParserTokenOperationAddition class]);
@@ -234,6 +241,57 @@
                             VBMathParserMissingTokenException);
 }
 
-#pragma mark - 
+#pragma mark - insert suppressed multiplication
+#pragma mark ()() -> ()*()
+- (void) testThatItAddsMissingMultiplicationBetweenBrackets {
+    NSArray* tokens = @[self.mockTokenBracketOpen,
+                        self.mockTokenNumber1,
+                        self.mockTokenBracketClose,
+                        self.mockTokenBracketOpen,
+                        self.mockTokenNumber1,
+                        self.mockTokenBracketClose];
+    
+    tokens = [self.syntaxAnalyzer analyseExpression:tokens];
+    
+    expect(tokens.count).to.equal(7);
+    expect(tokens[3]).to.beAnInstanceOf([VBMathParserTokenOperationMultiplication class]);
+}
+
+#pragma mark 2() -> 2*()
+- (void) testThatItAddsMissingMultiplicationAfterNumber {
+    NSArray* tokens = @[self.mockTokenNumber1,
+                        self.mockTokenBracketOpen,
+                        self.mockTokenNumber1,
+                        self.mockTokenBracketClose];
+    
+    tokens = [self.syntaxAnalyzer analyseExpression:tokens];
+    
+    expect(tokens.count).to.equal(5);
+    expect(tokens[1]).to.beAnInstanceOf([VBMathParserTokenOperationMultiplication class]);
+}
+
+- (void) testThatItAddsMissingMultiplicationAfterConst {
+    NSArray* tokens = @[self.mockTokenConst,
+                        self.mockTokenBracketOpen,
+                        self.mockTokenNumber1,
+                        self.mockTokenBracketClose];
+    
+    tokens = [self.syntaxAnalyzer analyseExpression:tokens];
+    
+    expect(tokens.count).to.equal(5);
+    expect(tokens[1]).to.beAnInstanceOf([VBMathParserTokenOperationMultiplication class]);
+}
+
+- (void) testThatItAddsMissingMultiplicationAfterVar {
+    NSArray* tokens = @[self.mockTokenVar,
+                        self.mockTokenBracketOpen,
+                        self.mockTokenNumber1,
+                        self.mockTokenBracketClose];
+    
+    tokens = [self.syntaxAnalyzer analyseExpression:tokens];
+    
+    expect(tokens.count).to.equal(5);
+    expect(tokens[1]).to.beAnInstanceOf([VBMathParserTokenOperationMultiplication class]);
+}
 
 @end
