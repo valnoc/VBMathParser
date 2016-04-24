@@ -14,8 +14,8 @@
 #import "VBMathParserDefaultTokenFactory.h"
 
 #import "VBMathParserTokenNumber.h"
-#import "VBMathParserTokenOperationAddition.h"
-#import "VBMathParserTokenOperationSubstraction.h"
+
+#import "VBMathParserUnknownTokenException.h"
 
 @interface VBMathParserDefaultLexicalAnalyzer (tests)
 
@@ -91,6 +91,16 @@
     
     OCMVerify([self.mockTokenFactory tokenWithType:[VBMathParserTokenNumber tokenType]
                                             string:@"0.4"]);
+}
+
+- (void) testThatItThrowsUnknowknTokenException {
+    NSString* expression = @"0.4";
+    
+    [OCMStub([self.mockTokenFactory tokenWithType:OCMOCK_ANY string:OCMOCK_ANY]) andReturn:nil];
+
+    XCTAssertThrowsSpecific([self.lexicalAnalyzer analyseExpression:expression
+                                                      withVariables:nil],
+                            VBMathParserUnknownTokenException);
 }
 
 @end
