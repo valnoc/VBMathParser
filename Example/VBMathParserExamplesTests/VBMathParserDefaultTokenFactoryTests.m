@@ -166,7 +166,7 @@
     NSMutableArray* strToParse = [NSMutableArray new];
     [strToParse addObject:@"0.0123"];
     [strToParse addObject:@"2."];
-    [strToParse addObject:@".3"];
+//    [strToParse addObject:@".3"];
     
     [strToParse enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         VBMathParserToken *token = [self.tokenFactory tokenWithType:[VBMathParserTokenNumber tokenType]
