@@ -31,8 +31,8 @@
     [self checkBrackets:tokens];
     [self checkMissingTokens:tokens];
     
-//    [self fixMissingMultiplication:tokens];
-//    [self fixUnaryMinus:tokens];
+    [self fixMissingMultiplication:tokens];
+    [self fixUnaryMinus:tokens];
 
     return tokens;
 }
