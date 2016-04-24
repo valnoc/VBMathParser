@@ -70,6 +70,7 @@ OR
 ## Expected syntax
 You will get an exception if expression syntax has errors. To handle such cases you should you try/catch pattern.
 1. If you open a bracket - do not forget to close it later. 
+
 2. All operations are expected to be used in mathematical expressions as binary operations. 
 
     Only "-" operation can be used both as binary and as unary one. Actually unary minus operation is always replaced by a binary one as the following: 
