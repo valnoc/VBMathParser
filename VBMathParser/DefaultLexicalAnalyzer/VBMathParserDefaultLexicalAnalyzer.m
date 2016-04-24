@@ -36,6 +36,8 @@
 #import "VBMathParserUnknownTokenException.h"
 
 #import "VBMathParserDefaultTokenFactory.h"
+#import "VBMathParserVarIsNotStringException.h"
+#import "VBMathParserVarIsNotValidException.h"
 
 @interface VBMathParserDefaultLexicalAnalyzer ()
 
@@ -144,21 +146,20 @@
 }
 
 - (void) validateVariableNames:(NSArray<NSString *>*) vars {
-#warning TODO implement
-//    NSRegularExpression* regex = [NSRegularExpression regularExpressionWithPattern:[VBMathParserTokenVar regexPattern]
-//                                                                           options:NSRegularExpressionCaseInsensitive|NSRegularExpressionAnchorsMatchLines
-//                                                                             error:nil];
-//    for (id obj in vars) {
-//        if ([obj isKindOfClass:[NSString class]] == NO) {
-//            @throw [VBMathParserVarIsNotStringException exception];
-//        }
-//        NSRange rangeOfFirstMatch = [regex rangeOfFirstMatchInString:obj
-//                                                             options:0
-//                                                               range:NSMakeRange(0, ((NSString*)obj).length)];
-//        if (rangeOfFirstMatch.location == NSNotFound || rangeOfFirstMatch.length != ((NSString*)obj).length) {
-//            @throw [VBMathParserVarIsNotValidException exceptionWithVar:obj];
-//        }
-//    }
+    NSRegularExpression* regex = [NSRegularExpression regularExpressionWithPattern:[VBMathParserTokenVar regexpPattern]
+                                                                           options:NSRegularExpressionCaseInsensitive|NSRegularExpressionAnchorsMatchLines
+                                                                             error:nil];
+    [vars enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj isKindOfClass:[NSString class]] == NO) {
+            @throw [VBMathParserVarIsNotStringException exception];
+        }
+        NSRange rangeOfFirstMatch = [regex rangeOfFirstMatchInString:obj
+                                                             options:0
+                                                               range:NSMakeRange(0, ((NSString*)obj).length)];
+        if (rangeOfFirstMatch.location == NSNotFound || rangeOfFirstMatch.length != ((NSString*)obj).length) {
+            @throw [VBMathParserVarIsNotValidException exceptionWithVar:obj];
+        }
+    }];
 }
 
 - (NSString*) prepareStringForParsing:(NSString*) string {

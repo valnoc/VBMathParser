@@ -26,6 +26,6 @@
 
 @interface VBMathParserUnknownTokenException : VBException
 
-+ (instancetype) exceptionWithToken:(nonnull NSString*)token;
++ (instancetype) exceptionWithToken:(NSString*)token;
 
 @end

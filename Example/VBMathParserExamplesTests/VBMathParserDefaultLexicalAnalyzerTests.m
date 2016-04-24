@@ -16,6 +16,8 @@
 #import "VBMathParserTokenNumber.h"
 
 #import "VBMathParserUnknownTokenException.h"
+#import "VBMathParserVarIsNotStringException.h"
+#import "VBMathParserVarIsNotValidException.h"
 
 @interface VBMathParserDefaultLexicalAnalyzer (tests)
 
@@ -101,6 +103,35 @@
     XCTAssertThrowsSpecific([self.lexicalAnalyzer analyseExpression:expression
                                                       withVariables:nil],
                             VBMathParserUnknownTokenException);
+}
+
+- (void) testThatItAcceptsCorrectVars {
+    NSString* expression = @"0.4";
+    NSArray* vars = @[@"x"];
+    
+    VBMathParserTokenNumber* token = [VBMathParserTokenNumber tokenWithString:@"0.4"];
+    [OCMStub([self.mockTokenFactory tokenWithType:OCMOCK_ANY string:OCMOCK_ANY]) andReturn:token];
+    
+    XCTAssertNoThrow([self.lexicalAnalyzer analyseExpression:expression
+                                                      withVariables:vars]);
+}
+
+- (void) testThatItThrowsVarIsNotStringException {
+    NSString* expression = @"0.4";
+    NSArray* vars = @[@"x", @(1)];
+    
+    XCTAssertThrowsSpecific([self.lexicalAnalyzer analyseExpression:expression
+                                                      withVariables:vars],
+                            VBMathParserVarIsNotStringException);
+}
+
+- (void) testThatItThrowsVarIsNotValidException {
+    NSString* expression = @"0.4";
+    NSArray* vars = @[@"x", @"1x"];
+    
+    XCTAssertThrowsSpecific([self.lexicalAnalyzer analyseExpression:expression
+                                                      withVariables:vars],
+                            VBMathParserVarIsNotValidException);
 }
 
 @end
