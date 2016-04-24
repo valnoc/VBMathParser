@@ -49,8 +49,8 @@
         if ([token isKindOfClass:[VBMathParserTokenSpecial class]]) {
             if ([token isKindOfClass:[VBMathParserTokenSpecialBracketOpen class]]) {
                 [bracketsStack addObject:token];
-                
-            }else if ([token isKindOfClass:[VBMathParserTokenSpecialBracketClose class]]) {
+            }
+            else if ([token isKindOfClass:[VBMathParserTokenSpecialBracketClose class]]) {
                 if (bracketsStack.count == 0) {
                     // nothing to pop
                     @throw [VBMathParserBracketNotOpenedException exception];
@@ -77,41 +77,42 @@
                 [tokenNext isKindOfClass:[VBMathParserTokenOperation class]]) {
                 // operations one by one. e.g. 1+*2, 1+-2
                 tokenIsMissing = YES;
-                
-            } else if ([token isKindOfClass:[VBMathParserTokenSpecialBracketOpen class]] &&
+            }
+            else if ([token isKindOfClass:[VBMathParserTokenSpecialBracketOpen class]] &&
                        [tokenNext isKindOfClass:[VBMathParserTokenSpecialBracketClose class]]) {
                 // ()
                 tokenIsMissing = YES;
-                
-            } else if ([token isKindOfClass:[VBMathParserTokenSpecialBracketOpen class]] &&
+            }
+            else if ([token isKindOfClass:[VBMathParserTokenSpecialBracketOpen class]] &&
                        [tokenNext isKindOfClass:[VBMathParserTokenOperation class]] &&
                        [tokenNext isKindOfClass:[VBMathParserTokenOperationSubstraction class]] == NO) {
                 // begins with operation after bracket. e.g. (+2
                 tokenIsMissing = YES;
-                
-            } else if ([token isKindOfClass:[VBMathParserTokenOperation class]] &&
+            }
+            else if ([token isKindOfClass:[VBMathParserTokenOperation class]] &&
                        [tokenNext isKindOfClass:[VBMathParserTokenSpecialBracketClose class]]) {
                 // ends with operation before bracket. e.g. 2+)
                 tokenIsMissing = YES;
-                
-            } else if ((i == 0) &&
+            }
+            else if ((i == 0) &&
                        [token isKindOfClass:[VBMathParserTokenOperation class]] &&
                        [token isKindOfClass:[VBMathParserTokenOperationSubstraction class]] == NO ) {
                 // begins with operation. e.g. +2
                 tokenIsMissing = YES;
-                
-            } else if ((i == tokens.count-1) &&
+            }
+            else if ((i == tokens.count-1) &&
                        [token isKindOfClass:[VBMathParserTokenOperation class]]) {
                 // ends with operation. e.g. 2+$
                 tokenIsMissing = YES;
-                
-            } else if ([token isKindOfClass:[VBMathParserTokenFunction class]] &&
+            }
+            else if ([token isKindOfClass:[VBMathParserTokenFunction class]] &&
                        [tokenNext isKindOfClass:[VBMathParserTokenSpecialBracketOpen class]] == NO) {
                 // any function should be followed by its arguments in brackets
                 tokenIsMissing = YES;
             }
             
-        }else if ([token isKindOfClass:[VBMathParserTokenOperation class]] ||
+        }
+        else if ([token isKindOfClass:[VBMathParserTokenOperation class]] ||
                   [token isKindOfClass:[VBMathParserTokenFunction class]]) {
             // last token
             tokenIsMissing = YES;
@@ -140,10 +141,11 @@
             [tokens insertObject:[VBMathParserTokenOperationMultiplication new]
                          atIndex:i + 1];
             
-        }else if (([tokens[i] isKindOfClass:[VBMathParserTokenNumber class]] ||
-                   [tokens[i] isKindOfClass:[VBMathParserTokenVar class]] ||
-                   [tokens[i] isKindOfClass:[VBMathParserTokenConst class]]) &&
-                  [tokens[i+1] isKindOfClass:[VBMathParserTokenSpecialBracketOpen class]]) {
+        }
+        else if (([tokens[i] isKindOfClass:[VBMathParserTokenNumber class]] ||
+                  [tokens[i] isKindOfClass:[VBMathParserTokenVar class]] ||
+                  [tokens[i] isKindOfClass:[VBMathParserTokenConst class]]) &&
+                 [tokens[i+1] isKindOfClass:[VBMathParserTokenSpecialBracketOpen class]]) {
             // 2() -> 2*()
             [tokens insertObject:[VBMathParserTokenOperationMultiplication new]
                          atIndex:i + 1];
@@ -162,9 +164,9 @@
                 // -1 -> 0-1
                 [tokens insertObject:[VBMathParserTokenNumber tokenWithString:@"0"]
                              atIndex:i];
-                
-            }else if ([tokens[i] isKindOfClass:[VBMathParserTokenSpecialBracketOpen class]] &&
-                      [tokens[i + 1] isKindOfClass:[VBMathParserTokenOperationSubstraction class]]) {
+            }
+        else if ([tokens[i] isKindOfClass:[VBMathParserTokenSpecialBracketOpen class]] &&
+                 [tokens[i + 1] isKindOfClass:[VBMathParserTokenOperationSubstraction class]]) {
                 // (-1 -> (0-1
                 [tokens insertObject:[VBMathParserTokenNumber tokenWithString:@"0"]
                              atIndex:i + 1];
