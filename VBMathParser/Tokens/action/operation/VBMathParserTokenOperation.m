@@ -24,7 +24,7 @@
 
 #import "VBMathParserTokenOperation.h"
 
-#import "VBMathParserNotImplementedException.h"
+#import "VBNotImplementedException.h"
 
 @implementation VBMathParserTokenOperation
 
@@ -40,7 +40,7 @@
 #pragma mark - operation
 - (double) evaluateWithArgLeft:(double)argLeft
                       argRight:(double)argRight {
-    @throw [VBMathParserNotImplementedException exception];
+    @throw [VBNotImplementedException exception];
 }
 
 @end

@@ -24,7 +24,7 @@
 
 #import "VBMathParserTokenConst.h"
 
-#import "VBMathParserNotImplementedException.h"
+#import "VBNotImplementedException.h"
 
 @implementation VBMathParserTokenConst
 
@@ -39,7 +39,7 @@
 
 #pragma mark - const
 - (double) doubleValue {
-    @throw [VBMathParserNotImplementedException exception];
+    @throw [VBNotImplementedException exception];
 }
 
 @end

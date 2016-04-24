@@ -24,7 +24,7 @@
 
 #import "VBMathParserTokenFunction.h"
 
-#import "VBMathParserNotImplementedException.h"
+#import "VBNotImplementedException.h"
 
 @implementation VBMathParserTokenFunction
 
@@ -44,7 +44,7 @@
 
 #pragma mark - function
 - (double) evaluateWithArg:(double)arg {
-    @throw [VBMathParserNotImplementedException exception];
+    @throw [VBNotImplementedException exception];
 }
 
 @end

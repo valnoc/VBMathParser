@@ -24,7 +24,7 @@
 
 #import "VBMathParserToken.h"
 
-#import "VBMathParserNotImplementedException.h"
+#import <VBNotImplementedException.h>
 
 @interface VBMathParserToken ()
 
@@ -41,12 +41,12 @@
 }
 
 + (NSString*) tokenType {
-    @throw [VBMathParserNotImplementedException exception];
+    @throw [VBNotImplementedException exception];
 }
 
 #pragma mark - regexp
 + (NSString*) regexpPattern {
-    @throw [VBMathParserNotImplementedException exception];
+    @throw [VBNotImplementedException exception];
 }
 + (NSRegularExpression*) regularExpression {
     NSError* error = nil;
@@ -58,7 +58,7 @@
 
 #pragma mark - string
 + (NSString *) rawString {
-    @throw [VBMathParserNotImplementedException exception];
+    @throw [VBNotImplementedException exception];
 }
 - (NSString *) stringValue {
     return [self.class rawString];

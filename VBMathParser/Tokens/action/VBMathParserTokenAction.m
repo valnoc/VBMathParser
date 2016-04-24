@@ -24,13 +24,13 @@
 
 #import "VBMathParserTokenAction.h"
 
-#import "VBMathParserNotImplementedException.h"
+#import "VBNotImplementedException.h"
 
 @implementation VBMathParserTokenAction
 
 #pragma mark - action
 - (VBMathParserTokenActionPriority) priority {
-    @throw [VBMathParserNotImplementedException exception];
+    @throw [VBNotImplementedException exception];
 }
 
 @end
