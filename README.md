@@ -69,9 +69,10 @@ OR
 
 ## Expected syntax
 You will get an exception if expression syntax has errors. To handle such cases you should you try/catch pattern.
+
 1. If you open a bracket - do not forget to close it later. 
 
-2. All operations are expected to be used in mathematical expressions as binary operations. 
+1. All operations are expected to be used in mathematical expressions as binary operations. 
 
     Only "-" operation can be used both as binary and as unary one. Actually unary minus operation is always replaced by a binary one as the following: 
 ```
@@ -79,12 +80,13 @@ You will get an exception if expression syntax has errors. To handle such cases 
         "2 * (-4)" -> "2 * (0 - 4)"
         "-abs(4)" -> "0 - abs(4)"
 ```
-3. All functions are expected to be followed by an argument enclosed in brackets.  
+
+1. All functions are expected to be followed by an argument enclosed in brackets.  
 ```
         abs3 - error!
         abs(3) - OK
 ```
-4. Variable name must consist of at least one letter plus letters and numbers.
+1. Variable name must consist of at least one letter plus letters and numbers.
 ```
         valid names: x, y, x1, x01, etc
         invalid names: 0x, x_213, etc
