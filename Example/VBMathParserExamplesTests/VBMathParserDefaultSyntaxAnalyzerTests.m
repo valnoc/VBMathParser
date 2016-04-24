@@ -294,4 +294,79 @@
     expect(tokens[1]).to.beAnInstanceOf([VBMathParserTokenOperationMultiplication class]);
 }
 
+#pragma mark - unary minus
+#pragma mark -1 -> 0-1
+- (void) testThatItAddsZeroForUnaryMinusBeforeNumber {
+    NSArray* tokens = @[self.mockTokenOperationSub,
+                        self.mockTokenNumber1];
+    
+    tokens = [self.syntaxAnalyzer analyseExpression:tokens];
+    
+    expect(tokens.count).to.equal(3);
+    expect(tokens[0]).to.beAnInstanceOf([VBMathParserTokenNumber class]);
+    expect([tokens[0] doubleValue]).to.equal(0);
+}
+
+- (void) testThatItAddsZeroForUnaryMinusBeforeConst {
+    NSArray* tokens = @[self.mockTokenOperationSub,
+                        self.mockTokenConst];
+    
+    tokens = [self.syntaxAnalyzer analyseExpression:tokens];
+    
+    expect(tokens.count).to.equal(3);
+    expect(tokens[0]).to.beAnInstanceOf([VBMathParserTokenNumber class]);
+    expect([tokens[0] doubleValue]).to.equal(0);
+}
+
+- (void) testThatItAddsZeroForUnaryMinusBeforeVar {
+    NSArray* tokens = @[self.mockTokenOperationSub,
+                        self.mockTokenVar];
+    
+    tokens = [self.syntaxAnalyzer analyseExpression:tokens];
+    
+    expect(tokens.count).to.equal(3);
+    expect(tokens[0]).to.beAnInstanceOf([VBMathParserTokenNumber class]);
+    expect([tokens[0] doubleValue]).to.equal(0);
+}
+
+#pragma mark (-1 -> (0-1
+- (void) testThatItAddsZeroForUnaryMinusAfterBracketBeforeNumber {
+    NSArray* tokens = @[self.mockTokenBracketOpen,
+                        self.mockTokenOperationSub,
+                        self.mockTokenNumber1,
+                        self.mockTokenBracketClose];
+    
+    tokens = [self.syntaxAnalyzer analyseExpression:tokens];
+    
+    expect(tokens.count).to.equal(5);
+    expect(tokens[1]).to.beAnInstanceOf([VBMathParserTokenNumber class]);
+    expect([tokens[1] doubleValue]).to.equal(0);
+}
+
+- (void) testThatItAddsZeroForUnaryMinusAfterBracketBeforeConst {
+    NSArray* tokens = @[self.mockTokenBracketOpen,
+                        self.mockTokenOperationSub,
+                        self.mockTokenConst,
+                        self.mockTokenBracketClose];
+    
+    tokens = [self.syntaxAnalyzer analyseExpression:tokens];
+    
+    expect(tokens.count).to.equal(5);
+    expect(tokens[1]).to.beAnInstanceOf([VBMathParserTokenNumber class]);
+    expect([tokens[1] doubleValue]).to.equal(0);
+}
+
+- (void) testThatItAddsZeroForUnaryMinusAfterBracketBeforeVar {
+    NSArray* tokens = @[self.mockTokenBracketOpen,
+                        self.mockTokenOperationSub,
+                        self.mockTokenVar,
+                        self.mockTokenBracketClose];
+    
+    tokens = [self.syntaxAnalyzer analyseExpression:tokens];
+    
+    expect(tokens.count).to.equal(5);
+    expect(tokens[1]).to.beAnInstanceOf([VBMathParserTokenNumber class]);
+    expect([tokens[1] doubleValue]).to.equal(0);
+}
+
 @end
