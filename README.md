@@ -1,5 +1,6 @@
 VBMathParser
 ============
+[![](https://img.shields.io/github/tag/valnoc/VBMathParser.svg)]()
 
 VBMathParser is a library for mathematical expressions parsing.
 
